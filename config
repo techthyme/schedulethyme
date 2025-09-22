@@ -1,7 +1,0 @@
-Host github-techthymepm
-  HostName github.com
-  User git
-  IdentityFile ~/.ssh/id_ed25519_techthymepm
-  IdentitiesOnly yes
-  AddKeysToAgent yes
-  UseKeychain yes
