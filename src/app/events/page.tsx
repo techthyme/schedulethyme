@@ -3,13 +3,26 @@
 import { useState } from 'react';
 import { mockEvents } from '@/data/mock-events';
 import EventDetailsCard from '@/components/eventdetails';
+import AttendanceModal from '@/components/AttendanceModal';
+import { AttendeeInfo } from '@/types/event-core';
 
 export default function EventsPage() {
   const [selectedEvent, setSelectedEvent] = useState<string | null>(null);
+  const [showAttendanceModal, setShowAttendanceModal] = useState(false);
 
   const selectedEventData = selectedEvent 
     ? mockEvents.find(event => event.id === selectedEvent) 
     : null;
+
+  const handleAttendClick = () => {
+    setShowAttendanceModal(true);
+  };
+
+  const handleAttendanceSubmit = (attendeeInfo: AttendeeInfo) => {
+    // TODO: Submit attendance data to backend
+    console.log('Attendance submitted:', attendeeInfo);
+    alert(`Thank you ${attendeeInfo.name}! Your registration has been submitted.`);
+  };
 
   return (
     <>
@@ -103,14 +116,21 @@ export default function EventsPage() {
           <div className="w-full max-w-md">
             <EventDetailsCard
               event={selectedEventData}
-              onAttend={() => {
-                // TODO: Implement attendance modal
-                alert('Attendance modal will be implemented next!');
-              }}
+              onAttend={handleAttendClick}
               onClose={() => setSelectedEvent(null)}
             />
           </div>
         </div>
+      )}
+
+      {/* Attendance Modal */}
+      {selectedEventData && (
+        <AttendanceModal
+          isOpen={showAttendanceModal}
+          onClose={() => setShowAttendanceModal(false)}
+          onSubmit={handleAttendanceSubmit}
+          eventTitle={selectedEventData.title}
+        />
       )}
     </>
   );
