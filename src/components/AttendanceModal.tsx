@@ -1,7 +1,7 @@
 // src/components/AttendanceModal.tsx
 
 import { useState } from 'react';
-import { AttendeeInfo } from '@/types/event-core';
+import { AttendeeInfo } from '@/types/index';
 
 interface AttendanceModalProps {
   isOpen: boolean;

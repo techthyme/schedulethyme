@@ -1,6 +1,6 @@
 // src/data/mock-events.ts
 
-import { Event, Instructor } from '@/types/event-core';
+import { Event, Instructor } from '@/types/index';
 
 // Mock instructors
 const mockInstructors: Instructor[] = [

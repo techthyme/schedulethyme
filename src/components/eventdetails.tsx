@@ -1,6 +1,6 @@
 // src/components/EventDetailsCard.tsx
 
-import { Event } from '@/types/event-core';
+import { Event } from '../types/index';
 
 interface EventDetailsCardProps {
   event: Event;
@@ -97,7 +97,7 @@ export default function EventDetailsCard({ event, onAttend, onClose }: EventDeta
             <span className="text-sm">Event Date</span>
           </div>
           <div className="text-xl font-bold text-gray-900">
-            {new Date(event.date).toLocaleDateString('en-US', { month: 'numeric', day: 'numeric', year: 'numeric' })}
+            {event.date ? new Date(event.date).toLocaleDateString('en-US', { month: 'numeric', day: 'numeric', year: 'numeric' }) : 'Date TBD'}
           </div>
           <div className="text-sm text-gray-500">
             {event.time || 'Time TBD'}

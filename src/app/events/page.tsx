@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { mockEvents } from '@/data/mock-events';
 import EventDetailsCard from '@/components/eventdetails';
 import AttendanceModal from '@/components/AttendanceModal';
-import { AttendeeInfo } from '@/types/event-core';
+import { AttendeeInfo } from '@/types/index';
 
 export default function EventsPage() {
   const [selectedEvent, setSelectedEvent] = useState<string | null>(null);

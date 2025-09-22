@@ -7,7 +7,7 @@ import {
   SectionSubtitle,
 } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
-import { Feature } from "@/types/deprecated";
+import { Feature } from "@/types/index";
 
 const features: Feature[] = [
   {

@@ -14,7 +14,7 @@ import {
   SectionSubtitle,
 } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
-import { Service } from "@/types/deprecated";
+import { Service } from "@/types/index";
 
 const services: Service[] = [
   {
