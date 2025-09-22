@@ -2,7 +2,7 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import type { Event } from "@/types/event";
+import type { Event } from "@/types/deprecated";
 
 function formatDate(iso?: string) {
   if (!iso) return "";

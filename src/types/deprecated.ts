@@ -1,4 +1,23 @@
-// src/types/event.ts
+export interface Service {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  href: string;
+}
+
+export interface Feature {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+}
+
+export interface CTAButton {
+  text: string;
+  href: string;
+  variant: "primary" | "secondary";
+}
 
 export type ID = string & { readonly brand: unique symbol };
 export type ISODateString = string & { readonly iso: unique symbol };
@@ -97,7 +116,10 @@ export type EventListSortKey = "date" | "created" | "updated" | "popular";
 
 // Page params (Next.js App Router)
 export type EventPageParams = { id: string };
-export type EventPageSearchParams = Record<string, string | string[] | undefined>;
+export type EventPageSearchParams = Record<
+  string,
+  string | string[] | undefined
+>;
 
 // Attend modal / API payloads
 export type AttendFormValues = {

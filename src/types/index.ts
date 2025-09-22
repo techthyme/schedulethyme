@@ -1,20 +1,14 @@
-export interface Service {
+export interface Event {
   id: string;
   title: string;
-  description: string;
-  icon: string;
-  href: string;
+  dateStart: number; // Epoch time
+  dateEnd?: number; // Epoch time
+  location: string;
+  description?: string;
+  price?: number; // USD price, undefined = free
+  imageUrl?: string;
+  status: EventStatus;
 }
 
-export interface Feature {
-  id: string;
-  title: string;
-  description: string;
-  icon: string;
-}
-
-export interface CTAButton {
-  text: string;
-  href: string;
-  variant: 'primary' | 'secondary';
-}
+// Event status for future scheduling features
+export type EventStatus = "scheduled" | "cancelled" | "completed";
