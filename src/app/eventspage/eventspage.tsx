@@ -1,5 +1,5 @@
 // src/data/events.ts
-import type { Event, ISODateString } from "@/types/event";
+import type { Event, ID, ISODateString } from "@/types/event";
 
 export const EVENTS: Event[] = [
   {
@@ -34,7 +34,7 @@ export const EVENTS: Event[] = [
     categories: ["Education", "Workshop"],
     tags: ["AI", "Education", "Workshop"],
     tickets: [
-      { id: "t_ai_ga", name: "General Admission", priceUSD: 0, perOrderLimit: 4 },
+      { id: "t_ai_ga" as ID, name: "General Admission", priceUSD: 0, perOrderLimit: 4 },
     ],
     published: true,
     createdAt: "2025-09-01T12:00:00Z" as ISODateString,
@@ -73,13 +73,13 @@ export const EVENTS: Event[] = [
     tags: ["Food", "Local", "Family"],
     tickets: [
       {
-        id: "t_harvest_ga",
+        id: "t_harvest_ga" as ID,
         name: "General Admission",
         priceUSD: 5,
         perOrderLimit: 10,
       },
       {
-        id: "t_harvest_vip",
+        id: "t_harvest_vip" as ID,
         name: "VIP Tasting",
         priceUSD: 25,
         capacity: 50,
@@ -118,7 +118,7 @@ export const EVENTS: Event[] = [
     tags: ["Next.js", "Web Dev"],
     tickets: [
       {
-        id: "t_next_ga",
+        id: "t_next_ga" as ID,
         name: "General Admission",
         priceUSD: 0,
         capacity: 300,
@@ -157,8 +157,8 @@ export const EVENTS: Event[] = [
     categories: ["Music", "Community"],
     tags: ["Music", "Outdoor"],
     tickets: [
-      { id: "t_reggae_ga", name: "General Admission", priceUSD: 15 },
-      { id: "t_reggae_vip", name: "VIP Deck", priceUSD: 50, capacity: 100 },
+      { id: "t_reggae_ga" as ID, name: "General Admission", priceUSD: 15 },
+      { id: "t_reggae_vip" as ID, name: "VIP Deck", priceUSD: 50, capacity: 100 },
     ],
     published: true,
     createdAt: "2025-09-07T08:00:00Z" as ISODateString,
@@ -193,15 +193,15 @@ export const EVENTS: Event[] = [
     tags: ["AI", "Startups", "Networking"],
     tickets: [
       {
-        id: "t_cts_early",
+        id: "t_cts_early" as ID,
         name: "Early Bird",
         priceUSD: 149,
         capacity: 500,
         salesStart: "2025-10-01T04:00:00Z" as ISODateString,
         salesEnd: "2025-11-15T04:00:00Z" as ISODateString,
       },
-      { id: "t_cts_std", name: "Standard", priceUSD: 199 },
-      { id: "t_cts_vip", name: "VIP", priceUSD: 499, capacity: 150 },
+      { id: "t_cts_std" as ID, name: "Standard", priceUSD: 199 },
+      { id: "t_cts_vip" as ID, name: "VIP", priceUSD: 499, capacity: 150 },
     ],
     published: false, // draft
     createdAt: "2025-09-12T10:00:00Z" as ISODateString,
@@ -234,7 +234,7 @@ export const EVENTS: Event[] = [
     priceUSD: 0,
     categories: ["Sports", "Community"],
     tags: ["Softball", "Youth", "Family"],
-    tickets: [{ id: "t_softball_free", name: "Free RSVP", priceUSD: 0 }],
+    tickets: [{ id: "t_softball_free" as ID, name: "Free RSVP", priceUSD: 0 }],
     published: true,
     createdAt: "2025-09-18T12:30:00Z" as ISODateString,
     updatedAt: "2025-09-21T12:00:00Z" as ISODateString,
@@ -243,3 +243,5 @@ export const EVENTS: Event[] = [
 
 // (Optional) quick lookup by id
 export const EVENTS_BY_ID = Object.fromEntries(EVENTS.map((e) => [e.id, e]));
+
+
