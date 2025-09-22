@@ -47,7 +47,7 @@ export default function EventsStrip({
 
             return (
               <li key={event.id}>
-                <Link href={hrefBuilder(event)} className="group">
+                <Link href={`/events/${event.id}`} className="group">
                   <div className="flex items-center gap-x-6">
                     {/* Avatar-style cover (matches size-16 circle from your people list) */}
                     <div className="relative size-16 overflow-hidden rounded-full outline-1 -outline-offset-1 outline-white/10 bg-white/5">
