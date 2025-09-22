@@ -1,4 +1,4 @@
-import { Event } from "@/types";
+import { Event, Profile, User } from "@/types";
 
 export const mockEvents: Event[] = [
   {
@@ -197,5 +197,156 @@ export const mockEvents: Event[] = [
     description: "Shop for unique gifts and enjoy festive treats.",
     imageUrl: "https://picsum.photos/seed/holiday/400/250",
     status: "cancelled",
+  },
+];
+
+export const mockProfiles: Profile[] = [
+  {
+    id: "1",
+    name: "Alice Johnson",
+    organization: "TechCorp",
+    avatarUrl: "https://i.pravatar.cc/150?img=1",
+    user: {
+      id: "1",
+      name: "Alice Johnson",
+      email: "alice.johnson@example.com",
+      phone: "+1-202-555-0143",
+      organization: "TechCorp",
+      avatarUrl: "https://i.pravatar.cc/150?img=1",
+    },
+  },
+  {
+    id: "2",
+    name: "Bob Smith",
+    email: "bob.smith@example.com",
+    phone: "+1-202-555-0178",
+    organization: "Innovate Inc",
+    avatarUrl: "https://i.pravatar.cc/150?img=2",
+  },
+  {
+    id: "3",
+    name: "Carla Mendes",
+    email: "carla.mendes@example.com",
+    organization: "Creative Solutions",
+    avatarUrl: "https://i.pravatar.cc/150?img=3",
+  },
+  {
+    id: "4",
+    name: "David Lee",
+    email: "david.lee@example.com",
+    phone: "+1-202-555-0129",
+    avatarUrl: "https://i.pravatar.cc/150?img=4",
+  },
+  {
+    id: "5",
+    name: "Eva Chen",
+    email: "eva.chen@example.com",
+    phone: "+1-202-555-0191",
+    organization: "Alpha Ventures",
+    avatarUrl: "https://i.pravatar.cc/150?img=5",
+  },
+  {
+    id: "6",
+    name: "Frank Wilson",
+    email: "frank.wilson@example.com",
+    avatarUrl: "https://i.pravatar.cc/150?img=6",
+  },
+  {
+    id: "7",
+    name: "Grace Kim",
+    email: "grace.kim@example.com",
+    phone: "+1-202-555-0182",
+    organization: "NextGen Labs",
+    avatarUrl: "https://i.pravatar.cc/150?img=7",
+  },
+  {
+    id: "8",
+    name: "Henry Thompson",
+    email: "henry.thompson@example.com",
+    avatarUrl: "https://i.pravatar.cc/150?img=8",
+  },
+  {
+    id: "9",
+    name: "Isabella Rossi",
+    email: "isabella.rossi@example.com",
+    phone: "+1-202-555-0164",
+    organization: "Global Tech",
+    avatarUrl: "https://i.pravatar.cc/150?img=9",
+  },
+  {
+    id: "10",
+    name: "Jack Brown",
+    email: "jack.brown@example.com",
+    avatarUrl: "https://i.pravatar.cc/150?img=10",
+  },
+  {
+    id: "11",
+    name: "Karen Davis",
+    email: "karen.davis@example.com",
+    phone: "+1-202-555-0112",
+    organization: "Creative Solutions",
+    avatarUrl: "https://i.pravatar.cc/150?img=11",
+  },
+  {
+    id: "12",
+    name: "Leo Martin",
+    email: "leo.martin@example.com",
+    avatarUrl: "https://i.pravatar.cc/150?img=12",
+  },
+  {
+    id: "13",
+    name: "Mia Gonzalez",
+    email: "mia.gonzalez@example.com",
+    phone: "+1-202-555-0133",
+    organization: "TechCorp",
+    avatarUrl: "https://i.pravatar.cc/150?img=13",
+  },
+  {
+    id: "14",
+    name: "Noah Patel",
+    email: "noah.patel@example.com",
+    avatarUrl: "https://i.pravatar.cc/150?img=14",
+  },
+  {
+    id: "15",
+    name: "Olivia Nguyen",
+    email: "olivia.nguyen@example.com",
+    phone: "+1-202-555-0155",
+    organization: "NextGen Labs",
+    avatarUrl: "https://i.pravatar.cc/150?img=15",
+  },
+  {
+    id: "16",
+    name: "Paul Edwards",
+    email: "paul.edwards@example.com",
+    avatarUrl: "https://i.pravatar.cc/150?img=16",
+  },
+  {
+    id: "17",
+    name: "Quinn Rivera",
+    email: "quinn.rivera@example.com",
+    phone: "+1-202-555-0171",
+    organization: "Innovate Inc",
+    avatarUrl: "https://i.pravatar.cc/150?img=17",
+  },
+  {
+    id: "18",
+    name: "Rachel Adams",
+    email: "rachel.adams@example.com",
+    avatarUrl: "https://i.pravatar.cc/150?img=18",
+  },
+  {
+    id: "19",
+    name: "Samuel Green",
+    email: "samuel.green@example.com",
+    phone: "+1-202-555-0199",
+    organization: "Global Tech",
+    avatarUrl: "https://i.pravatar.cc/150?img=19",
+  },
+  {
+    id: "20",
+    name: "Tina Lopez",
+    email: "tina.lopez@example.com",
+    avatarUrl: "https://i.pravatar.cc/150?img=20",
   },
 ];

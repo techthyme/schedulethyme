@@ -1,4 +1,22 @@
 import { Instructor } from "./event-core";
+
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  phone?: string;
+  organization?: string;
+  avatarUrl?: string;
+}
+
+export interface Profile {
+  id: string;
+  userId?: string;
+  name: string; // This is the name that the user chooses, not their real name
+  organization?: string;
+  avatarUrl?: string;
+  user?: User;
+}
 export interface Event {
   id: string;
   title: string;
