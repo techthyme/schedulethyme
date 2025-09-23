@@ -1,12 +1,22 @@
 "use client";
+import { useState } from "react";
 import { Profile } from "@/types";
 import ProfileCard from "@/components/ProfileCard";
+import ProfileEditModal from "@/components/ProfileEditModal";
 
 interface ProfileClientProps {
   profile: Profile;
 }
 
 export default function ProfileClient({ profile }: ProfileClientProps) {
+  const [isEditing, setIsEditing] = useState(false);
+  const [currentProfile, setCurrentProfile] = useState(profile);
+
+  const handleProfileUpdate = (updatedProfile: Profile) => {
+    setCurrentProfile(updatedProfile);
+    setIsEditing(false);
+  };
+
   return (
     <div className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -20,9 +30,28 @@ export default function ProfileClient({ profile }: ProfileClientProps) {
         </div>
         
         <div className="mt-16 flex justify-center">
-          <ProfileCard profile={profile} showPrivateInfo={true} />
+          <div 
+            className="cursor-pointer transition-transform hover:scale-105"
+            onClick={() => setIsEditing(true)}
+          >
+            <ProfileCard profile={currentProfile} showPrivateInfo={true} />
+          </div>
+        </div>
+        
+        <div className="mt-6 text-center">
+          <p className="text-sm text-gray-500">
+            Click your profile to edit information and privacy settings
+          </p>
         </div>
       </div>
+
+      {/* Profile Edit Modal */}
+      <ProfileEditModal
+        isOpen={isEditing}
+        profile={currentProfile}
+        onClose={() => setIsEditing(false)}
+        onSave={handleProfileUpdate}
+      />
     </div>
   );
 }

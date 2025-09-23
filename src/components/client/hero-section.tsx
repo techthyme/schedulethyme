@@ -26,18 +26,18 @@ export function HeroSection() {
             <Button
               variant="primary"
               size="lg"
-              href="#get-started"
+              href="/dashboard"
               className="w-full sm:w-auto"
             >
-              Get Started Today
+              View Dashboard
             </Button>
             <Button
               variant="outline"
               size="lg"
-              href="#services"
+              href="/events"
               className="w-full sm:w-auto"
             >
-              Explore Services
+              Browse Events
             </Button>
           </div>
         </SectionHeader>
