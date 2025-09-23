@@ -1,48 +1,12 @@
-import { GetProfileResponse } from "@/types/api";
-import { serverApiClient } from "@/lib/server";
-import ProfilesClient from "@/components/client/profiles";
-// import { serializeServerSideSearchParams } from "@/utils";
-// Initially gets and hydrates the Profile data.
-interface SVR_ProfileProps {
-  userId?: string;
-}
+export default async function Profile() {
+console.log("🔥🔥🔥 Server component is running!");
+  let url = "/profile/";
 
-/**
- * Server-side rendered Profile page.
- * Gets and hydrates the user data from the API.
- * @param {SVR_ProfileProps} props - Optional props for the Profile page.
- * @param {string} [props.eventId] - The ID of the user to fetch.
- * @returns {Promise<JSX.Element>} A promise that resolves to a hydrated Profile page.
- */
 
-export default async function SVR_Profile({ userId }: SVR_ProfileProps) {
-  let url = "/profiles/";
-  //   let searchParamsSerialized = "";
-  //   if (searchParams) {
-  //     searchParamsSerialized = serializeServerSideSearchParams(searchParams);
-  //   }
-
-  //   if (!eventId || eventId == "") {
-  //     throw new Error("eventId is required");
-  //   }
-
-  //   if (searchParamsSerialized) {
-  //     url = `${url}?${searchParamsSerialized}`;
-  //   }
-
-  try {
-    const { data, status } = await serverApiClient.get(url);
-
-    if (status >= 400) {
-      return <div>Error getting events from api</div>;
-    }
-
-    const resp: GetProfileResponse = data;
-
-    return <ProfilesClient profile={resp.profile} />;
-  } catch (error: any) {
-    // errorLogger(`failed to get Profile with '${url}'`, error.toJSON());
-    console.error("error not json: ", error);
-    return <div>error on the server</div>;
-  }
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
+      <h1 className="text-3xl font-bold mb-4">My Profile</h1>
+      <p className="text-gray-700">Check your terminal/console logs 🚀</p>
+    </div>
+  );
 }
