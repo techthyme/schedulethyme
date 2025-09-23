@@ -1,8 +1,8 @@
 // Instructor type
 export type Instructor = {
   name: string;
-  title?: string;      // e.g., "CTO", "Lead Instructor"
-  photoUrl?: string;   // optional headshot
+  title?: string; // e.g., "CTO", "Lead Instructor"
+  photoUrl?: string; // optional headshot
 };
 
 // Attendee information for registration modal
@@ -28,19 +28,18 @@ export interface User {
   phone?: string;
   organization?: string;
   avatarUrl?: string;
+  profilePicture?: string;
+  // interests: Interest[];
+  // role: UserRole;
 }
-
 
 // types.ts
 export interface Profile {
   id: string;
   name: string;
-  email: string;
-  phone?: string;
-  organization?: string;
   avatarUrl?: string;
+  user?: User;
 }
-
 
 export interface Event {
   id: string;
@@ -52,6 +51,7 @@ export interface Event {
   price?: number; // USD price, undefined = free
   imageUrl?: string;
   status: EventStatus;
+  type: "training" | "consultation" | "facility_booking";
 
   // Deprecate
   date: string; // e.g., "2025-10-05"
@@ -77,12 +77,7 @@ export type EventStatus =
   | "upcoming"
   | "ongoing";
 
-
-  //user profile
-  
-
-
-
+//user profile
 
 // Dashboard Types
 export interface DashboardEvent {
@@ -105,15 +100,6 @@ export interface OverviewStats {
   completedTraining: number;
   currentStreak: number;
   creditsHours: number;
-}
-
-export interface Event {
-  id: string;
-  title: string;
-  date: string;
-  time: string;
-  location: string;
-  type: "training" | "consultation" | "facility_booking";
 }
 
 export interface CalendarDay {

@@ -1,6 +1,5 @@
 import SvrDashboard from "@/components/server/dashboard";
 
-export default function () {
+export default function Dashboard() {
   return <SvrDashboard />;
 }
- 

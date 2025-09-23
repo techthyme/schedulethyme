@@ -1,6 +1,6 @@
 import { GetProfileResponse } from "@/types/api";
 import { serverApiClient } from "@/lib/server";
-import ProfileClient from "@/components/client/profile";
+import ProfilesClient from "@/components/client/profiles";
 // import { serializeServerSideSearchParams } from "@/utils";
 // Initially gets and hydrates the Profile data.
 interface SVR_ProfileProps {
@@ -16,7 +16,7 @@ interface SVR_ProfileProps {
  */
 
 export default async function SVR_Profile({ userId }: SVR_ProfileProps) {
-  let url = "/profile/";
+  let url = "/profiles/";
   //   let searchParamsSerialized = "";
   //   if (searchParams) {
   //     searchParamsSerialized = serializeServerSideSearchParams(searchParams);
@@ -39,7 +39,7 @@ export default async function SVR_Profile({ userId }: SVR_ProfileProps) {
 
     const resp: GetProfileResponse = data;
 
-    return <ProfileClient profile={resp.profile} />;
+    return <ProfilesClient profile={resp.profile} />;
   } catch (error: any) {
     // errorLogger(`failed to get Profile with '${url}'`, error.toJSON());
     console.error("error not json: ", error);
