@@ -11,7 +11,7 @@ interface SVR_EventsProps {
 }
 
 export default async function SVR_Events({ eventId }: SVR_EventsProps) {
-  let url = "/events/";
+  const url = "/events/";
   //   let searchParamsSerialized = "";
   //   if (searchParams) {
   //     searchParamsSerialized = serializeServerSideSearchParams(searchParams);
@@ -35,7 +35,7 @@ export default async function SVR_Events({ eventId }: SVR_EventsProps) {
     const resp: GetEventsResponse = data;
 
     return <EventsClient events={resp.events} />;
-  } catch (error: any) {
+  } catch (error: unknown) {
     // errorLogger(`failed to get Events with '${url}'`, error.toJSON());
     console.error("error not json: ", error);
     return <div>error on the server</div>;
