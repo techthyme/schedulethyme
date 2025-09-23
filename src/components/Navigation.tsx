@@ -12,7 +12,6 @@ export default function Navigation() {
     { href: '/', label: 'Home' },
     { href: '/events', label: 'Events' },
     { href: '/dashboard', label: 'Dashboard' },
-    { href: '/profile', label: 'Profile' },
   ];
 
   return (

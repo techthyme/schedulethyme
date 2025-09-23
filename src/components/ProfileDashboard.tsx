@@ -3,10 +3,18 @@
 'use client';
 
 import { useState } from 'react';
-import { ProfileDashboardProps, DashboardTab } from '@/types/index';
+import { ProfileDashboardProps, DashboardTab, Profile } from '@/types/index';
+import ProfileEditModal from '@/components/ProfileEditModal';
 
 export default function ProfileDashboard({ profile }: ProfileDashboardProps) {
   const [activeTab, setActiveTab] = useState<DashboardTab>('about');
+  const [isEditingProfile, setIsEditingProfile] = useState(false);
+  const [currentProfile, setCurrentProfile] = useState<Profile>(profile);
+
+  const handleProfileUpdate = (updatedProfile: Profile) => {
+    setCurrentProfile(updatedProfile);
+    setIsEditingProfile(false);
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -33,11 +41,11 @@ export default function ProfileDashboard({ profile }: ProfileDashboardProps) {
               </nav>
               
               <div className="w-8 h-8 rounded-full overflow-hidden">
-                {profile.avatarUrl ? (
-                  <img src={profile.avatarUrl} alt={profile.name} className="w-full h-full object-cover" />
+                {currentProfile.avatarUrl ? (
+                  <img src={currentProfile.avatarUrl} alt={currentProfile.name} className="w-full h-full object-cover" />
                 ) : (
                   <div className="w-full h-full bg-gray-300 flex items-center justify-center">
-                    <span className="text-gray-600 text-xs">{profile.name.charAt(0)}</span>
+                    <span className="text-gray-600 text-xs">{currentProfile.name.charAt(0)}</span>
                   </div>
                 )}
               </div>
@@ -56,10 +64,10 @@ export default function ProfileDashboard({ profile }: ProfileDashboardProps) {
             <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
               {/* Profile Image */}
               <div className="aspect-square bg-gradient-to-br from-blue-100 to-blue-200">
-                {profile.avatarUrl ? (
+                {currentProfile.avatarUrl ? (
                   <img 
-                    src={profile.avatarUrl} 
-                    alt={profile.name}
+                    src={currentProfile.avatarUrl} 
+                    alt={currentProfile.name}
                     className="w-full h-full object-cover"
                   />
                 ) : (
@@ -77,10 +85,10 @@ export default function ProfileDashboard({ profile }: ProfileDashboardProps) {
               <h3 className="text-sm font-medium text-gray-500 uppercase tracking-wide mb-4">Work</h3>
               
               <div className="space-y-4">
-                {profile.organization && (
+                {currentProfile.organization && (
                   <div>
                     <div className="flex items-center justify-between">
-                      <span className="font-medium text-gray-900">{profile.organization}</span>
+                      <span className="font-medium text-gray-900">{currentProfile.organization}</span>
                       <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">Primary</span>
                     </div>
                     <p className="text-sm text-gray-600 mt-1">Current Organization</p>
@@ -117,11 +125,14 @@ export default function ProfileDashboard({ profile }: ProfileDashboardProps) {
             <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
               <div className="flex items-start justify-between">
                 <div>
-                  <h1 className="text-2xl font-bold text-gray-900">{profile.name}</h1>
+                  <h1 className="text-2xl font-bold text-gray-900">{currentProfile.name}</h1>
                   <p className="text-blue-600 font-medium">Professional Member</p>
                   <p className="text-gray-600 text-sm mt-1">Virgin Islands</p>
                 </div>
-                <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                <button 
+                  onClick={() => setIsEditingProfile(true)}
+                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                >
                   Edit Profile
                 </button>
               </div>
@@ -201,7 +212,7 @@ export default function ProfileDashboard({ profile }: ProfileDashboardProps) {
                         <div>
                           <label className="text-sm text-gray-600">Phone:</label>
                           <p className="text-blue-600 hover:underline cursor-pointer">
-                            {profile.phone || 'Not provided'}
+                            {currentProfile.phone || 'Not provided'}
                           </p>
                         </div>
                         <div>
@@ -214,7 +225,7 @@ export default function ProfileDashboard({ profile }: ProfileDashboardProps) {
                         <div>
                           <label className="text-sm text-gray-600">E-mail:</label>
                           <p className="text-blue-600 hover:underline cursor-pointer">
-                            {profile.email}
+                            {currentProfile.email}
                           </p>
                         </div>
                         <div>
@@ -258,6 +269,14 @@ export default function ProfileDashboard({ profile }: ProfileDashboardProps) {
           </div>
         </div>
       </div>
+
+      {/* Profile Edit Modal */}
+      <ProfileEditModal
+        isOpen={isEditingProfile}
+        profile={currentProfile}
+        onClose={() => setIsEditingProfile(false)}
+        onSave={handleProfileUpdate}
+      />
     </div>
   );
 }
