@@ -16,7 +16,7 @@ interface SVR_ProfileProps {
  */
 
 export default async function SVR_Profile({ userId }: SVR_ProfileProps) {
-  let url = "/users/";
+  let url = "/profile/";
   //   let searchParamsSerialized = "";
   //   if (searchParams) {
   //     searchParamsSerialized = serializeServerSideSearchParams(searchParams);

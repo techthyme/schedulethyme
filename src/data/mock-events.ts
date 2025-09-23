@@ -1,7 +1,17 @@
 // src/data/mock-events.ts
+import User from
+import {  Instructor } from '@/types/event-core';
 
-import { Event, Instructor } from '@/types/event-core';
 
+
+const user: User = {
+  id: "user-123",
+  name: "John Smith",
+  email: "john.smith@email.com",
+  phone: "555-0123",
+  organization: "Tech Solutions Inc",
+  avatarUrl: "https://via.placeholder.com/150"
+};
 // Mock instructors
 const mockInstructors: Instructor[] = [
   {

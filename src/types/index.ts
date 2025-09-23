@@ -8,6 +8,9 @@ export interface User {
   organization?: string;
   avatarUrl?: string;
 }
+export type BusinessType = "TECH" | "FINANCE" | "HEALTHCARE" | "RETAIL";
+   export type Interest = "NETWORKING" | "STARTUPS" | "INVESTING" | "MARKETING";
+   export type UserRole = "USER" | "ADMIN";
 
 export interface Profile {
   id: string;
@@ -51,3 +54,7 @@ export type EventStatus =
   | "completed"
   | "upcoming"
   | "ongoing";
+
+
+  //user profile
+  
