@@ -4,7 +4,7 @@ import {
   GetEventsRequest,
   GetEventsResponse,
 } from "@/types/api";
-import { mockEvents } from "@/data";
+import { mockEvents } from "@/data/mock-events";
 
 export async function GET(request: NextRequest) {
   try {

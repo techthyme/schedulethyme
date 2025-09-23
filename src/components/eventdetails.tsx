@@ -1,6 +1,6 @@
 // src/components/EventDetailsCard.tsx
 
-import { Event } from '../types/index';
+import { Event } from '@/types/event-core';
 
 interface EventDetailsCardProps {
   event: Event;

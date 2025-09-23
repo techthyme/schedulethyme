@@ -18,42 +18,6 @@ export default function ProfileDashboard({ profile }: ProfileDashboardProps) {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <div className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">ST</span>
-                </div>
-              </div>
-              <div className="ml-4">
-                <span className="text-xl font-semibold text-gray-900">ScheduleThyme</span>
-              </div>
-            </div>
-            
-            <div className="flex items-center space-x-4">
-              <nav className="hidden md:flex space-x-8">
-                <a href="#" className="text-gray-700 hover:text-blue-600">Find people</a>
-                <a href="#" className="text-gray-700 hover:text-blue-600">Messages</a>
-                <a href="#" className="text-gray-700 hover:text-blue-600">My Contacts</a>
-              </nav>
-              
-              <div className="w-8 h-8 rounded-full overflow-hidden">
-                {currentProfile.avatarUrl ? (
-                  <img src={currentProfile.avatarUrl} alt={currentProfile.name} className="w-full h-full object-cover" />
-                ) : (
-                  <div className="w-full h-full bg-gray-300 flex items-center justify-center">
-                    <span className="text-gray-600 text-xs">{currentProfile.name.charAt(0)}</span>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
