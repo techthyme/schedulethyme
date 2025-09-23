@@ -8,11 +8,11 @@ import { mockProfiles } from "@/data";
 
 export async function GET(request: NextRequest) {
   try {
-    const { searchParams } = new URL(request.url);
+    // const { searchParams } = new URL(request.url);
     /**
      * events.find((event) => event.id === selectedProfile)
      */
-    const params: GetProfileRequest = {} as GetProfileRequest;
+    // const params: GetProfileRequest = {} as GetProfileRequest;
 
     // TODO: Replace with actual backend API call
     // const response = await fetch(`${process.env.BACKEND_API_URL}/conversations`, {
