@@ -8,11 +8,11 @@ import { mockEvents } from "@/data/mock-events";
 
 export async function GET(request: NextRequest) {
   try {
-    const { searchParams } = new URL(request.url);
+    // const { searchParams } = new URL(request.url);
     /**
      * events.find((event) => event.id === selectedEvent)
      */
-    const params: GetEventsRequest = {} as GetEventsRequest;
+    // const params: GetEventsRequest = {} as GetEventsRequest;
 
     // TODO: Replace with actual backend API call
     // const response = await fetch(`${process.env.BACKEND_API_URL}/conversations`, {

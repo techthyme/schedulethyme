@@ -15,8 +15,8 @@ interface SVR_ProfileProps {
  * @returns {Promise<JSX.Element>} A promise that resolves to a hydrated Profile page.
  */
 
-export default async function SVR_Profile({ userId }: SVR_ProfileProps) {
-  let url = "/users/";
+export default async function SVR_Profile({  }: SVR_ProfileProps) {
+  const url = "/users/";
   //   let searchParamsSerialized = "";
   //   if (searchParams) {
   //     searchParamsSerialized = serializeServerSideSearchParams(searchParams);
@@ -40,7 +40,7 @@ export default async function SVR_Profile({ userId }: SVR_ProfileProps) {
     const resp: GetProfileResponse = data;
 
     return <ProfileClient profile={resp.profile} />;
-  } catch (error: any) {
+  } catch (error: unknown) {
     // errorLogger(`failed to get Profile with '${url}'`, error.toJSON());
     console.error("error not json: ", error);
     return <div>error on the server</div>;
