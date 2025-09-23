@@ -12,10 +12,7 @@ export interface User {
     businessType?: BusinessType;
     interests: Interest[];
     role: UserRole;
-    isEmailVerified: boolean;
-    isActive: boolean;
-    createdAt: Date;
-    updatedAt: Date;
+   
 }
 
 export interface UserProfile {

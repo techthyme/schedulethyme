@@ -2,7 +2,7 @@
 import { useState } from "react";
 import EventDetailsCard from "@/components/eventdetails";
 import AttendanceModal from "@/components/AttendanceModal";
-import { AttendeeInfo } from "@/types/event-core";
+import { AttendeeInfo } from "@/types";
 import { Event } from "@/types";
 
 interface EventsClientProps {

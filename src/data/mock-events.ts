@@ -1,6 +1,6 @@
 // src/data/mock-events.ts
 import User from '@types/entities';
-import {  Instructor } from '@/types/event-core';
+import { Instructor } from '@/types';
 import { DashboardData } from '@/types';
 
 

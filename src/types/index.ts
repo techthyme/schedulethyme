@@ -1,4 +1,25 @@
-import { Instructor } from "./event-core";
+// Instructor type
+export type Instructor = {
+  name: string;
+  title?: string;      // e.g., "CTO", "Lead Instructor"
+  photoUrl?: string;   // optional headshot
+};
+
+// Attendee information for registration modal
+export type AttendeeInfo = {
+  name: string;
+  email: string;
+  phone?: string;
+  organization?: string;
+};
+
+// For /events/[id] route params
+export type EventPageParams = { id: string };
+
+// Optional: props for a details component
+export type EventDetailsProps = {
+  event: Event;
+};
 
 export interface User {
   id: string;
