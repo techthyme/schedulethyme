@@ -31,14 +31,17 @@ export interface User {
 }
 
 
+// types.ts
 export interface Profile {
   id: string;
-  userId?: string;
-  name: string; // This is the name that the user chooses, not their real name
+  name: string;
+  email: string;
+  phone?: string;
   organization?: string;
   avatarUrl?: string;
-  user?: User;
 }
+
+
 export interface Event {
   id: string;
   title: string;

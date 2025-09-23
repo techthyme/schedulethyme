@@ -5,7 +5,7 @@ interface SVR_DashboardProps {
   page?: number;
 }
 
-export default async function SVR_Dashboard({ eventId }: SVR_DashboardProps) {
+export default async function SVR_Dashboard({ }: SVR_DashboardProps) {
   // Using hardcoded data in the Dashboard component
   return <Dashboard />;
 }
