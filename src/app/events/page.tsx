@@ -1,6 +1,6 @@
 import SvrEvents from "@/components/server/events";
 
-export default function () {
+export default function EventsPage() {
   return <SvrEvents />;
 }
  

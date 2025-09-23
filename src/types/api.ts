@@ -1,4 +1,5 @@
-import { Event, Profile } from "@/types";
+import { Event } from "@/types/event-core";
+import { Profile } from "@/types";
 
 export interface CreateProfileRequest {
   profile: Profile;

@@ -3,7 +3,7 @@ import { useState } from "react";
 import EventDetailsCard from "@/components/eventdetails";
 import AttendanceModal from "@/components/AttendanceModal";
 import { AttendeeInfo } from "@/types/event-core";
-import { Event } from "@/types";
+import { Event } from "@/types/event-core";
 
 interface EventsClientProps {
   events: Event[];
@@ -164,7 +164,7 @@ export default function EventsClient({ events }: EventsClientProps) {
 
       {/* Modal for Event Details */}
       {selectedEventData && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
           <div className="w-full max-w-md">
             <EventDetailsCard
               event={selectedEventData}
