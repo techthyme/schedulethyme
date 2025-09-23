@@ -1,6 +1,7 @@
 // src/data/mock-events.ts
-import User from
+import User from '@types/entities';
 import {  Instructor } from '@/types/event-core';
+import { DashboardData } from '@/types';
 
 
 
@@ -101,3 +102,35 @@ export function getEventById(id: string): Event | undefined {
 export function getUpcomingEvents(): Event[] {
   return mockEvents.filter(event => event.status === 'upcoming');
 }
+
+// Dashboard Data
+export const dashboardData: DashboardData = {
+  overviewStats: {
+    upcomingEvents: 5,
+    completedTraining: 12,
+    currentStreak: 7,
+    creditsHours: 24
+  },
+  
+  upcomingEvents: [
+    {
+      id: "1",
+      title: "React Training Session", 
+      date: "2025-09-24",
+      time: "10:00 AM",
+      location: "Conference Room A",
+      type: "training"
+    }
+  ],
+  calendarPreview: [],
+  notifications: [
+    {
+      id: "1",
+      type: "reminder", 
+      title: "Training Tomorrow",
+      message: "React Training Session starts at 10:00 AM",
+      timestamp: "2025-09-23T15:00:00Z",
+      isRead: false
+    }
+  ]
+};

@@ -8,9 +8,7 @@ export interface User {
   organization?: string;
   avatarUrl?: string;
 }
-export type BusinessType = "TECH" | "FINANCE" | "HEALTHCARE" | "RETAIL";
-   export type Interest = "NETWORKING" | "STARTUPS" | "INVESTING" | "MARKETING";
-   export type UserRole = "USER" | "ADMIN";
+
 
 export interface Profile {
   id: string;
@@ -58,3 +56,53 @@ export type EventStatus =
 
   //user profile
   
+
+
+
+
+// Dashboard Types
+export interface DashboardEvent {
+  id: string;
+  title: string;
+  date: string;
+  time: string;
+  location: string;
+  type: "training" | "consultation" | "facility_booking";
+}
+
+export interface DashboardData {
+  overviewStats: OverviewStats;
+  upcomingEvents: DashboardEvent[]; // Use DashboardEvent instead of Event
+  calendarPreview: CalendarDay[];
+  notifications: Notification[];
+}
+export interface OverviewStats {
+  upcomingEvents: number;
+  completedTraining: number;
+  currentStreak: number;
+  creditsHours: number;
+}
+
+export interface Event {
+  id: string;
+  title: string;
+  date: string;
+  time: string;
+  location: string;
+  type: "training" | "consultation" | "facility_booking";
+}
+
+export interface CalendarDay {
+  date: string;
+  events: Event[];
+  hasEvents: boolean;
+}
+
+export interface Notification {
+  id: string;
+  type: "reminder" | "schedule_change" | "opportunity";
+  title: string;
+  message: string;
+  timestamp: string;
+  isRead: boolean;
+}
