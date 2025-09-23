@@ -1,5 +1,6 @@
 "use client";
 import { Profile } from "@/types";
+import ProfileCard from "@/components/ProfileCard";
 
 interface ProfileClientProps {
   profile: Profile;
@@ -11,13 +12,15 @@ export default function ProfileClient({ profile }: ProfileClientProps) {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0">
           <h2 className="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
-            Upcoming Profile
+            Profile
           </h2>
           <p className="mt-6 text-lg/8 text-gray-600">
-            Join us for workshops, training sessions, and consulting
-            opportunities designed to help you grow your skills and connect with
-            the community.
+            View and manage your profile information and privacy settings.
           </p>
+        </div>
+        
+        <div className="mt-16 flex justify-center">
+          <ProfileCard profile={profile} showPrivateInfo={true} />
         </div>
       </div>
     </div>
