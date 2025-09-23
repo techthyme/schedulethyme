@@ -1,25 +1,5 @@
-interface ErrorWithConfig {
-  config?: {
-    headers?: {
-      Authorization?: string;
-      "Request-Id"?: string;
-      "Content-Type"?: string;
-      Origin?: string;
-    };
-    method?: string;
-    code?: string;
-    url?: string;
-  };
-  message?: string;
-  status?: string | number;
-}
-
-function isErrorWithConfig(error: unknown): error is ErrorWithConfig {
-  return typeof error === 'object' && error !== null;
-}
-
-export const errorLogger = (msg: string, error: unknown) => {
-  const err = isErrorWithConfig(error) ? error : {};
+export const errorLogger = (msg: string, error: any) => {
+  const err = error; // your error object
 
   const fullToken = err?.config?.headers?.Authorization?.replace("Bearer ", "");
   const shortenedToken = fullToken
@@ -34,7 +14,7 @@ export const errorLogger = (msg: string, error: unknown) => {
   const origin = err?.config?.headers?.["Origin"] || "";
 
   console.error(
-    `${msg} ${err.message || 'Unknown error'} (Status: ${err.status || 'Unknown'})\n` +
+    `${msg} ${err.message} (Status: ${err.status})\n` +
       `→ Code: ${code}\n` +
       `→ Request: ${method} ${url}\n` +
       `→ Token: ${shortenedToken}\n` +

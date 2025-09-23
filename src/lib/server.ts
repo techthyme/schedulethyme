@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from "axios";
-// import { cookies, headers } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { ulid } from "ulid";
-// import { errorLogger } from "@/lib";
+import { errorLogger } from "@/lib";
 
 /**
  * Server-side API client for backend service-to-service communication
@@ -129,16 +129,16 @@ export function validateServerApiClient(): boolean {
 /**
  * Convenience methods for common server API operations
  */
-export const serverApi = { 
-  get: (url: string, config?: Record<string, unknown>) => serverApiClient.get(url, config),
-  post: (url: string, data?: unknown, config?: Record<string, unknown>) => {
+export const serverApi = {
+  get: (url: string, config?: any) => serverApiClient.get(url, config),
+  post: (url: string, data?: any, config?: any) => {
     return serverApiClient.post(url, data, config);
   },
-  put: (url: string, data?: unknown, config?: Record<string, unknown>) =>
+  put: (url: string, data?: any, config?: any) =>
     serverApiClient.put(url, data, config),
-  delete: (url: string, config?: Record<string, unknown>) => serverApiClient.delete(url, config),
+  delete: (url: string, config?: any) => serverApiClient.delete(url, config),
 
-  patch: (url: string, data?: unknown, config?: Record<string, unknown>) =>
+  patch: (url: string, data?: any, config?: any) =>
     serverApiClient.patch(url, data, config),
 };
 
