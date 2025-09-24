@@ -89,25 +89,6 @@ export interface DashboardEvent {
   type: "training" | "consultation" | "facility_booking";
 }
 
-export interface DashboardData {
-  overviewStats: OverviewStats;
-  upcomingEvents: DashboardEvent[]; // Use DashboardEvent instead of Event
-  calendarPreview: CalendarDay[];
-  notifications: Notification[];
-}
-export interface OverviewStats {
-  upcomingEvents: number;
-  completedTraining: number;
-  currentStreak: number;
-  creditsHours: number;
-}
-
-export interface CalendarDay {
-  date: string;
-  events: Event[];
-  hasEvents: boolean;
-}
-
 export interface Notification {
   id: string;
   type: "reminder" | "schedule_change" | "opportunity";
@@ -115,4 +96,25 @@ export interface Notification {
   message: string;
   timestamp: string;
   isRead: boolean;
+}
+
+export interface ProfileSection {
+  user: User;
+  bio: string;
+}
+
+
+export interface TodayEvent {
+  id: string;
+  title: string;
+  time: string;
+  location: string;
+  canAttend: boolean;
+}
+
+
+export interface ProfileDashboardData {
+  user: User;
+  bio: string;
+  todaysEvents: TodayEvent[];
 }

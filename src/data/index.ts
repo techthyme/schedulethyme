@@ -1,4 +1,6 @@
 import { Event, Profile, User } from "@/types";
+import {ProfileDashboardData} from "@/types";
+
 
 export const mockEvents: Event[] = [
   {
@@ -370,3 +372,40 @@ export const mockProfiles: Profile[] = [
     avatarUrl: "https://i.pravatar.cc/150?img=20",
   },
 ];
+
+
+//profile
+export const profileDashboardData: ProfileDashboardData = {
+  user: {
+    id: "user-123",
+    name: "John Smith",
+    email: "john.smith@email.com",
+    phone: "+1 (555) 123-4567",
+    organization: "Tech Solutions Inc",
+    avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face"
+  },
+  bio: "Software developer and entrepreneur focused on building innovative solutions and growing businesses.",
+  todaysEvents: [
+    {
+      id: "1",
+      title: "React Training Workshop",
+      time: "10:00 AM",
+      location: "Conference Room A",
+      canAttend: true
+    },
+    {
+      id: "2", 
+      title: "Business Consultation",
+      time: "2:30 PM",
+      location: "Office 205",
+      canAttend: false
+    },
+    {
+      id: "3",
+      title: "Kitchen Space Session",
+      time: "4:00 PM", 
+      location: "Commercial Kitchen",
+      canAttend: true
+    }
+  ]
+};

@@ -16,5 +16,4 @@ When the user clicks on an event on the events page, the details of the event wi
 Users are able to view their profiles via this page
 
 **Schedule page (/calendar/)**
-
-g
+    
