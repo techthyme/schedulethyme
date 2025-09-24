@@ -1,17 +1,17 @@
-import { GetProfileDashboardResponse } from "@/types/api";
+import { GetCalendarResponse } from "@/types/api";
 import { serverApiClient } from "@/lib/server";
-import ProfileClient from "@/components/client/profiles";
-import { ProfileDashboardData } from "@/types";
+import CalendarClient from "@/components/client/events";
 // import { serializeServerSideSearchParams } from "@/utils";
 // Initially gets and hydrates the Events data.
-interface SVR_ProfileProps {
-  userId?: string;
+interface SVR_CalendarProps {
+  eventId?: string;
+  page?: number;
 
   //   searchParams?: ServerSideSearchParams;
 }
 
-export default async function SVR_Profile({ userId }: SVR_ProfileProps) {
-  let url = "/profile/";
+export default async function SVR_Events({ eventId }: SVR_CalendarProps) {
+  let url = "/calendar/";
   //   let searchParamsSerialized = "";
   //   if (searchParams) {
   //     searchParamsSerialized = serializeServerSideSearchParams(searchParams);
@@ -32,9 +32,9 @@ export default async function SVR_Profile({ userId }: SVR_ProfileProps) {
       return <div>Error getting events from api</div>;
     }
 
-    const profileData: ProfileDashboardData = data;
+    const resp: GetCalendarResponse = data;
 
-    return <ProfileClient data={profileData} />;
+    return <CalendarClient events={resp.events} />;
   } catch (error: any) {
     // errorLogger(`failed to get Events with '${url}'`, error.toJSON());
     console.error("error not json: ", error);
