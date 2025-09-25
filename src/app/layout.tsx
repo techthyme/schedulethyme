@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Poppins, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import AuthSessionProvider from "@/components/client/sessionprovider";
+
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -29,7 +31,7 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${geistMono.variable} antialiased bg-white text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100`}
       >
-        {children}
+        <AuthSessionProvider>{children}</AuthSessionProvider>
       </body>
     </html>
   );
