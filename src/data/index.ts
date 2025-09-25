@@ -1,4 +1,4 @@
-import { Event, Profile, User } from "@/types";
+import { Event, HeroSection, Profile, User } from "@/types";
 import {ProfileDashboardData} from "@/types";
 
 
@@ -408,4 +408,24 @@ export const profileDashboardData: ProfileDashboardData = {
       canAttend: true
     }
   ]
+};
+
+
+
+export const heroData: HeroSection = {
+  announcement: {
+    text: "Announcing our next round of funding.",
+    linkText: "Read more",
+    linkUrl: "#"
+  },
+  heading: "Data to enrich your online business",
+  description: "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat.",
+  primaryCTA: {
+    text: "Get started",
+    url: "#"
+  },
+  secondaryCTA: {
+    text: "Learn more",
+    url: "#"
+  }
 };

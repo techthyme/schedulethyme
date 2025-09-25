@@ -118,3 +118,37 @@ export interface ProfileDashboardData {
   bio: string;
   todaysEvents: TodayEvent[];
 }
+
+
+export interface CalendarDay {
+  date: string; // "2025-01-15"
+  hasEvents: boolean;
+  events?: Event[];
+}
+
+export interface CalendarMonth {
+  month: number; // 0-11
+  year: number;
+  days: CalendarDay[];
+}
+
+
+
+export interface HeroSection {
+  announcement?: Announcement;
+  heading: string;
+  description: string;
+  primaryCTA: CTA;
+  secondaryCTA: CTA;
+}
+
+export interface Announcement {
+  text: string;
+  linkText: string;
+  linkUrl: string;
+}
+
+export interface CTA {
+  text: string;
+  url: string;
+}
