@@ -10,51 +10,46 @@ export default function HeroClient({ hero }: HeroClientProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="bg-white">
+    <div className="bg-gradient-to-br from-gray-50 to-white min-h-screen flex items-center">
       {/* Hero Content */}
-      <div className="relative isolate px-6 pt-14 lg:px-8">
-        <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
+      <div className="relative w-full px-6 lg:px-8">
+        <div className="mx-auto max-w-4xl text-center">
           
-          {/* Announcement Banner */}
-          {hero.announcement && (
-            <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-              <div className="relative rounded-full px-3 py-1 text-sm text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-                {hero.announcement.text}{' '}
-                <a href={hero.announcement.linkUrl} className="font-semibold text-indigo-600">
-                  <span aria-hidden="true" className="absolute inset-0" />
-                  {hero.announcement.linkText} <span aria-hidden="true">&rarr;</span>
-                </a>
-              </div>
-            </div>
-          )}
-
           {/* Main Content */}
-          <div className="text-center">
-            <h1 className="text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">
+          <div>
+            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl lg:text-7xl mb-6">
               {hero.heading}
             </h1>
-            <p className="mt-8 text-lg text-gray-500 sm:text-xl">
+            <p className="mx-auto max-w-2xl text-lg text-gray-600 sm:text-xl mb-10">
               {hero.description}
             </p>
 
             {/* CTAs */}
-            <div className="mt-10 flex items-center justify-center gap-x-6">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-8">
               <a
                 href={hero.primaryCTA.url}
-                className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500"
+                className="inline-flex items-center px-6 py-3 text-base font-semibold text-white bg-black rounded-lg hover:bg-gray-800 transition-colors shadow-lg hover:shadow-xl"
               >
                 {hero.primaryCTA.text}
+                <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
               </a>
-              <a 
-                href={hero.secondaryCTA.url} 
-                className="text-sm font-semibold text-gray-900"
-              >
-                {hero.secondaryCTA.text} <span aria-hidden="true">→</span>
-              </a>
+              
+              {/* Announcement Banner */}
+              {hero.announcement && (
+                <div className="flex items-center text-sm text-gray-600">
+                  <span className="mr-2">🔥</span>
+                  <span>{hero.announcement.text}</span>
+                  <a href={hero.announcement.linkUrl} className="ml-2 font-semibold text-orange-600 hover:text-orange-700">
+                    {hero.announcement.linkText}
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         </div>
       </div>
-  </div>
+    </div>
   );
 }

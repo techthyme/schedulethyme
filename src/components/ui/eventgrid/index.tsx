@@ -11,129 +11,83 @@ interface EventGridItemProps {
 }
 
 export  function EventGridItem({ event, onClick }: EventGridItemProps) {
+  // Generate a colorful gradient for each event based on its ID
+  const gradients = [
+    'from-pink-400 to-orange-400',
+    'from-blue-400 to-indigo-500', 
+    'from-green-400 to-blue-500',
+    'from-purple-400 to-pink-500',
+    'from-yellow-400 to-orange-500',
+    'from-indigo-400 to-purple-500',
+    'from-red-400 to-pink-500',
+    'from-teal-400 to-blue-500',
+    'from-emerald-400 to-cyan-500',
+    'from-orange-400 to-red-500'
+  ];
+  
+  const gradientClass = gradients[parseInt(event.id) % gradients.length];
+
   return (
-    <li
-      className="p-4 rounded-xl shadow-sm bg-white cursor-pointer hover:shadow-md transition-shadow"
+    <div
+      className="relative group cursor-pointer transform hover:scale-105 transition-all duration-300"
       onClick={onClick}
     >
-      {/* Event Image Placeholder */}
-      <div className="w-full h-48 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg mb-4 flex items-center justify-center">
+      {/* Event Image */}
+      <div className={`w-full h-64 bg-gradient-to-br ${gradientClass} rounded-2xl overflow-hidden shadow-lg relative`}>
         {event.imageUrl ? (
           <img
             src={event.imageUrl}
             alt={event.title}
-            className="w-full h-full object-cover rounded-lg"
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
           />
         ) : (
-          <svg
-            className="w-16 h-16 text-blue-400"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={1.5}
-              d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2 2v12a2 2 0 002 2z"
-            />
-          </svg>
+          <div className="w-full h-full flex items-center justify-center">
+            <svg
+              className="w-20 h-20 text-white/70"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1}
+                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2 2v12a2 2 0 002 2z"
+              />
+            </svg>
+          </div>
+        )}
+        
+        {/* Overlay gradient */}
+        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors duration-300"></div>
+        
+        {/* Status badge */}
+        <div className="absolute top-4 left-4">
+          <span className="px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-medium text-gray-800">
+            {event.status === "upcoming" ? "Upcoming" : event.status === "ongoing" ? "Live" : event.status === "completed" ? "Done" : "Cancelled"}
+          </span>
+        </div>
+
+        {/* Price badge */}
+        {event.price && (
+          <div className="absolute top-4 right-4">
+            <span className="px-2 py-1 bg-green-500 text-white rounded-lg text-sm font-bold">
+              ${event.price}
+            </span>
+          </div>
         )}
       </div>
 
-      <div className="flex justify-between items-start mb-3">
-        <span
-          className={`px-3 py-1 rounded-full text-sm font-medium ${
-            event.status === "upcoming"
-              ? "bg-blue-100 text-blue-700"
-              : event.status === "ongoing"
-              ? "bg-blue-200 text-blue-800"
-              : event.status === "completed"
-              ? "bg-blue-50 text-blue-600"
-              : "bg-red-100 text-red-700"
-          }`}
-        >
-          {event.status === "upcoming"
-            ? "Upcoming"
-            : event.status === "ongoing"
-            ? "Live Now"
-            : event.status === "completed"
-            ? "Completed"
-            : "Cancelled"}
-        </span>
-      </div>
-
-      <h3 className="text-lg font-semibold tracking-tight text-gray-900 mb-2">
-        {event.title}
-      </h3>
-
-      <div className="flex items-center text-gray-600 mb-2">
-        <svg
-          className="w-4 h-4 mr-2"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-          />
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-          />
-        </svg>
-        <span className="text-sm">{event.location || event.place}</span>
-      </div>
-
-      <div className="flex items-center text-gray-600 mb-3">
-        <svg
-          className="w-4 h-4 mr-2"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-          />
-        </svg>
-        <span className="text-sm">
-          {event.date} {event.time && `• ${event.time}`}
-        </span>
-      </div>
-
-      {event.description && (
-        <p className="text-sm text-gray-700 line-clamp-2 mb-3">
-          {event.description}
+      {/* Title overlay at bottom */}
+      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent rounded-b-2xl">
+        <h3 className="text-white font-semibold text-lg mb-1 group-hover:text-gray-200">
+          {event.title}
+        </h3>
+        <p className="text-white/80 text-sm">
+          {event.location || event.place}
         </p>
-      )}
-
-      {event.price && (
-        <div className="flex justify-between items-center text-sm mb-3">
-          <span className="font-medium text-green-600">
-            ${event.price}
-          </span>
-        </div>
-      )}
-
-      {event.maxAttendees && (
-        <div className="flex justify-between items-center text-sm">
-          <span className="text-gray-600">
-            {event.currentAttendees || 0}/{event.maxAttendees} registered
-          </span>
-          <span className="font-medium text-blue-600">
-            {event.maxAttendees - (event.currentAttendees || 0)} spots left
-          </span>
-        </div>
-      )}
-    </li>
+      </div>
+    </div>
   );
 }
 
@@ -176,28 +130,26 @@ export default function EventGrid({
 
   return (
     <>
-      <div className="bg-white py-24 sm:py-32">
+      <div className="bg-gray-50 pt-0 pb-8">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl lg:mx-0">
-            <h2 className="text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
+          <div className="text-center mb-6">
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-4">
               {title}
             </h2>
-            <p className="mt-6 text-lg/8 text-gray-600">
+            <p className="mx-auto max-w-2xl text-lg text-gray-600">
               {description}
             </p>
           </div>
-          <ul
-            role="list"
-            className="mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3"
-          >
-            {events.map((event) => (
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {events.slice(0, 8).map((event) => (
               <EventGridItem
                 key={event.id}
                 event={event}
                 onClick={() => handleEventClick(event.id)}
               />
             ))}
-          </ul>
+          </div>
         </div>
       </div>
 
