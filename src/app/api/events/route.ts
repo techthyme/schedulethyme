@@ -4,38 +4,38 @@ import {
   GetEventsRequest,
   GetEventsResponse,
 } from "@/types/api";
-import { mockEvents } from "@/data";
-import listEvents from "./google.js";
+import { calendarEvents } from "@/data";
 
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
-    let events= await listEvents()
-    /**
-     * events.find((event) => event.id === selectedEvent)
-     */
-    const params: GetEventsRequest = {} as GetEventsRequest;
+    const selectedEventId = searchParams.get('id');
+    
+    // If a specific event ID is requested, return just that event
+    if (selectedEventId) {
+      const selectedEvent = calendarEvents.find((event) => event.id === selectedEventId);
+      if (selectedEvent) {
+        return NextResponse.json({ event: selectedEvent });
+      } else {
+        return NextResponse.json(
+          { error: "Event not found" },
+          { status: 404 }
+        );
+      }
+    }
 
-    // TODO: Replace with actual backend API call
-    // const response = await fetch(`${process.env.BACKEND_API_URL}/conversations`, {
-    //   method: 'GET',
-    //   headers: {
-    //     'Authorization': `Bearer ${token}`,
-    //     'Content-Type': 'application/json',
-    //   },
-    // });
-
+    // Return calendar events
     const res: GetEventsResponse = {
-      events: mockEvents,
+      events: calendarEvents,
       page: 1,
-      total: 1000,
+      total: calendarEvents.length,
     };
 
     return NextResponse.json(res);
   } catch (error) {
-    console.error("Error fetching conversations:", error);
+    console.error("Error fetching events:", error);
     return NextResponse.json(
-      { error: "Failed to fetch conversations" },
+      { error: "Failed to fetch events" },
       { status: 500 },
     );
   }

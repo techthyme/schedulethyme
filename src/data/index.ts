@@ -452,3 +452,130 @@ export const aboutUsData: AboutUsData = {
     }
   ]
 };
+
+// Google Calendar-style events for St. Thomas, USVI
+export const calendarEvents: Event[] = [
+  {
+    id: "calendar-1",
+    title: "Business Workshop: Starting Your Island Business",
+    dateStart: new Date('2025-10-01T09:00:00').getTime(),
+    dateEnd: new Date('2025-10-01T12:00:00').getTime(),
+    location: "UVI Innovation Lab, St. Thomas",
+    description: "Learn the essentials of starting a business in the US Virgin Islands. Topics include permits, taxes, and local regulations.",
+    price: 75,
+    imageUrl: "https://picsum.photos/seed/workshop1/400/250",
+    status: "scheduled",
+    type: "training",
+    date: "2025-10-01",
+    time: "9:00 AM",
+    timezone: "America/St_Thomas",
+    place: "UVI Innovation Lab, St. Thomas",
+    instructors: [{
+      name: "Maria Rodriguez",
+      title: "Business Development Specialist"
+    }],
+    maxAttendees: 25,
+    currentAttendees: 18,
+    registrationRequired: true,
+    registrationDeadline: "2025-09-29"
+  },
+  {
+    id: "calendar-2",
+    title: "Tech Training: Digital Marketing for Caribbean Businesses",
+    dateStart: new Date('2025-10-03T14:00:00').getTime(),
+    dateEnd: new Date('2025-10-03T17:00:00').getTime(),
+    location: "Charlotte Amalie Community Center, St. Thomas",
+    description: "Master social media marketing, Google Ads, and email campaigns specifically for Caribbean tourism and retail businesses.",
+    price: 95,
+    imageUrl: "https://picsum.photos/seed/digital/400/250",
+    status: "scheduled",
+    type: "training",
+    date: "2025-10-03",
+    time: "2:00 PM",
+    timezone: "America/St_Thomas",
+    place: "Charlotte Amalie Community Center, St. Thomas",
+    instructors: [{
+      name: "James Thompson",
+      title: "Digital Marketing Expert"
+    }],
+    maxAttendees: 30,
+    currentAttendees: 22,
+    registrationRequired: true,
+    registrationDeadline: "2025-10-01"
+  },
+  {
+    id: "calendar-3",
+    title: "Tourism Industry Consultation Session",
+    dateStart: new Date('2025-10-05T10:00:00').getTime(),
+    dateEnd: new Date('2025-10-05T11:30:00').getTime(),
+    location: "Paradise Point Resort, St. Thomas",
+    description: "One-on-one consultations for tourism businesses looking to expand or improve their services.",
+    price: 150,
+    imageUrl: "https://picsum.photos/seed/tourism/400/250",
+    status: "scheduled",
+    type: "consultation",
+    date: "2025-10-05",
+    time: "10:00 AM",
+    timezone: "America/St_Thomas",
+    place: "Paradise Point Resort, St. Thomas",
+    instructors: [{
+      name: "Dr. Angela Davis",
+      title: "Tourism Development Consultant"
+    }],
+    maxAttendees: 5,
+    currentAttendees: 3,
+    registrationRequired: true,
+    registrationDeadline: "2025-10-03"
+  },
+  {
+    id: "calendar-4",
+    title: "Coral World Marine Science Workshop",
+    dateStart: new Date('2025-10-07T08:30:00').getTime(),
+    dateEnd: new Date('2025-10-07T16:00:00').getTime(),
+    location: "Coral World Ocean Park, St. Thomas",
+    description: "Hands-on marine biology workshop including snorkeling, species identification, and conservation techniques.",
+    price: 125,
+    imageUrl: "https://picsum.photos/seed/marine/400/250",
+    status: "scheduled",
+    type: "training",
+    date: "2025-10-07",
+    time: "8:30 AM",
+    timezone: "America/St_Thomas",
+    place: "Coral World Ocean Park, St. Thomas",
+    instructors: [{
+      name: "Dr. Robert Martinez",
+      title: "Marine Biologist"
+    }, {
+      name: "Sarah Johnson",
+      title: "Conservation Specialist"
+    }],
+    maxAttendees: 15,
+    currentAttendees: 12,
+    registrationRequired: true,
+    registrationDeadline: "2025-10-05"
+  },
+  {
+    id: "calendar-5",
+    title: "Culinary Arts: Caribbean Fusion Cooking",
+    dateStart: new Date('2025-10-09T16:00:00').getTime(),
+    dateEnd: new Date('2025-10-09T19:00:00').getTime(),
+    location: "Frenchtown Community Kitchen, St. Thomas",
+    description: "Learn to create modern Caribbean fusion dishes using local ingredients and traditional techniques.",
+    price: 85,
+    imageUrl: "https://picsum.photos/seed/cooking/400/250",
+    status: "scheduled",
+    type: "training",
+    date: "2025-10-09",
+    time: "4:00 PM",
+    timezone: "America/St_Thomas",
+    place: "Frenchtown Community Kitchen, St. Thomas",
+    instructors: [{
+      name: "Chef Marcus Williams",
+      title: "Executive Chef"
+    }],
+    maxAttendees: 12,
+    currentAttendees: 8,
+    registrationRequired: true,
+    registrationDeadline: "2025-10-07"
+  }
+];
