@@ -1,43 +1,40 @@
-import { GetProfileDashboardResponse } from "@/types/api";
-import { serverApiClient } from "@/lib/server";
 import ProfileClient from "@/components/client/profiles";
 import { ProfileDashboardData } from "@/types";
-// import { serializeServerSideSearchParams } from "@/utils";
-// Initially gets and hydrates the Events data.
+
 interface SVR_ProfileProps {
   userId?: string;
-
-  //   searchParams?: ServerSideSearchParams;
 }
 
 export default async function SVR_Profile({ userId }: SVR_ProfileProps) {
-  let url = "/profile/";
-  //   let searchParamsSerialized = "";
-  //   if (searchParams) {
-  //     searchParamsSerialized = serializeServerSideSearchParams(searchParams);
-  //   }
+  // Use mock data directly instead of API call to avoid server-side connection issues
+  const mockProfile: ProfileDashboardData = {
+    user: {
+      id: "user-123",
+      name: "Antonio Rosario",
+      email: "antonio@gmail.com",
+      phone: "+1 (555) 987-6543",
+      organization: "TechThyme",
+      avatarUrl:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
+    },
+    bio: "Educator and developer building AI-powered solutions in the Virgin Islands 🌴🤖",
+    todaysEvents: [
+      {
+        id: "1",
+        title: "AI Workshop",
+        time: "10:00 AM",
+        location: "UVI Innovation Lab",
+        canAttend: true,
+      },
+      {
+        id: "2",
+        title: "Consultation",
+        time: "2:00 PM",
+        location: "Office 205",
+        canAttend: false,
+      },
+    ],
+  };
 
-  //   if (!eventId || eventId == "") {
-  //     throw new Error("eventId is required");
-  //   }
-
-  //   if (searchParamsSerialized) {
-  //     url = `${url}?${searchParamsSerialized}`;
-  //   }
-
-  try {
-    const { data, status } =  serverApiClient.get(url);
-
-    if (status >= 400) {
-      return <div>Error getting events from api</div>;
-    }
-
-    const profileData: ProfileDashboardData = data;
-
-    return <ProfileClient data={profileData} />;
-  } catch (error: any) {
-    // errorLogger(`failed to get Events with '${url}'`, error.toJSON());
-    console.error("error not json: ", error);
-    return <div>error on the server</div>;
-  }
+  return <ProfileClient data={mockProfile} />;
 }
