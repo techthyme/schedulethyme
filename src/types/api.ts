@@ -1,4 +1,4 @@
-import { Event, Profile, ProfileDashboardData, Calendar} from "@/types";
+import { Event, Profile, ProfileDashboardData} from "@/types";
 
 export interface CreateProfileRequest {
   profile: Profile;
@@ -83,3 +83,7 @@ export interface GetCalendarResponse {
   page: number;
   total: number;
 }
+
+
+
+

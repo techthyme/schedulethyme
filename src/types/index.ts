@@ -152,3 +152,22 @@ export interface CTA {
   text: string;
   url: string;
 }
+
+
+
+
+//about
+export interface Stat {
+  label: string;
+  value: string;
+}
+
+export interface Value {
+  title: string;
+  description: string;
+}
+
+export interface AboutUsData {
+  stats: Stat[];
+  values: Value[];
+}

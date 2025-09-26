@@ -11,7 +11,7 @@ interface SVR_EventsProps {
 }
 
 export default async function SVR_Events({ eventId }: SVR_EventsProps) {
-  let url = "/api/events/";
+  let url = "/events/";
   //   let searchParamsSerialized = "";
   //   if (searchParams) {
   //     searchParamsSerialized = serializeServerSideSearchParams(searchParams);

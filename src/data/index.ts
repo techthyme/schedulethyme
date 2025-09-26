@@ -1,6 +1,6 @@
 import { Event, HeroSection, Profile, User } from "@/types";
 import {ProfileDashboardData} from "@/types";
-
+import { AboutUsData } from "@/types";
 
 export const mockEvents: Event[] = [
   {
@@ -428,4 +428,27 @@ export const heroData: HeroSection = {
     text: "Learn more",
     url: "#"
   }
+};
+
+//about
+export const aboutUsData: AboutUsData = {
+  stats: [
+    { label: "Team Members", value: "4" },
+    { label: "Spaces Available", value: "50+" },
+    { label: "Events Hosted", value: "1000+" }
+  ],
+  values: [
+    {
+      title: "Simplicity",
+      description: "We make event hosting and space booking effortless with intuitive scheduling tools."
+    },
+    {
+      title: "Accessibility",
+      description: "Connecting event organizers with the perfect spaces for seminars, workshops, and gatherings."
+    },
+    {
+      title: "Community",
+      description: "Building a platform that brings people together through seamless event experiences."
+    }
+  ]
 };
