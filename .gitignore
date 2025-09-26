@@ -44,3 +44,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Google API credentials (do NOT commit)
+client_secret_*.json
+credentials.json
