@@ -4,6 +4,9 @@ import { Event } from "@/types";
 
 interface CalendarProps {
   events: Event[];
+  onDateClick?: (date: Date, events: Event[]) => void;
+  onDateHover?: (date: Date, events: Event[]) => void;
+  selectedDate?: Date | null;
 }
 
 interface CalendarDay {
@@ -20,8 +23,14 @@ const MONTHS = [
 
 const DAYS = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
 
-export default function Calendar({ events }: CalendarProps) {
+export default function Calendar({ 
+  events, 
+  onDateClick, 
+  onDateHover, 
+  selectedDate 
+}: CalendarProps) {
   const [currentDate, setCurrentDate] = useState(new Date());
+  const [hoveredDay, setHoveredDay] = useState<CalendarDay | null>(null);
   
   const { currentMonth, nextMonth, prevMonth } = useMemo(() => {
     const current = new Date(currentDate);
@@ -126,26 +135,92 @@ export default function Calendar({ events }: CalendarProps) {
       
       {/* Calendar grid */}
       <div className="grid grid-cols-7 gap-0">
-        {days.map((day, index) => (
-          <div key={index} className="aspect-square p-1">
-            <div
-              className={`
-                w-full h-full flex items-center justify-center rounded-full text-sm font-medium transition-all
-                ${day.isCurrentMonth 
-                  ? 'text-neutral-900 dark:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800' 
-                  : 'text-neutral-300 dark:text-neutral-600'
-                }
-                ${day.hasEvents 
-                  ? 'bg-primary-500 text-white hover:bg-primary-600' 
-                  : ''
-                }
-                cursor-pointer
-              `}
-            >
-              {day.date}
+        {days.map((day, index) => {
+          const dayDate = new Date(
+            monthLabel.includes(MONTHS[currentMonth.getMonth()]) ? currentMonth.getFullYear() : nextMonth.getFullYear(), 
+            monthLabel.includes(MONTHS[currentMonth.getMonth()]) ? currentMonth.getMonth() : nextMonth.getMonth(), 
+            day.date
+          );
+          const isSelected = selectedDate && 
+            selectedDate.getDate() === day.date && 
+            selectedDate.getMonth() === dayDate.getMonth() && 
+            selectedDate.getFullYear() === dayDate.getFullYear();
+          
+          return (
+            <div key={index} className="aspect-square p-1 relative">
+              <div
+                className={`
+                  w-full h-full flex items-center justify-center rounded-full text-sm font-medium transition-all relative
+                  ${day.isCurrentMonth 
+                    ? 'text-neutral-900 dark:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800' 
+                    : 'text-neutral-300 dark:text-neutral-600'
+                  }
+                  ${day.hasEvents 
+                    ? 'bg-primary-500 text-white hover:bg-primary-600' 
+                    : ''
+                  }
+                  ${isSelected 
+                    ? 'ring-2 ring-secondary-500 ring-offset-2 dark:ring-offset-neutral-900' 
+                    : ''
+                  }
+                  cursor-pointer
+                `}
+                onClick={() => {
+                  if (day.isCurrentMonth && onDateClick) {
+                    onDateClick(dayDate, day.events);
+                  }
+                }}
+                onMouseEnter={() => {
+                  if (day.isCurrentMonth && day.hasEvents) {
+                    setHoveredDay(day);
+                    if (onDateHover) {
+                      onDateHover(dayDate, day.events);
+                    }
+                  }
+                }}
+                onMouseLeave={() => {
+                  setHoveredDay(null);
+                }}
+              >
+                {day.date}
+                {day.hasEvents && (
+                  <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-secondary-400 rounded-full border-2 border-white dark:border-neutral-900 text-xs flex items-center justify-center text-white font-bold">
+                    {day.events.length}
+                  </div>
+                )}
+              </div>
+              
+              {/* Hover preview */}
+              {hoveredDay === day && day.hasEvents && (
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 z-50 bg-white dark:bg-neutral-800 rounded-lg shadow-xl border border-neutral-200 dark:border-neutral-700 p-3 min-w-64 max-w-80">
+                  <div className="text-sm font-medium text-neutral-900 dark:text-white mb-2">
+                    {day.events.length} event{day.events.length > 1 ? 's' : ''} on {MONTHS[dayDate.getMonth()]} {day.date}
+                  </div>
+                  <div className="space-y-2">
+                    {day.events.slice(0, 3).map((event, eventIndex) => (
+                      <div key={eventIndex} className="flex items-start space-x-2">
+                        <div className="w-2 h-2 rounded-full bg-primary-500 mt-1.5 flex-shrink-0"></div>
+                        <div className="min-w-0">
+                          <div className="text-sm font-medium text-neutral-900 dark:text-white truncate">
+                            {event.title}
+                          </div>
+                          <div className="text-xs text-neutral-600 dark:text-neutral-400 truncate">
+                            {event.location || event.place}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                    {day.events.length > 3 && (
+                      <div className="text-xs text-neutral-500 dark:text-neutral-500 text-center">
+                        +{day.events.length - 3} more event{day.events.length - 3 > 1 ? 's' : ''}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

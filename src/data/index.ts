@@ -16,7 +16,7 @@ export const mockEvents: Event[] = [
       "Join us for a relaxing yoga session as the sun sets over the ocean.",
     price: 20,
     imageUrl: "https://picsum.photos/seed/yoga/400/250",
-    status: "cancelled",
+    status: "scheduled",
   },
   {
     id: "2",
@@ -30,7 +30,7 @@ export const mockEvents: Event[] = [
       "A five-course dining experience featuring locally sourced ingredients.",
     price: 120,
     imageUrl: "https://picsum.photos/seed/dinner/400/250",
-    status: "cancelled",
+    status: "scheduled",
   },
   {
     id: "3",
@@ -458,8 +458,8 @@ export const calendarEvents: Event[] = [
   {
     id: "calendar-1",
     title: "Business Workshop: Starting Your Island Business",
-    dateStart: new Date('2025-10-01T09:00:00').getTime(),
-    dateEnd: new Date('2025-10-01T12:00:00').getTime(),
+    dateStart: Math.floor(new Date('2025-10-01T09:00:00').getTime() / 1000),
+    dateEnd: Math.floor(new Date('2025-10-01T12:00:00').getTime() / 1000),
     location: "UVI Innovation Lab, St. Thomas",
     description: "Learn the essentials of starting a business in the US Virgin Islands. Topics include permits, taxes, and local regulations.",
     price: 75,
@@ -482,8 +482,8 @@ export const calendarEvents: Event[] = [
   {
     id: "calendar-2",
     title: "Tech Training: Digital Marketing for Caribbean Businesses",
-    dateStart: new Date('2025-10-03T14:00:00').getTime(),
-    dateEnd: new Date('2025-10-03T17:00:00').getTime(),
+    dateStart: Math.floor(new Date('2025-10-03T14:00:00').getTime() / 1000),
+    dateEnd: Math.floor(new Date('2025-10-03T17:00:00').getTime() / 1000),
     location: "Charlotte Amalie Community Center, St. Thomas",
     description: "Master social media marketing, Google Ads, and email campaigns specifically for Caribbean tourism and retail businesses.",
     price: 95,
@@ -506,8 +506,8 @@ export const calendarEvents: Event[] = [
   {
     id: "calendar-3",
     title: "Tourism Industry Consultation Session",
-    dateStart: new Date('2025-10-05T10:00:00').getTime(),
-    dateEnd: new Date('2025-10-05T11:30:00').getTime(),
+    dateStart: Math.floor(new Date('2025-10-05T10:00:00').getTime() / 1000),
+    dateEnd: Math.floor(new Date('2025-10-05T11:30:00').getTime() / 1000),
     location: "Paradise Point Resort, St. Thomas",
     description: "One-on-one consultations for tourism businesses looking to expand or improve their services.",
     price: 150,
@@ -530,8 +530,8 @@ export const calendarEvents: Event[] = [
   {
     id: "calendar-4",
     title: "Coral World Marine Science Workshop",
-    dateStart: new Date('2025-10-07T08:30:00').getTime(),
-    dateEnd: new Date('2025-10-07T16:00:00').getTime(),
+    dateStart: Math.floor(new Date('2025-10-07T08:30:00').getTime() / 1000),
+    dateEnd: Math.floor(new Date('2025-10-07T16:00:00').getTime() / 1000),
     location: "Coral World Ocean Park, St. Thomas",
     description: "Hands-on marine biology workshop including snorkeling, species identification, and conservation techniques.",
     price: 125,
@@ -557,8 +557,8 @@ export const calendarEvents: Event[] = [
   {
     id: "calendar-5",
     title: "Culinary Arts: Caribbean Fusion Cooking",
-    dateStart: new Date('2025-10-09T16:00:00').getTime(),
-    dateEnd: new Date('2025-10-09T19:00:00').getTime(),
+    dateStart: Math.floor(new Date('2025-10-09T16:00:00').getTime() / 1000),
+    dateEnd: Math.floor(new Date('2025-10-09T19:00:00').getTime() / 1000),
     location: "Frenchtown Community Kitchen, St. Thomas",
     description: "Learn to create modern Caribbean fusion dishes using local ingredients and traditional techniques.",
     price: 85,
@@ -577,5 +577,29 @@ export const calendarEvents: Event[] = [
     currentAttendees: 8,
     registrationRequired: true,
     registrationDeadline: "2025-10-07"
+  },
+  {
+    id: "calendar-6",
+    title: "Financial Planning Workshop for Small Business",
+    dateStart: Math.floor(new Date('2025-10-12T10:00:00').getTime() / 1000),
+    dateEnd: Math.floor(new Date('2025-10-12T13:00:00').getTime() / 1000),
+    location: "Red Hook Plaza Conference Room, St. Thomas",
+    description: "Learn essential financial planning strategies, budgeting, and investment options specifically for Caribbean small businesses.",
+    price: 65,
+    imageUrl: "https://picsum.photos/seed/finance/400/250",
+    status: "scheduled",
+    type: "training",
+    date: "2025-10-12",
+    time: "10:00 AM",
+    timezone: "America/St_Thomas",
+    place: "Red Hook Plaza Conference Room, St. Thomas",
+    instructors: [{
+      name: "CPA Jennifer Lee",
+      title: "Financial Planning Specialist"
+    }],
+    maxAttendees: 20,
+    currentAttendees: 14,
+    registrationRequired: true,
+    registrationDeadline: "2025-10-10"
   }
 ];

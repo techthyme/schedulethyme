@@ -13,7 +13,7 @@ export default function EventDetailsCard({
   onAttend,
   onClose,
 }: EventDetailsCardProps) {
-  const isUpcoming = event.status === "upcoming";
+  const isUpcoming = event.status === "upcoming" || event.status === "scheduled";
   const spotsLeft = event.maxAttendees
     ? event.maxAttendees - (event.currentAttendees || 0)
     : null;
@@ -75,9 +75,17 @@ export default function EventDetailsCard({
 
       {/* Status Badge */}
       <div className="flex justify-between items-start mb-4">
-        <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
-          {event.status === "upcoming"
-            ? "Upcoming"
+        <span className={`px-3 py-1 rounded-full text-sm font-medium ${
+          event.status === "upcoming" || event.status === "scheduled"
+            ? "bg-green-100 text-green-700"
+            : event.status === "ongoing"
+            ? "bg-blue-100 text-blue-700"
+            : event.status === "completed"
+            ? "bg-gray-100 text-gray-700"
+            : "bg-red-100 text-red-700"
+        }`}>
+          {event.status === "upcoming" || event.status === "scheduled"
+            ? "Scheduled"
             : event.status === "ongoing"
             ? "Live Now"
             : event.status === "completed"
