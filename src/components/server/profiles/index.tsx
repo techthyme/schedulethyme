@@ -26,7 +26,7 @@ export default async function SVR_Profile({ userId }: SVR_ProfileProps) {
   //   }
 
   try {
-    const { data, status } = await serverApiClient.get(url);
+    const { data, status } =  serverApiClient.get(url);
 
     if (status >= 400) {
       return <div>Error getting events from api</div>;

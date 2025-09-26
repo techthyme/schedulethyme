@@ -2,23 +2,58 @@
 import { useState } from "react";
 import { HeroSection } from "@/types";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 interface HeroClientProps {
   hero: HeroSection;
 }
 
+const companies = [
+  {
+    name: "Vercel",
+    logo: "/logos/vercel.svg",
+    image: "/images/vercel-team.jpg"
+  },
+  {
+    name: "Remote",
+    logo: "/logos/remote.svg", 
+    image: "/images/remote-workspace.jpg"
+  },
+  {
+    name: "ARC",
+    logo: "/logos/arc.svg",
+    image: "/images/arc-browser.jpg"
+  },
+  {
+    name: "Raycast",
+    logo: "/logos/raycast.svg",
+    image: "/images/raycast-app.jpg"
+  },
+  {
+    name: "Runway",
+    logo: "/logos/runway.svg",
+    image: "/images/runway-creative.jpg"
+  },
+  {
+    name: "Ramp",
+    logo: "/logos/ramp.svg",
+    image: "/images/ramp-finance.jpg"
+  }
+];
+
 export default function HeroClient({ hero }: HeroClientProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <div className="relative min-h-screen flex items-center py-20">
+    <>
+    <div className="relative min-h-screen flex items-center py-32">
       {/* Hero Content */}
       <div className="relative w-full">
         <div className="mx-auto max-w-5xl text-center">
           
           {/* Announcement Banner */}
           {hero.announcement && (
-            <div className="mb-8 inline-flex items-center gap-2 rounded-full bg-primary-50 px-4 py-2 text-sm text-primary-700 border border-primary-200 dark:bg-primary-900/20 dark:border-primary-800 dark:text-primary-300">
+            <div className="mb-1 inline-flex items-center gap-2 rounded-full bg-primary-50 px-4 py-2 text-sm text-primary-700 border border-primary-200 dark:bg-primary-900/20 dark:border-primary-800 dark:text-primary-300">
               <span className="text-base">✨</span>
               <span>{hero.announcement.text}</span>
               <a 
@@ -31,11 +66,11 @@ export default function HeroClient({ hero }: HeroClientProps) {
           )}
           
           {/* Main Content */}
-          <div className="space-y-8">
-            <h1 className="text-5xl font-bold tracking-tight text-neutral-900 dark:text-white sm:text-6xl lg:text-7xl leading-tight">
+          <div className="space-y-12">
+            <h1 className="text-6xl font-bold tracking-tight text-neutral-900 dark:text-white sm:text-7xl lg:text-8xl leading-tight">
               {hero.heading}
             </h1>
-            <p className="mx-auto max-w-3xl text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <p className="mx-auto max-w-4xl text-2xl text-neutral-600 dark:text-neutral-400 leading-relaxed">
               {hero.description}
             </p>
 
@@ -66,8 +101,81 @@ export default function HeroClient({ hero }: HeroClientProps) {
               </Button>
             </div>
           </div>
+
+        </div>
+
+        {/* Company Showcase - Full Width */}
+        <div className="mt-12 mb-8 w-full">
+          <div className="text-center mb-6">
+            <p className="text-gray-400 text-xs uppercase tracking-wider font-medium">
+              Trusted by industry leaders
+            </p>
+          </div>
+          
+          {/* Staggered grid layout */}
+          <div className="grid grid-cols-1 md:grid-cols-6 gap-4 lg:gap-6 w-full px-4">
+              {/* First row - 2 images */}
+              <div className="md:col-span-1">
+                <div className="relative group overflow-hidden rounded-2xl aspect-square bg-gray-100">
+                  <Image
+                    src={companies[0].image}
+                    alt={`${companies[0].name} workspace`}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+              </div>
+              
+              <div className="md:col-span-1 md:mt-12">
+                <div className="relative group overflow-hidden rounded-2xl aspect-square bg-gray-100">
+                  <Image
+                    src={companies[1].image}
+                    alt={`${companies[1].name} workspace`}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+              </div>
+              
+              {/* Center large image */}
+              <div className="md:col-span-2 md:mt-6">
+                <div className="relative group overflow-hidden rounded-2xl aspect-[16/10] bg-gray-100">
+                  <Image
+                    src={companies[2].image}
+                    alt={`${companies[2].name} workspace`}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+              </div>
+              
+              {/* Right side images */}
+              <div className="md:col-span-1 md:mt-16">
+                <div className="relative group overflow-hidden rounded-2xl aspect-square bg-gray-100">
+                  <Image
+                    src={companies[3].image}
+                    alt={`${companies[3].name} workspace`}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+              </div>
+              
+              <div className="md:col-span-1 md:mt-6">
+                <div className="relative group overflow-hidden rounded-2xl aspect-square bg-gray-100">
+                  <Image
+                    src={companies[4].image}
+                    alt={`${companies[4].name} workspace`}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    
+    </>
   );
 }

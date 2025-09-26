@@ -1,3 +1,4 @@
+"use client"
 import EventGrid from "@/components/ui/eventgrid";
 import Calendar from "@/components/ui/calendar";
 import { Event } from "@/types";

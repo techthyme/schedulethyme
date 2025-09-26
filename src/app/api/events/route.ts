@@ -5,10 +5,12 @@ import {
   GetEventsResponse,
 } from "@/types/api";
 import { mockEvents } from "@/data";
+import listEvents from "./google.js";
 
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
+    let events= await listEvents()
     /**
      * events.find((event) => event.id === selectedEvent)
      */
