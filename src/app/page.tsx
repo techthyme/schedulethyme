@@ -4,13 +4,9 @@ import Services from "@/components/ui/services";
 
 export default function Home() {
   return (
-    <main className="bg-gray-50">
+    <main className="bg-gradient-to-br from-gray-50 via-white to-indigo-50/20">
       <HeroSection hero={heroData} />
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <p className="text-gray-400">© 2024 ScheduleThyme. All rights reserved.</p>
-        </div>
-      </footer>
+     
     </main>
   );
 }

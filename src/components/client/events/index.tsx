@@ -32,9 +32,14 @@ export default function EventsClient({ events }: EventsClientProps) {
   };
 
   return (
-    <main className="relative overflow-hidden bg-neutral-50 dark:bg-neutral-900">
+    <main className="relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-indigo-50/20 isolate">
+      {/* Background streak */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-y-0 right-1/2 -z-10 -mr-96 w-[200%] origin-top-right skew-x-[-30deg] bg-white shadow-xl ring-1 shadow-indigo-600/10 ring-indigo-50 sm:-mr-80 lg:-mr-96"
+      />
       {/* Glassmorphism background effect */}
-      <div className="fixed inset-0 -z-10">
+      <div className="fixed inset-0 -z-20">
         <div className="absolute top-24 left-1/4 w-96 h-96 bg-primary-200/20 rounded-full blur-3xl dark:bg-primary-800/10"></div>
         <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-secondary-200/20 rounded-full blur-3xl dark:bg-secondary-800/10"></div>
       </div>

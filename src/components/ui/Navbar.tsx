@@ -45,7 +45,7 @@ export default function Example() {
           </div>
           <div className="flex flex-1 items-center justify-center sm:items-center sm:justify-between">
             <div className="flex shrink-0 items-center">
-              <span className="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-white">
+              <span className="text-xl sm:text-2xl font-light text-neutral-900 dark:text-white">
                 ScheduleThyme
               </span>
             </div>
@@ -58,9 +58,9 @@ export default function Example() {
                     aria-current={item.current ? "page" : undefined}
                     className={classNames(
                       item.current
-                        ? "text-primary-600 dark:text-primary-400 font-semibold"
+                        ? "text-primary-600 dark:text-primary-400 font-light"
                         : "text-neutral-700 hover:text-primary-600 dark:text-neutral-300 dark:hover:text-primary-400",
-                      "px-3 py-2 text-sm font-medium transition-colors duration-200 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800"
+                      "px-3 py-2 text-sm font-light transition-colors duration-200 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800"
                     )}
                   >
                     {item.name}
@@ -87,7 +87,7 @@ export default function Example() {
                 item.current
                   ? "bg-primary-50 text-primary-700 border-primary-500 dark:bg-primary-900/20 dark:text-primary-400 dark:border-primary-600"
                   : "text-neutral-900 hover:bg-neutral-100 hover:text-primary-600 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-primary-400",
-                "block rounded-lg px-4 py-3 text-base font-medium transition-colors border-l-4 border-transparent"
+                "block rounded-lg px-4 py-3 text-base font-light transition-colors border-l-4 border-transparent"
               )}
             >
               {item.name}

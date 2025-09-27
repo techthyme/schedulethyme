@@ -11,7 +11,6 @@ const CREDENTIALS_PATH = path.join(process.cwd(), 'credentials.json');
 /**
  * Lists the next 10 events on the user's primary calendar.
  */
-
 export default async function listEvents() {
   // Authenticate with Google and get an authorized client.
   const auth = await authenticate({

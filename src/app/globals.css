@@ -8,8 +8,8 @@
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-poppins);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --font-mono: "SF Mono", Monaco, Inconsolata, "Roboto Mono", Consolas, "Courier New", monospace;
 
   /* Chisfis-inspired color palette */
   --color-primary-50: rgb(238, 242, 255);
@@ -66,7 +66,37 @@
 
   body {
     @apply bg-white text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100;
-    font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+    font-family: var(--font-sans);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  /* Minimal typography styles */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  h1 {
+    font-weight: 200;
+  }
+
+  p {
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  .font-light {
+    font-weight: 300;
+  }
+
+  .font-extralight {
+    font-weight: 200;
+  }
+
+  .font-thin {
+    font-weight: 100;
   }
 
   hr {
@@ -85,6 +115,13 @@
     rgba(17, 17, 26, 0.05) 0px 8px 32px;
 }
 
+@utility shadow-3xl {
+  box-shadow:
+    rgba(17, 17, 26, 0.1) 0px 8px 24px,
+    rgba(17, 17, 26, 0.1) 0px 16px 56px,
+    rgba(17, 17, 26, 0.1) 0px 24px 80px;
+}
+
 @utility nc-box-has-hover {
   @apply rounded-3xl border border-neutral-200/79 bg-white dark:border-neutral-700 dark:bg-neutral-800/30;
 }
@@ -94,5 +131,59 @@
   scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none;
+  }
+}
+
+/* Wave animations for hero background */
+@keyframes wave1 {
+  0%, 100% {
+    transform: rotate(-5deg) scale(1);
+    border-radius: 50% 40% 60% 30%;
+  }
+  25% {
+    transform: rotate(-3deg) scale(1.05);
+    border-radius: 40% 50% 30% 60%;
+  }
+  50% {
+    transform: rotate(-7deg) scale(1.02);
+    border-radius: 60% 30% 50% 40%;
+  }
+  75% {
+    transform: rotate(-4deg) scale(1.03);
+    border-radius: 30% 60% 40% 50%;
+  }
+}
+
+@keyframes wave2 {
+  0%, 100% {
+    transform: rotate(5deg) scale(1);
+    border-radius: 40% 60% 30% 50%;
+  }
+  25% {
+    transform: rotate(7deg) scale(1.03);
+    border-radius: 50% 30% 60% 40%;
+  }
+  50% {
+    transform: rotate(3deg) scale(1.05);
+    border-radius: 30% 50% 40% 60%;
+  }
+  75% {
+    transform: rotate(6deg) scale(1.02);
+    border-radius: 60% 40% 50% 30%;
+  }
+}
+
+@keyframes wave3 {
+  0%, 100% {
+    transform: rotate(10deg) scale(1);
+    border-radius: 60% 30% 40% 70%;
+  }
+  33% {
+    transform: rotate(12deg) scale(1.04);
+    border-radius: 40% 70% 60% 30%;
+  }
+  66% {
+    transform: rotate(8deg) scale(1.02);
+    border-radius: 70% 40% 30% 60%;
   }
 }
