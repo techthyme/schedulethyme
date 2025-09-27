@@ -89,7 +89,7 @@ export default function ProfileClient({ data }: ProfileClientProps) {
             <div className="lg:col-span-2 space-y-8">
               {/* Today's Events */}
               <div className="bg-white/95 dark:bg-neutral-900/95 backdrop-blur-sm rounded-2xl border border-neutral-200/50 dark:border-neutral-700/50 p-8 shadow-sm">
-                <h3 className="text-2xl font-bold text-neutral-900 dark:text-white mb-6">Today's Events</h3>
+                <h3 className="text-2xl font-bold text-neutral-900 dark:text-white mb-6">Today&apos;s Events</h3>
                 
                 {todaysEvents && todaysEvents.length > 0 ? (
                   <div className="space-y-4">
@@ -189,7 +189,7 @@ export default function ProfileClient({ data }: ProfileClientProps) {
                       </svg>
                     </div>
                     <div className="flex-1">
-                      <p className="text-sm font-medium text-neutral-900 dark:text-white">Attended "AI Workshop"</p>
+                      <p className="text-sm font-medium text-neutral-900 dark:text-white">Attended &quot;AI Workshop&quot;</p>
                       <p className="text-sm text-neutral-600 dark:text-neutral-400">2 hours ago</p>
                     </div>
                   </div>
@@ -201,7 +201,7 @@ export default function ProfileClient({ data }: ProfileClientProps) {
                       </svg>
                     </div>
                     <div className="flex-1">
-                      <p className="text-sm font-medium text-neutral-900 dark:text-white">Registered for "Digital Marketing Training"</p>
+                      <p className="text-sm font-medium text-neutral-900 dark:text-white">Registered for &quot;Digital Marketing Training&quot;</p>
                       <p className="text-sm text-neutral-600 dark:text-neutral-400">1 day ago</p>
                     </div>
                   </div>
