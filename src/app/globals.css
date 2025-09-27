@@ -5,12 +5,48 @@
   --foreground: #171717;
 }
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --font-mono: "SF Mono", Monaco, Inconsolata, "Roboto Mono", Consolas, "Courier New", monospace;
+
+  /* Chisfis-inspired color palette */
+  --color-primary-50: rgb(238, 242, 255);
+  --color-primary-100: rgb(224, 231, 255);
+  --color-primary-200: rgb(199, 210, 254);
+  --color-primary-300: rgb(165, 180, 252);
+  --color-primary-400: rgb(129, 140, 248);
+  --color-primary-500: rgb(99, 102, 241);
+  --color-primary-600: rgb(79, 70, 229);
+  --color-primary-700: rgb(67, 56, 202);
+  --color-primary-800: rgb(55, 48, 163);
+  --color-primary-900: rgb(49, 46, 129);
+
+  --color-secondary-50: rgb(240, 253, 250);
+  --color-secondary-100: rgb(204, 251, 241);
+  --color-secondary-200: rgb(153, 246, 228);
+  --color-secondary-300: rgb(94, 234, 212);
+  --color-secondary-400: rgb(45, 212, 191);
+  --color-secondary-500: rgb(20, 184, 166);
+  --color-secondary-600: rgb(13, 148, 136);
+  --color-secondary-700: rgb(15, 118, 110);
+  --color-secondary-800: rgb(17, 94, 89);
+  --color-secondary-900: rgb(19, 78, 74);
+
+  --color-neutral-50: rgb(249, 250, 251);
+  --color-neutral-100: rgb(243, 244, 246);
+  --color-neutral-200: rgb(229, 231, 235);
+  --color-neutral-300: rgb(209, 213, 219);
+  --color-neutral-400: rgb(156, 163, 175);
+  --color-neutral-500: rgb(107, 114, 128);
+  --color-neutral-600: rgb(75, 85, 99);
+  --color-neutral-700: rgb(55, 65, 81);
+  --color-neutral-800: rgb(31, 41, 55);
+  --color-neutral-900: rgb(17, 24, 39);
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -19,8 +55,135 @@
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    @apply border-neutral-200 dark:border-neutral-700;
+  }
+
+  body {
+    @apply bg-white text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100;
+    font-family: var(--font-sans);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  /* Minimal typography styles */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  h1 {
+    font-weight: 200;
+  }
+
+  p {
+    font-weight: 300;
+    line-height: 1.6;
+  }
+
+  .font-light {
+    font-weight: 300;
+  }
+
+  .font-extralight {
+    font-weight: 200;
+  }
+
+  .font-thin {
+    font-weight: 100;
+  }
+
+  hr {
+    @apply border-t border-neutral-200 dark:border-neutral-700;
+  }
+}
+
+/* Chisfis-inspired utilities */
+@utility nc-header-bg {
+  @apply bg-white/70 backdrop-blur-2xl backdrop-filter dark:bg-neutral-900/60;
+}
+
+@utility custom-shadow-1 {
+  box-shadow:
+    rgba(17, 17, 26, 0.05) 0px 4px 16px,
+    rgba(17, 17, 26, 0.05) 0px 8px 32px;
+}
+
+@utility shadow-3xl {
+  box-shadow:
+    rgba(17, 17, 26, 0.1) 0px 8px 24px,
+    rgba(17, 17, 26, 0.1) 0px 16px 56px,
+    rgba(17, 17, 26, 0.1) 0px 24px 80px;
+}
+
+@utility nc-box-has-hover {
+  @apply rounded-3xl border border-neutral-200/79 bg-white dark:border-neutral-700 dark:bg-neutral-800/30;
+}
+
+@utility hidden-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Wave animations for hero background */
+@keyframes wave1 {
+  0%, 100% {
+    transform: rotate(-5deg) scale(1);
+    border-radius: 50% 40% 60% 30%;
+  }
+  25% {
+    transform: rotate(-3deg) scale(1.05);
+    border-radius: 40% 50% 30% 60%;
+  }
+  50% {
+    transform: rotate(-7deg) scale(1.02);
+    border-radius: 60% 30% 50% 40%;
+  }
+  75% {
+    transform: rotate(-4deg) scale(1.03);
+    border-radius: 30% 60% 40% 50%;
+  }
+}
+
+@keyframes wave2 {
+  0%, 100% {
+    transform: rotate(5deg) scale(1);
+    border-radius: 40% 60% 30% 50%;
+  }
+  25% {
+    transform: rotate(7deg) scale(1.03);
+    border-radius: 50% 30% 60% 40%;
+  }
+  50% {
+    transform: rotate(3deg) scale(1.05);
+    border-radius: 30% 50% 40% 60%;
+  }
+  75% {
+    transform: rotate(6deg) scale(1.02);
+    border-radius: 60% 40% 50% 30%;
+  }
+}
+
+@keyframes wave3 {
+  0%, 100% {
+    transform: rotate(10deg) scale(1);
+    border-radius: 60% 30% 40% 70%;
+  }
+  33% {
+    transform: rotate(12deg) scale(1.04);
+    border-radius: 40% 70% 60% 30%;
+  }
+  66% {
+    transform: rotate(8deg) scale(1.02);
+    border-radius: 70% 40% 30% 60%;
+  }
 }

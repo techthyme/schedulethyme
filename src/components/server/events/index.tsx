@@ -1,43 +1,29 @@
 import { GetEventsResponse } from "@/types/api";
 import { serverApiClient } from "@/lib/server";
 import EventsClient from "@/components/client/events";
-// import { serializeServerSideSearchParams } from "@/utils";
-// Initially gets and hydrates the Events data.
+import { calendarEvents } from "@/data";
+
 interface SVR_EventsProps {
   eventId?: string;
   page?: number;
-
-  //   searchParams?: ServerSideSearchParams;
 }
 
 export default async function SVR_Events({ eventId }: SVR_EventsProps) {
   let url = "/events/";
-  //   let searchParamsSerialized = "";
-  //   if (searchParams) {
-  //     searchParamsSerialized = serializeServerSideSearchParams(searchParams);
-  //   }
-
-  //   if (!eventId || eventId == "") {
-  //     throw new Error("eventId is required");
-  //   }
-
-  //   if (searchParamsSerialized) {
-  //     url = `${url}?${searchParamsSerialized}`;
-  //   }
 
   try {
     const { data, status } = await serverApiClient.get(url);
 
     if (status >= 400) {
-      return <div>Error getting events from api</div>;
+      console.error("API returned error status:", status);
+      return <EventsClient events={calendarEvents} />;
     }
 
     const resp: GetEventsResponse = data;
-
     return <EventsClient events={resp.events} />;
   } catch (error: any) {
-    // errorLogger(`failed to get Events with '${url}'`, error.toJSON());
-    console.error("error not json: ", error);
-    return <div>error on the server</div>;
+    console.error("Failed to fetch events from API, using static events:", error);
+    // Fallback to static events if API fails
+    return <EventsClient events={calendarEvents} />;
   }
 }

@@ -7,8 +7,8 @@ interface CardProps {
 }
 
 export function Card({ children, className = '', hover = false }: CardProps) {
-  const baseClasses = 'bg-white rounded-lg border border-gray-200 shadow-sm';
-  const hoverClasses = hover ? 'transition-shadow hover:shadow-md cursor-pointer' : '';
+  const baseClasses = 'bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-200/50 dark:border-neutral-700/50 shadow-sm overflow-hidden';
+  const hoverClasses = hover ? 'transition-all duration-300 hover:shadow-xl hover:shadow-neutral-100 dark:hover:shadow-neutral-900/20 hover:-translate-y-0.5 cursor-pointer' : '';
   
   return (
     <div className={`${baseClasses} ${hoverClasses} ${className}`}>
@@ -50,7 +50,7 @@ interface CardTitleProps {
 
 export function CardTitle({ children, className = '' }: CardTitleProps) {
   return (
-    <h3 className={`text-xl font-semibold text-gray-900 mb-2 ${className}`}>
+    <h3 className={`text-xl font-semibold text-neutral-900 dark:text-white mb-2 ${className}`}>
       {children}
     </h3>
   );
@@ -63,7 +63,7 @@ interface CardDescriptionProps {
 
 export function CardDescription({ children, className = '' }: CardDescriptionProps) {
   return (
-    <p className={`text-gray-600 text-sm leading-relaxed ${className}`}>
+    <p className={`text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed ${className}`}>
       {children}
     </p>
   );
