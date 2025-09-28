@@ -8,10 +8,11 @@ import {
   MenuItems,
 } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
 
 const navigation = [
-  { name: "Home", href: "/", current: true },
-  { name: "Events", href: "/events", current: false },
+  // { name: "Home", href: "/", current: true },
+  { name: "Experiences", href: "/experiences", current: false },
   { name: "About", href: "/about", current: false },
   { name: "Dashboard", href: "profile", current: false },
 ];
@@ -51,20 +52,20 @@ export default function Example() {
             </div>
             <div className="hidden sm:block">
               <div className="flex space-x-8">
-                {navigation.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    aria-current={item.current ? "page" : undefined}
+                {navigation.map((link) => (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    aria-current={link.current ? "page" : undefined}
                     className={classNames(
-                      item.current
+                      link.current
                         ? "text-primary-600 dark:text-primary-400 font-semibold"
                         : "text-neutral-700 hover:text-primary-600 dark:text-neutral-300 dark:hover:text-primary-400",
                       "px-3 py-2 text-sm font-medium transition-colors duration-200 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800"
                     )}
                   >
-                    {item.name}
-                  </a>
+                    {link.name}
+                  </Link>
                 ))}
               </div>
             </div>

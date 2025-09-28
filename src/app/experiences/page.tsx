@@ -1,37 +1,32 @@
 import { GetEventsResponse } from "@/types/api";
 import { serverApiClient } from "@/lib/server";
 import ExperiencesClient from "@/components/client/experiences";
-import { mockEvents } from "@/data";
+import { mockExperiences } from "@/data";
 import { Experience } from "@/types";
 import { convertEventsToExperiences } from "@/lib";
 
-interface SVR_EventsProps {
-  eventId?: string;
-  page?: number;
-}
-
-export default async function SVR_Events({ eventId }: SVR_EventsProps) {
+export default async function ExperiencesPage() {
   let url = "/events/";
-  const mockExperiences = convertEventsToExperiences(mockEvents);
+
   try {
     const { data, status } = await serverApiClient.get(url);
+
     if (status >= 400) {
-      return <ExperiencesClient experiences={mockExperiences} />;
       console.error("API returned error status:", status);
+      return <ExperiencesClient experiences={mockExperiences} />;
     }
 
-    const resp: GetEventsResponse = data;
+    const res: GetEventsResponse = data;
+
     return (
-      <ExperiencesClient
-        experiences={convertEventsToExperiences(resp.events)}
-      />
+      <ExperiencesClient experiences={convertEventsToExperiences(res.events)} />
     );
   } catch (error: any) {
     console.error(
       "Failed to fetch experiences from API, using static experiences:",
       error
-    );
-    // Fallback to static experiences if API fails
+    ); // Fallback to static experiences if API fails
+
     return <ExperiencesClient experiences={mockExperiences} />;
   }
 }

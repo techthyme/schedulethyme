@@ -1,6 +1,8 @@
-import { GetCalendarResponse } from "@/types/api";
+import { GetExperiencesResponse, GetCalendarResponse } from "@/types/api";
 import { serverApiClient } from "@/lib/server";
-import CalendarClient from "@/components/client/events";
+import { convertEventsToExperiences } from "@/lib";
+import ExperiencesClient from "@/components/client/experiences";
+import { mockEvents } from "@/data";
 // import { serializeServerSideSearchParams } from "@/utils";
 // Initially gets and hydrates the Events data.
 interface SVR_CalendarProps {
@@ -32,9 +34,14 @@ export default async function SVR_Events({ eventId }: SVR_CalendarProps) {
       return <div>Error getting events from api</div>;
     }
 
-    const resp: GetCalendarResponse = data;
+    const calendarRes: GetCalendarResponse = data;
+    const res: GetExperiencesResponse = {
+      page: 1,
+      total: 50,
+      experiences: convertEventsToExperiences(mockEvents),
+    };
 
-    return <CalendarClient events={resp.events} />;
+    return <ExperiencesClient experiences={res.experiences} />;
   } catch (error: any) {
     // errorLogger(`failed to get Events with '${url}'`, error.toJSON());
     console.error("error not json: ", error);

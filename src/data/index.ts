@@ -1,8 +1,8 @@
-import { Event, HeroSection, Profile, User } from "@/types";
+import { Calendar, Event, Experience, HeroSection, Profile, Resource, User } from "@/types";
 import {ProfileDashboardData} from "@/types";
 import { AboutUsData } from "@/types";
 
-export const mockEvents: Event[] = [
+export const _mockEvents: Event[] = [
   {
     id: "1",
     title: "Sunset Beach Yoga",
@@ -264,6 +264,21 @@ export const mockEvents: Event[] = [
 
 export const mockProfiles: Profile[] = [
   {
+    id: "22", 
+    name: "the guy", 
+    user: {
+      id: "user-123",
+      name: "Antonio Rosario",
+      email: "antonio@gmail.com",
+      phone: "+1 (555) 987-6543",
+      organization: "TechThyme",
+      avatarUrl:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
+    },
+    bio: "Educator and developer building AI-powered solutions in the Virgin Islands 🌴🤖",
+
+  },
+  {
     id: "1",
     name: "Alice Johnson",
     avatarUrl: "https://i.pravatar.cc/150?img=1",
@@ -453,8 +468,10 @@ export const aboutUsData: AboutUsData = {
   ]
 };
 
+export const mockExperiences: Experience[] = []
+
 // Google Calendar-style events for St. Thomas, USVI
-export const calendarEvents: Event[] = [
+export const mockEvents: Event[] = [
   {
     id: "calendar-1",
     title: "Business Workshop: Starting Your Island Business",
@@ -603,3 +620,18 @@ export const calendarEvents: Event[] = [
     registrationDeadline: "2025-10-10"
   }
 ];
+
+export const mockResources: Resource[] =[
+  {
+    id: "1",
+    name: "nadine", 
+    type: "trainer",
+  },
+]
+
+export const calendars: Calendar[] =[
+  {
+    id: "1",
+    name: "nadine's calendar", 
+  },
+]

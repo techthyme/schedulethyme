@@ -1,28 +1,33 @@
-// src/components/AttendanceModal.tsx
+// src/components/ExperienceModal.tsx
 
-import { useState } from 'react';
-import { AttendeeInfo } from '@/types';
+import { useState } from "react";
+import { AttendeeInfo } from "@/types";
 
-interface AttendanceModalProps {
+interface ExperienceModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSubmit: (attendeeInfo: AttendeeInfo) => void;
-  eventTitle: string;
+  experienceName: string;
 }
 
-export default function AttendanceModal({ isOpen, onClose, onSubmit, eventTitle }: AttendanceModalProps) {
+export default function ExperienceModal({
+  isOpen,
+  onClose,
+  onSubmit,
+  experienceName,
+}: ExperienceModalProps) {
   const [formData, setFormData] = useState<AttendeeInfo>({
-    name: '',
-    email: '',
-    phone: '',
-    organization: ''
+    name: "",
+    email: "",
+    phone: "",
+    organization: "",
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -30,7 +35,7 @@ export default function AttendanceModal({ isOpen, onClose, onSubmit, eventTitle 
     e.preventDefault();
     if (formData.name && formData.email) {
       onSubmit(formData);
-      setFormData({ name: '', email: '', phone: '', organization: '' });
+      setFormData({ name: "", email: "", phone: "", organization: "" });
       onClose();
     }
   };
@@ -45,16 +50,17 @@ export default function AttendanceModal({ isOpen, onClose, onSubmit, eventTitle 
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
             Register for Event
           </h2>
-          <p className="text-gray-600">
-            {eventTitle}
-          </p>
+          <p className="text-gray-600">{experienceName}</p>
         </div>
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Name Field */}
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Full Name *
             </label>
             <input
@@ -71,7 +77,10 @@ export default function AttendanceModal({ isOpen, onClose, onSubmit, eventTitle 
 
           {/* Email Field */}
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Email Address *
             </label>
             <input
@@ -88,7 +97,10 @@ export default function AttendanceModal({ isOpen, onClose, onSubmit, eventTitle 
 
           {/* Phone Field */}
           <div>
-            <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="phone"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Phone Number
             </label>
             <input
@@ -104,7 +116,10 @@ export default function AttendanceModal({ isOpen, onClose, onSubmit, eventTitle 
 
           {/* Organization Field */}
           <div>
-            <label htmlFor="organization" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="organization"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Organization
             </label>
             <input

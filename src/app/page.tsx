@@ -1,4 +1,4 @@
-import  HeroSection  from "@/components/ui/HeroSection";
+import  HeroSection  from "@/components/ui/hero";
 import { heroData, mockEvents } from "@/data";
 import Services from "@/components/ui/services";
 
