@@ -172,3 +172,18 @@ export interface AboutUsData {
   stats: Stat[];
   values: Value[];
 }
+
+// Add Event Modal Types
+export interface Facility {
+  id: string;
+  name: string; // e.g. "Commercial Kitchen(s)"
+}
+
+// What the modal collects before you hit "Book"
+export interface EventDraft {
+  facilityId?: string;    // chosen Facility.id
+  date?: string;          // "YYYY-MM-DD"
+  time?: string;          // "HH:mm"
+  durationMin?: number;   // e.g. 60
+  note?: string;
+}

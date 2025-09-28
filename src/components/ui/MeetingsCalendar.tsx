@@ -1,8 +1,11 @@
+import { useState } from 'react'
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
   PlusIcon,
 } from '@heroicons/react/20/solid'
+import AddEventModal from '@/components/ui/AddEventModal'
+import { EventDraft } from '@/types'
 
 interface CalendarEvent {
   id: number;
@@ -160,6 +163,14 @@ export default function MeetingsCalendar({
   title = "Upcoming meetings",
   className = ""
 }: MeetingsCalendarProps) {
+  const [isAddEventModalOpen, setIsAddEventModalOpen] = useState(false)
+  
+  console.log('Modal state:', isAddEventModalOpen)
+
+  const handleAddEvent = (eventDraft: EventDraft) => {
+    console.log('New event booking:', eventDraft)
+    // TODO: Handle the event booking submission
+  }
   return (
     <div className={`${className} bg-white rounded-lg`}>
       {/* Header */}
@@ -189,7 +200,13 @@ export default function MeetingsCalendar({
           </button>
         </div>
 
-        <button className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition">
+        <button 
+          onClick={() => {
+            console.log('Add Event button clicked!')
+            setIsAddEventModalOpen(true)
+          }}
+          className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition"
+        >
           <PlusIcon className="w-4 h-4" />
           Add Event
         </button>
@@ -265,6 +282,13 @@ export default function MeetingsCalendar({
           ))}
         </div>
       </div>
+
+      {/* Add Event Modal */}
+      <AddEventModal
+        isOpen={isAddEventModalOpen}
+        onClose={() => setIsAddEventModalOpen(false)}
+        onSubmit={handleAddEvent}
+      />
     </div>
   )
 }
