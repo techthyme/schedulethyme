@@ -3,7 +3,8 @@ import { useState } from "react";
 import EventGrid from "@/components/ui/eventgrid";
 import Calendar from "@/components/ui/calendar";
 import { Event } from "@/types";
-
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 interface EventsClientProps {
   events: Event[];
 }
@@ -102,6 +103,10 @@ export default function EventsClient({ events }: EventsClientProps) {
           selectedDate={selectedDate}
           onClearFilter={clearFilter}
         />
+
+
+
+
         <Calendar 
           events={events} 
           onDateClick={handleDateClick}

@@ -10,107 +10,114 @@ interface EventGridItemProps {
   onClick: () => void;
 }
 
-export  function EventGridItem({ event, onClick }: EventGridItemProps) {
+export function EventGridItem({ event, onClick }: EventGridItemProps) {
   const formatEventDate = (timestamp: number) => {
     const date = new Date(timestamp * 1000);
-    const month = date.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
+    const month = date.toLocaleDateString('en-US', { month: 'short' });
     const day = date.getDate();
-    return { month, day };
+    return `${month} ${day}`;
   };
-
-  const { month, day } = formatEventDate(event.dateStart);
 
   return (
     <div
-      className="group cursor-pointer transition-all duration-300 hover:transform hover:scale-[1.02]"
+      className="group cursor-pointer transition-all duration-300 hover:shadow-lg"
       onClick={onClick}
     >
-      <div className="flex gap-6 p-6">
-        {/* Date Column */}
-        <div className="flex-shrink-0 text-center">
-          <div className="text-sm font-light text-gray-500 mb-1">{month}</div>
-          <div className="text-4xl font-extralight text-gray-900">{day}</div>
-        </div>
-
+      <div className="bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-gray-300 transition-all">
         {/* Image */}
-        <div className="flex-shrink-0">
-          <div className="relative w-80 h-48 overflow-hidden rounded-2xl bg-gray-100">
-            {event.imageUrl ? (
-              <img
-                src={event.imageUrl}
-                alt={event.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            ) : (
-              <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
-                <svg
-                  className="w-16 h-16 text-gray-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                </svg>
-              </div>
-            )}
-            
-            {/* Status badge */}
-            <div className="absolute top-3 left-3">
-              <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-light ${
-                event.status === "upcoming" || event.status === "scheduled" 
-                  ? "bg-green-50 text-green-700 ring-1 ring-green-600/20" 
-                  : event.status === "ongoing" 
-                  ? "bg-blue-50 text-blue-700 ring-1 ring-blue-600/20" 
-                  : event.status === "completed" 
-                  ? "bg-gray-50 text-gray-700 ring-1 ring-gray-600/20" 
-                  : "bg-red-50 text-red-700 ring-1 ring-red-600/20"
-              }`}>
-                {event.status === "upcoming" || event.status === "scheduled" ? "Scheduled" : event.status === "ongoing" ? "Live" : event.status === "completed" ? "Done" : "Cancelled"}
-              </span>
+        <div className="relative aspect-[4/3] overflow-hidden">
+          {event.imageUrl ? (
+            <img
+              src={event.imageUrl}
+              alt={event.title}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
+              <svg
+                className="w-16 h-16 text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={1.5}
+                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
             </div>
+          )}
+          
+          {/* Status badge */}
+          <div className="absolute top-3 left-3">
+            <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium ${
+              event.status === "upcoming" || event.status === "scheduled" 
+                ? "bg-green-500 text-white" 
+                : event.status === "ongoing" 
+                ? "bg-blue-500 text-white" 
+                : event.status === "completed" 
+                ? "bg-gray-500 text-white" 
+                : "bg-red-500 text-white"
+            }`}>
+              {event.status === "upcoming" || event.status === "scheduled" ? "Scheduled" : 
+               event.status === "ongoing" ? "Live" : 
+               event.status === "completed" ? "Done" : "Cancelled"}
+            </span>
+          </div>
 
-            {/* Price badge */}
-            {event.price && (
-              <div className="absolute top-3 right-3">
-                <span className="inline-flex items-center px-2 py-1 bg-gray-900 text-white rounded-full text-xs font-light">
-                  ${event.price}
-                </span>
-              </div>
-            )}
+          {/* Heart icon (like Airbnb) */}
+          <div className="absolute top-3 right-3">
+            <button className="p-2 hover:bg-black/10 rounded-full transition-colors">
+              <svg className="w-5 h-5 text-gray-700 hover:text-red-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+            </button>
           </div>
         </div>
 
         {/* Content */}
-        <div className="flex-1 min-w-0">
-          <h3 className="text-2xl font-light tracking-tight text-gray-900 mb-3 group-hover:text-gray-700 transition-colors">
-            {event.title}
-          </h3>
-          
-          <div className="text-sm font-light text-gray-500 mb-2">
+        <div className="p-4">
+          {/* Location */}
+          <div className="text-sm text-gray-600 mb-1 truncate">
             {event.location || event.place}
           </div>
           
-          <div className="text-sm font-light text-gray-500 mb-4">
-            {event.time || "Time TBD"}
+          {/* Title */}
+          <h3 className="font-medium text-gray-900 mb-1 line-clamp-2 leading-tight">
+            {event.title}
+          </h3>
+          
+          {/* Date */}
+          <div className="text-sm text-gray-600 mb-2">
+            {formatEventDate(event.dateStart)}
+            {event.time && ` • ${event.time}`}
           </div>
 
-          {event.description && (
-            <p className="text-gray-600 font-light leading-relaxed mb-6 line-clamp-3">
-              {event.description}
-            </p>
-          )}
-
-          <button className="inline-flex items-center text-sm font-light text-gray-600 hover:text-gray-900 transition-colors group">
-            View Event Details
-            <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </button>
+          {/* Price */}
+          <div className="flex items-center justify-between">
+            <div>
+              {event.price ? (
+                <div className="text-base font-semibold text-gray-900">
+                  ${event.price}
+                  <span className="text-sm font-normal text-gray-600"> per person</span>
+                </div>
+              ) : (
+                <div className="text-base font-semibold text-green-600">
+                  Free
+                </div>
+              )}
+            </div>
+            
+            {/* Rating (placeholder) */}
+            <div className="flex items-center gap-1">
+              <svg className="w-4 h-4 text-gray-900" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg>
+              <span className="text-sm text-gray-900 font-medium">4.9</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -161,20 +168,25 @@ export default function EventGrid({
   return (
     <>
       <div className="pt-24 pb-16">
-        <div className="mx-auto max-w-6xl px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mb-16">
             {/* Header */}
             <div className="mb-8">
               <h2 className="text-3xl font-light tracking-tight text-gray-900">
                 {title || "Upcoming Events"}
               </h2>
+              {description && (
+                <p className="mt-4 text-lg text-gray-600 max-w-3xl">
+                  {description}
+                </p>
+              )}
             </div>
 
             {selectedDate && onClearFilter && (
               <div className="mb-8">
                 <button
                   onClick={onClearFilter}
-                  className="inline-flex items-center px-4 py-2 text-sm font-light text-gray-600 bg-gray-50 border border-gray-200 rounded-lg hover:bg-gray-100 transition-colors"
+                  className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-600 bg-gray-50 border border-gray-200 rounded-lg hover:bg-gray-100 transition-colors"
                 >
                   <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
@@ -185,28 +197,23 @@ export default function EventGrid({
             )}
           </div>
           
-          {/* Vertical event list */}
-          <div className="space-y-4">
-            {events.slice(0, 6).map((event, index) => (
-              <div key={event.id}>
-                <EventGridItem
-                  event={event}
-                  onClick={() => handleEventClick(event.id)}
-                />
-                {index < events.slice(0, 6).length - 1 && (
-                  <hr className="border-gray-200 my-6" />
-                )}
-              </div>
+          {/* Grid layout - Airbnb style */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {events.map((event) => (
+              <EventGridItem
+                key={event.id}
+                event={event}
+                onClick={() => handleEventClick(event.id)}
+              />
             ))}
           </div>
 
-          {description && (
-            <div className="mt-12 text-center">
-              <p className="mx-auto max-w-3xl text-lg font-light text-gray-600 leading-relaxed">
-                {description}
-              </p>
-            </div>
-          )}
+          {/* View More Button */}
+          <div className="mt-12 text-center">
+            <button className="bg-gray-900 hover:bg-gray-800 text-white rounded-full px-8 py-3 font-light shadow-lg transition-all duration-200 hover:shadow-xl">
+              View More
+            </button>
+          </div>
         </div>
       </div>
 
