@@ -14,11 +14,81 @@ export default function ProfileClient({ data }: ProfileClientProps) {
 
   return (
     <div className="bg-gradient-to-br from-indigo-100/20 pt-24 pb-12 sm:pt-32 sm:pb-16 relative isolate overflow-hidden">
+      {/* Profile Page - Prominent Scattered Geometric Blur Background */}
+      <div className="absolute inset-0 -z-30 overflow-hidden">
+        {/* Top-right large teal geometric blur */}
+        <div 
+          className="absolute w-[650px] h-[450px] -top-20 right-1/6 opacity-85"
+          style={{
+            background: 'linear-gradient(45deg, rgba(20, 184, 166, 0.8) 0%, rgba(13, 148, 136, 0.6) 40%, rgba(45, 212, 191, 0.4) 80%, transparent 100%)',
+            borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%',
+            filter: 'blur(120px)',
+            transform: 'rotate(25deg)',
+            animation: 'float1 35s ease-in-out infinite'
+          }}
+        />
+        
+        {/* Left-side prominent vertical indigo strip */}
+        <div 
+          className="absolute w-[350px] h-[900px] -left-24 top-1/6 opacity-90"
+          style={{
+            background: 'linear-gradient(180deg, rgba(99, 102, 241, 0.9) 0%, rgba(129, 140, 248, 0.7) 40%, rgba(165, 180, 252, 0.5) 80%, transparent 100%)',
+            borderRadius: '20% 80% 80% 20% / 40% 60% 40% 60%',
+            filter: 'blur(100px)',
+            animation: 'float2 30s ease-in-out infinite'
+          }}
+        />
+        
+        {/* Bottom-center large purple circle */}
+        <div 
+          className="absolute w-[700px] h-[700px] left-1/2 -bottom-40 -translate-x-1/2 opacity-75"
+          style={{
+            background: 'radial-gradient(circle, rgba(147, 51, 234, 0.7) 0%, rgba(168, 85, 247, 0.5) 50%, rgba(196, 181, 253, 0.3) 80%, transparent 100%)',
+            borderRadius: '50%',
+            filter: 'blur(140px)',
+            animation: 'float3 26s ease-in-out infinite reverse'
+          }}
+        />
+        
+        {/* Larger accent bubbles */}
+        <div 
+          className="absolute w-[280px] h-[280px] right-1/4 top-1/3 opacity-70"
+          style={{
+            background: 'radial-gradient(circle, rgba(236, 72, 153, 0.7) 0%, rgba(219, 39, 119, 0.5) 50%, rgba(168, 85, 247, 0.3) 80%, transparent 100%)',
+            borderRadius: '50%',
+            filter: 'blur(90px)',
+            animation: 'float4 20s ease-in-out infinite'
+          }}
+        />
+        
+        <div 
+          className="absolute w-[350px] h-[250px] left-1/5 bottom-1/4 opacity-80"
+          style={{
+            background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.7) 0%, rgba(99, 102, 241, 0.5) 60%, rgba(139, 92, 246, 0.3) 100%)',
+            borderRadius: '40% 60% 60% 40% / 50% 50% 50% 50%',
+            filter: 'blur(95px)',
+            animation: 'float1 24s ease-in-out infinite reverse'
+          }}
+        />
+        
+        {/* Additional vibrant accent */}
+        <div 
+          className="absolute w-[400px] h-[200px] right-1/3 bottom-1/5 opacity-65"
+          style={{
+            background: 'linear-gradient(60deg, rgba(168, 85, 247, 0.6) 0%, rgba(139, 92, 246, 0.4) 70%, transparent 100%)',
+            borderRadius: '50% 50% 30% 70% / 60% 40% 60% 40%',
+            filter: 'blur(85px)',
+            animation: 'float3 28s ease-in-out infinite'
+          }}
+        />
+      </div>
+      
       {/* Background streak */}
       <div
         aria-hidden="true"
         className="absolute inset-y-0 right-1/2 -z-10 -mr-96 w-[200%] origin-top-right skew-x-[-30deg] bg-white shadow-xl ring-1 shadow-indigo-600/10 ring-indigo-50 sm:-mr-80 lg:-mr-96"
       />
+      
       <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-6 lg:grid-rows-2">
           {/* Profile Card - Mobile Style */}
@@ -257,7 +327,6 @@ export default function ProfileClient({ data }: ProfileClientProps) {
                 <p className="mt-2 text-lg font-light tracking-tight text-gray-950">
                   Today&apos;s Events
                 </p>
-
                 <div className="mt-4 space-y-4">
                   {todaysEvents.slice(0, 3).map((event, index) => (
                     <div

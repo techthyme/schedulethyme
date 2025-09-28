@@ -54,24 +54,49 @@ export default function HeroClient({ hero }: HeroClientProps) {
           className="absolute inset-y-0 right-1/2 -z-10 -mr-96 w-[200%] origin-top-right skew-x-[-30deg] bg-white shadow-xl ring-1 shadow-indigo-600/10 ring-indigo-50 sm:-mr-80 lg:-mr-96"
         />
         
-        {/* Wavy Gradient Background */}
+        {/* Blue-Purple Abstract Blur Background */}
         <div className="absolute inset-0 w-full h-full overflow-hidden" style={{zIndex: -20}}>
+          {/* Large purple blur on the left */}
           <div 
-            className="absolute inset-0 w-[120%] h-[120%] -left-[10%] -top-[10%] opacity-30"
+            className="absolute w-96 h-96 -left-20 top-1/4 opacity-60"
             style={{
-              background: 'linear-gradient(135deg, rgba(165, 180, 252, 0.3) 0%, rgba(196, 181, 253, 0.2) 50%, rgba(165, 180, 252, 0.1) 100%)',
-              borderRadius: '50% 40% 60% 30%',
-              transform: 'rotate(-5deg)',
-              animation: 'wave1 20s ease-in-out infinite'
+              background: 'radial-gradient(circle, rgba(147, 51, 234, 0.4) 0%, rgba(168, 85, 247, 0.3) 35%, rgba(196, 181, 253, 0.2) 70%, transparent 100%)',
+              borderRadius: '50%',
+              filter: 'blur(80px)',
+              animation: 'float1 30s ease-in-out infinite'
             }}
           />
+          
+          {/* Medium blue blur on the right */}
           <div 
-            className="absolute inset-0 w-[130%] h-[130%] -right-[15%] -bottom-[15%] opacity-20"
+            className="absolute w-80 h-80 -right-16 top-1/3 opacity-50"
             style={{
-              background: 'linear-gradient(45deg, rgba(196, 181, 253, 0.25) 0%, rgba(139, 92, 246, 0.15) 50%, rgba(165, 180, 252, 0.1) 100%)',
-              borderRadius: '40% 60% 30% 50%',
-              transform: 'rotate(5deg)',
-              animation: 'wave2 25s ease-in-out infinite reverse'
+              background: 'radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, rgba(99, 102, 241, 0.3) 40%, rgba(165, 180, 252, 0.2) 75%, transparent 100%)',
+              borderRadius: '50%',
+              filter: 'blur(70px)',
+              animation: 'float2 25s ease-in-out infinite reverse'
+            }}
+          />
+          
+          {/* Small violet blur in center */}
+          <div 
+            className="absolute w-64 h-64 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-40"
+            style={{
+              background: 'radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, rgba(168, 85, 247, 0.2) 50%, transparent 100%)',
+              borderRadius: '50%',
+              filter: 'blur(60px)',
+              animation: 'float3 20s ease-in-out infinite'
+            }}
+          />
+          
+          {/* Additional subtle pink accent */}
+          <div 
+            className="absolute w-72 h-72 right-1/4 bottom-1/4 opacity-30"
+            style={{
+              background: 'radial-gradient(circle, rgba(236, 72, 153, 0.3) 0%, rgba(219, 39, 119, 0.2) 40%, transparent 100%)',
+              borderRadius: '50%',
+              filter: 'blur(90px)',
+              animation: 'float4 35s ease-in-out infinite'
             }}
           />
         </div>

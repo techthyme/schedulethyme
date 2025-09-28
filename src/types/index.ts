@@ -110,6 +110,7 @@ export interface TodayEvent {
   time: string;
   location: string;
   canAttend: boolean;
+  type?: "training" | "consultation" | "facility_booking";
 }
 
 

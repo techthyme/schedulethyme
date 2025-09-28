@@ -429,6 +429,16 @@ export const heroData: HeroSection = {
   },
 };
 
+export const heroImages: string[] = [
+  "/portrait-of-a-businessman-holding-glasses-looking-2024-10-19-04-33-11-utc.jpg",
+  "/unrecognizable-woman-raising-hand-during-conferenc-2025-02-10-09-49-36-utc.jpg",
+  "/a-young-business-woman-sitting-in-the-office-looki-2025-03-13-01-23-25-utc.jpg",
+  "/contemporary-young-people-in-business-meeting-2025-03-07-09-29-24-utc.jpg",
+  "/group-of-engineers-analyzing-the-results-of-techno-2025-01-09-06-23-16-utc.jpg",
+  "/young-speaker-talking-to-audience-at-conference-2025-03-09-23-13-04-utc.jpg",
+];
+
+
 //about
 export const aboutUsData: AboutUsData = {
   stats: [
