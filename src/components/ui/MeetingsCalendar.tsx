@@ -164,8 +164,6 @@ export default function MeetingsCalendar({
   className = ""
 }: MeetingsCalendarProps) {
   const [isAddEventModalOpen, setIsAddEventModalOpen] = useState(false)
-  
-  console.log('Modal state:', isAddEventModalOpen)
 
   const handleAddEvent = (eventDraft: EventDraft) => {
     console.log('New event booking:', eventDraft)
@@ -201,10 +199,7 @@ export default function MeetingsCalendar({
         </div>
 
         <button 
-          onClick={() => {
-            console.log('Add Event button clicked!')
-            setIsAddEventModalOpen(true)
-          }}
+          onClick={() => setIsAddEventModalOpen(true)}
           className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition"
         >
           <PlusIcon className="w-4 h-4" />

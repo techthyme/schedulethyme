@@ -187,3 +187,27 @@ export interface EventDraft {
   durationMin?: number;   // e.g. 60
   note?: string;
 }
+
+// Training Types
+// filter chips
+export type TrainingCategory = "food" | "business" | "tech" | "hybrid";
+
+// a row/card in the list
+export interface Training {
+  id: string;
+  title: string;
+  category: TrainingCategory;
+  when: string;        // ISO datetime, e.g. "2025-10-12T14:00:00"
+}
+
+// current filter
+export interface TrainingFilters {
+  category?: TrainingCategory;
+}
+
+// registration payload
+export interface Registration {
+  trainingId: string;
+  name: string;
+  email: string;
+}
