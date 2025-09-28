@@ -1,3 +1,5 @@
+import { Event, Experience } from "@/types";
+
 export const errorLogger = (msg: string, error: any) => {
   const err = error; // your error object
 
@@ -23,3 +25,17 @@ export const errorLogger = (msg: string, error: any) => {
       `→ Origin: ${origin}\n`,
   );
 };
+
+
+
+
+export function convertEventsToExperiences(events: Event[]): Experience[]{
+  return events.map((event) => {
+    return {
+      id: event.id,
+      name: event.title,
+      type: "event",
+      event,
+    };
+  })
+} 

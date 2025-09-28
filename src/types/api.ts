@@ -1,4 +1,29 @@
-import { Event, Profile, ProfileDashboardData} from "@/types";
+import { Event, Profile, Resource, Experience} from "@/types";
+
+
+export interface GetExperiencesResponse {
+  experiences: Experience[];
+  page: number;
+  total: number;
+}
+
+export interface CreateResourceRequest {
+  resource: Resource;
+}
+
+export interface CreateResourceResponse {
+  id: string;
+}
+
+export interface GetResourcesRequest {
+  query: Query;
+}
+
+export interface GetResourcesResponse {
+  resources: Resource[];
+  page: number; 
+  total: number;
+}
 
 export interface CreateProfileRequest {
   profile: Profile;

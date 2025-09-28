@@ -1,140 +1,135 @@
-import { Event, HeroSection, Profile, User } from "@/types";
-import { ProfileDashboardData } from "@/types";
+import { Calendar, Event, Experience, HeroSection, Profile, Resource, User } from "@/types";
 import { AboutUsData } from "@/types";
 
-export const mockEvents: Event[] = [
+export const _mockEvents: Event[] = [
   {
     id: "1",
-    title: "Business Workshop",
+    title: "Sunset Beach Yoga",
     dateStart: 1758709200,
     dateEnd: 1758716400,
-    location: "UVI Innovation Lab, St. Thomas",
+    location: "Miami Beach, FL",
     type: "training",
     date: "",
     place: "",
     description:
-      "Learn essential business strategies for Virgin Island entrepreneurs.",
-    price: 25,
-    imageUrl: "https://picsum.photos/seed/business/400/250",
+      "Join us for a relaxing yoga session as the sun sets over the ocean.",
+    price: 20,
+    imageUrl: "https://picsum.photos/seed/yoga/400/250",
     status: "scheduled",
   },
   {
     id: "2",
-    title: "Digital Marketing Training",
+    title: "Farm-to-Table Dinner",
     dateStart: 1758795600,
-    location: "Charlotte Amalie Community Center",
+    location: "Napa Valley, CA",
     type: "training",
     date: "",
     place: "",
     description:
-      "Master social media and online marketing for Caribbean businesses.",
-    price: 50,
-    imageUrl: "https://picsum.photos/seed/marketing/400/250",
+      "A five-course dining experience featuring locally sourced ingredients.",
+    price: 120,
+    imageUrl: "https://picsum.photos/seed/dinner/400/250",
     status: "scheduled",
   },
   {
     id: "3",
-    title: "Food Safety Certification",
+    title: "Tech Startup Pitch Night",
     dateStart: 1758882000,
-    location: "Commercial Kitchen, St. John",
+    location: "Austin, TX",
     type: "training",
     date: "",
     place: "",
-    description: "Get certified in food safety and handling regulations.",
-    price: 75,
-    imageUrl: "https://picsum.photos/seed/food/400/250",
-    status: "scheduled",
+    description: "Watch startups pitch their ideas to a panel of investors.",
+    imageUrl: "https://picsum.photos/seed/pitch/400/250",
+    status: "cancelled",
   },
   {
     id: "4",
-    title: "Tech Skills Bootcamp",
+    title: "Outdoor Movie Screening: Inception",
     dateStart: 1758968400,
-    location: "UVI Training Center, St. Croix",
+    location: "Central Park, NY",
     type: "training",
     date: "",
     place: "",
-    description: "Learn coding basics and digital skills for modern careers.",
-    imageUrl: "https://picsum.photos/seed/tech/400/250",
-    status: "scheduled",
+    description: "Bring a blanket and enjoy a free outdoor movie night.",
+    imageUrl: "https://picsum.photos/seed/movie/400/250",
+    status: "cancelled",
   },
   {
     id: "5",
-    title: "Tourism Planning Session",
+    title: "Live Jazz Night",
     dateStart: 1759054800,
-    location: "Paradise Point, St. Thomas",
-    type: "consultation",
+    location: "New Orleans, LA",
+    type: "training",
     date: "",
     place: "",
-    description: "Strategic planning for Virgin Islands tourism businesses.",
-    price: 35,
-    imageUrl: "https://picsum.photos/seed/tourism/400/250",
-    status: "scheduled",
+    description: "Experience smooth jazz performed by local musicians.",
+    price: 15,
+    imageUrl: "https://picsum.photos/seed/jazz/400/250",
+    status: "cancelled",
   },
   {
     id: "6",
-    title: "Marine Conservation Workshop",
+    title: "Art & Wine Festival",
     dateStart: 1759141200,
     dateEnd: 1759227600,
-    location: "Coral World Ocean Park",
+    location: "Sonoma, CA",
     type: "training",
     date: "",
     place: "",
-    description: "Learn about protecting Caribbean marine ecosystems.",
+    description: "Browse art exhibits while enjoying local wines.",
     price: 40,
-    imageUrl: "https://picsum.photos/seed/marine/400/250",
-    status: "scheduled",
+    imageUrl: "https://picsum.photos/seed/artwine/400/250",
+    status: "cancelled",
   },
   {
     id: "7",
-    title: "Financial Planning Seminar",
+    title: "Coding Bootcamp Demo Day",
     dateStart: 1759314000,
-    location: "Red Hook Plaza, St. Thomas",
-    type: "consultation",
-    date: "",
-    place: "",
-    description: "Personal and business financial planning strategies.",
-    price: 30,
-    imageUrl: "https://picsum.photos/seed/finance/400/250",
-    status: "scheduled",
-  },
-  {
-    id: "8",
-    title: "Culinary Arts Training",
-    dateStart: 1759400400,
-    location: "Frenchtown Community Kitchen, St. Thomas",
+    location: "San Francisco, CA",
     type: "training",
     date: "",
     place: "",
-    description: "Master Caribbean fusion cooking techniques and recipes.",
-    price: 60,
-    imageUrl: "https://picsum.photos/seed/culinary/400/250",
-    status: "scheduled",
+    description: "Meet graduates showcasing their final tech projects.",
+    imageUrl: "https://picsum.photos/seed/bootcamp/400/250",
+    status: "cancelled",
+  },
+  {
+    id: "8",
+    title: "Community Beach Cleanup",
+    dateStart: 1759400400,
+    location: "Santa Monica, CA",
+    type: "training",
+    date: "",
+    place: "",
+    description: "Help keep the beach clean and safe for everyone.",
+    imageUrl: "https://picsum.photos/seed/cleanup/400/250",
+    status: "cancelled",
   },
   {
     id: "9",
-    title: "Leadership Development",
+    title: "Wine & Paint Night",
     dateStart: 1759486800,
-    location: "Reichhold Center, St. Thomas",
-    type: "consultation",
+    location: "Chicago, IL",
+    type: "training",
     date: "",
     place: "",
-    description: "Build essential leadership skills for Caribbean professionals.",
-    price: 45,
-    imageUrl: "https://picsum.photos/seed/leadership/400/250",
-    status: "scheduled",
+    description: "Unleash your creativity while enjoying a glass of wine.",
+    price: 35,
+    imageUrl: "https://picsum.photos/seed/paint/400/250",
+    status: "cancelled",
   },
   {
     id: "10",
-    title: "Small Business Mentoring",
+    title: "Startup Networking Mixer",
     dateStart: 1759573200,
-    location: "Cruz Bay Business Center, St. John",
-    type: "consultation",
+    location: "Boston, MA",
+    type: "training",
     date: "",
     place: "",
-    description: "One-on-one guidance for growing your Virgin Islands business.",
-    price: 80,
-    imageUrl: "https://picsum.photos/seed/mentoring/400/250",
-    status: "scheduled",
+    description: "Meet fellow entrepreneurs, investors, and professionals.",
+    imageUrl: "https://picsum.photos/seed/mixer/400/250",
+    status: "cancelled",
   },
   {
     id: "11",
@@ -268,6 +263,21 @@ export const mockEvents: Event[] = [
 
 export const mockProfiles: Profile[] = [
   {
+    id: "22", 
+    name: "the guy", 
+    user: {
+      id: "user-123",
+      name: "Antonio Rosario",
+      email: "antonio@gmail.com",
+      phone: "+1 (555) 987-6543",
+      organization: "TechThyme",
+      avatarUrl:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
+    },
+    bio: "Educator and developer building AI-powered solutions in the Virgin Islands 🌴🤖",
+
+  },
+  {
     id: "1",
     name: "Alice Johnson",
     avatarUrl: "https://i.pravatar.cc/150?img=1",
@@ -377,108 +387,60 @@ export const mockProfiles: Profile[] = [
   },
 ];
 
-//profile
-export const profileDashboardData: ProfileDashboardData = {
-  user: {
-    id: "user-123",
-    name: "John Smith",
-    email: "john.smith@email.com",
-    phone: "+1 (555) 123-4567",
-    organization: "Tech Solutions Inc",
-    avatarUrl:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
-  },
-  bio: "Software developer and entrepreneur focused on building innovative solutions and growing businesses.",
-  todaysEvents: [
-    {
-      id: "1",
-      title: "React Training Workshop",
-      time: "10:00 AM",
-      location: "Conference Room A",
-      canAttend: true,
-    },
-    {
-      id: "2",
-      title: "Business Consultation",
-      time: "2:30 PM",
-      location: "Office 205",
-      canAttend: false,
-    },
-    {
-      id: "3",
-      title: "Kitchen Space Session",
-      time: "4:00 PM",
-      location: "Commercial Kitchen",
-      canAttend: true,
-    },
-  ],
-};
+
 
 export const heroData: HeroSection = {
   announcement: {
     text: "Announcing our next round of funding.",
     linkText: "Read more",
-    linkUrl: "#",
+    linkUrl: "#"
   },
   heading: "Data to enrich your online business",
-  description:
-    "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat.",
+  description: "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat.",
   primaryCTA: {
     text: "Get started",
-    url: "#",
+    url: "#"
   },
   secondaryCTA: {
     text: "Learn more",
-    url: "#",
-  },
+    url: "#"
+  }
 };
-
-export const heroImages: string[] = [
-  "/portrait-of-a-businessman-holding-glasses-looking-2024-10-19-04-33-11-utc.jpg",
-  "/unrecognizable-woman-raising-hand-during-conferenc-2025-02-10-09-49-36-utc.jpg",
-  "/a-young-business-woman-sitting-in-the-office-looki-2025-03-13-01-23-25-utc.jpg",
-  "/contemporary-young-people-in-business-meeting-2025-03-07-09-29-24-utc.jpg",
-  "/group-of-engineers-analyzing-the-results-of-techno-2025-01-09-06-23-16-utc.jpg",
-  "/young-speaker-talking-to-audience-at-conference-2025-03-09-23-13-04-utc.jpg",
-];
-
 
 //about
 export const aboutUsData: AboutUsData = {
   stats: [
     { label: "Team Members", value: "4" },
     { label: "Spaces Available", value: "50+" },
-    { label: "Events Hosted", value: "1000+" },
+    { label: "Events Hosted", value: "1000+" }
   ],
   values: [
     {
       title: "Simplicity",
-      description:
-        "We make event hosting and space booking effortless with intuitive scheduling tools.",
+      description: "We make event hosting and space booking effortless with intuitive scheduling tools."
     },
     {
       title: "Accessibility",
-      description:
-        "Connecting event organizers with the perfect spaces for seminars, workshops, and gatherings.",
+      description: "Connecting event organizers with the perfect spaces for seminars, workshops, and gatherings."
     },
     {
       title: "Community",
-      description:
-        "Building a platform that brings people together through seamless event experiences.",
-    },
-  ],
+      description: "Building a platform that brings people together through seamless event experiences."
+    }
+  ]
 };
 
+export const mockExperiences: Experience[] = []
+
 // Google Calendar-style events for St. Thomas, USVI
-export const calendarEvents: Event[] = [
+export const mockEvents: Event[] = [
   {
     id: "calendar-1",
     title: "Business Workshop: Starting Your Island Business",
-    dateStart: Math.floor(new Date("2025-10-01T09:00:00").getTime() / 1000),
-    dateEnd: Math.floor(new Date("2025-10-01T12:00:00").getTime() / 1000),
+    dateStart: Math.floor(new Date('2025-10-01T09:00:00').getTime() / 1000),
+    dateEnd: Math.floor(new Date('2025-10-01T12:00:00').getTime() / 1000),
     location: "UVI Innovation Lab, St. Thomas",
-    description:
-      "Learn the essentials of starting a business in the US Virgin Islands. Topics include permits, taxes, and local regulations.",
+    description: "Learn the essentials of starting a business in the US Virgin Islands. Topics include permits, taxes, and local regulations.",
     price: 75,
     imageUrl: "https://picsum.photos/seed/workshop1/400/250",
     status: "scheduled",
@@ -487,25 +449,22 @@ export const calendarEvents: Event[] = [
     time: "9:00 AM",
     timezone: "America/St_Thomas",
     place: "UVI Innovation Lab, St. Thomas",
-    instructors: [
-      {
-        name: "Maria Rodriguez",
-        title: "Business Development Specialist",
-      },
-    ],
+    instructors: [{
+      name: "Maria Rodriguez",
+      title: "Business Development Specialist"
+    }],
     maxAttendees: 25,
     currentAttendees: 18,
     registrationRequired: true,
-    registrationDeadline: "2025-09-29",
+    registrationDeadline: "2025-09-29"
   },
   {
     id: "calendar-2",
     title: "Tech Training: Digital Marketing for Caribbean Businesses",
-    dateStart: Math.floor(new Date("2025-10-03T14:00:00").getTime() / 1000),
-    dateEnd: Math.floor(new Date("2025-10-03T17:00:00").getTime() / 1000),
+    dateStart: Math.floor(new Date('2025-10-03T14:00:00').getTime() / 1000),
+    dateEnd: Math.floor(new Date('2025-10-03T17:00:00').getTime() / 1000),
     location: "Charlotte Amalie Community Center, St. Thomas",
-    description:
-      "Master social media marketing, Google Ads, and email campaigns specifically for Caribbean tourism and retail businesses.",
+    description: "Master social media marketing, Google Ads, and email campaigns specifically for Caribbean tourism and retail businesses.",
     price: 95,
     imageUrl: "https://picsum.photos/seed/digital/400/250",
     status: "scheduled",
@@ -514,25 +473,22 @@ export const calendarEvents: Event[] = [
     time: "2:00 PM",
     timezone: "America/St_Thomas",
     place: "Charlotte Amalie Community Center, St. Thomas",
-    instructors: [
-      {
-        name: "James Thompson",
-        title: "Digital Marketing Expert",
-      },
-    ],
+    instructors: [{
+      name: "James Thompson",
+      title: "Digital Marketing Expert"
+    }],
     maxAttendees: 30,
     currentAttendees: 22,
     registrationRequired: true,
-    registrationDeadline: "2025-10-01",
+    registrationDeadline: "2025-10-01"
   },
   {
     id: "calendar-3",
     title: "Tourism Industry Consultation Session",
-    dateStart: Math.floor(new Date("2025-10-05T10:00:00").getTime() / 1000),
-    dateEnd: Math.floor(new Date("2025-10-05T11:30:00").getTime() / 1000),
+    dateStart: Math.floor(new Date('2025-10-05T10:00:00').getTime() / 1000),
+    dateEnd: Math.floor(new Date('2025-10-05T11:30:00').getTime() / 1000),
     location: "Paradise Point Resort, St. Thomas",
-    description:
-      "One-on-one consultations for tourism businesses looking to expand or improve their services.",
+    description: "One-on-one consultations for tourism businesses looking to expand or improve their services.",
     price: 150,
     imageUrl: "https://picsum.photos/seed/tourism/400/250",
     status: "scheduled",
@@ -541,25 +497,22 @@ export const calendarEvents: Event[] = [
     time: "10:00 AM",
     timezone: "America/St_Thomas",
     place: "Paradise Point Resort, St. Thomas",
-    instructors: [
-      {
-        name: "Dr. Angela Davis",
-        title: "Tourism Development Consultant",
-      },
-    ],
+    instructors: [{
+      name: "Dr. Angela Davis",
+      title: "Tourism Development Consultant"
+    }],
     maxAttendees: 5,
     currentAttendees: 3,
     registrationRequired: true,
-    registrationDeadline: "2025-10-03",
+    registrationDeadline: "2025-10-03"
   },
   {
     id: "calendar-4",
     title: "Coral World Marine Science Workshop",
-    dateStart: Math.floor(new Date("2025-10-07T08:30:00").getTime() / 1000),
-    dateEnd: Math.floor(new Date("2025-10-07T16:00:00").getTime() / 1000),
+    dateStart: Math.floor(new Date('2025-10-07T08:30:00').getTime() / 1000),
+    dateEnd: Math.floor(new Date('2025-10-07T16:00:00').getTime() / 1000),
     location: "Coral World Ocean Park, St. Thomas",
-    description:
-      "Hands-on marine biology workshop including snorkeling, species identification, and conservation techniques.",
+    description: "Hands-on marine biology workshop including snorkeling, species identification, and conservation techniques.",
     price: 125,
     imageUrl: "https://picsum.photos/seed/marine/400/250",
     status: "scheduled",
@@ -568,29 +521,25 @@ export const calendarEvents: Event[] = [
     time: "8:30 AM",
     timezone: "America/St_Thomas",
     place: "Coral World Ocean Park, St. Thomas",
-    instructors: [
-      {
-        name: "Dr. Robert Martinez",
-        title: "Marine Biologist",
-      },
-      {
-        name: "Sarah Johnson",
-        title: "Conservation Specialist",
-      },
-    ],
+    instructors: [{
+      name: "Dr. Robert Martinez",
+      title: "Marine Biologist"
+    }, {
+      name: "Sarah Johnson",
+      title: "Conservation Specialist"
+    }],
     maxAttendees: 15,
     currentAttendees: 12,
     registrationRequired: true,
-    registrationDeadline: "2025-10-05",
+    registrationDeadline: "2025-10-05"
   },
   {
     id: "calendar-5",
     title: "Culinary Arts: Caribbean Fusion Cooking",
-    dateStart: Math.floor(new Date("2025-10-09T16:00:00").getTime() / 1000),
-    dateEnd: Math.floor(new Date("2025-10-09T19:00:00").getTime() / 1000),
+    dateStart: Math.floor(new Date('2025-10-09T16:00:00').getTime() / 1000),
+    dateEnd: Math.floor(new Date('2025-10-09T19:00:00').getTime() / 1000),
     location: "Frenchtown Community Kitchen, St. Thomas",
-    description:
-      "Learn to create modern Caribbean fusion dishes using local ingredients and traditional techniques.",
+    description: "Learn to create modern Caribbean fusion dishes using local ingredients and traditional techniques.",
     price: 85,
     imageUrl: "https://picsum.photos/seed/cooking/400/250",
     status: "scheduled",
@@ -599,25 +548,22 @@ export const calendarEvents: Event[] = [
     time: "4:00 PM",
     timezone: "America/St_Thomas",
     place: "Frenchtown Community Kitchen, St. Thomas",
-    instructors: [
-      {
-        name: "Chef Marcus Williams",
-        title: "Executive Chef",
-      },
-    ],
+    instructors: [{
+      name: "Chef Marcus Williams",
+      title: "Executive Chef"
+    }],
     maxAttendees: 12,
     currentAttendees: 8,
     registrationRequired: true,
-    registrationDeadline: "2025-10-07",
+    registrationDeadline: "2025-10-07"
   },
   {
     id: "calendar-6",
     title: "Financial Planning Workshop for Small Business",
-    dateStart: Math.floor(new Date("2025-10-12T10:00:00").getTime() / 1000),
-    dateEnd: Math.floor(new Date("2025-10-12T13:00:00").getTime() / 1000),
+    dateStart: Math.floor(new Date('2025-10-12T10:00:00').getTime() / 1000),
+    dateEnd: Math.floor(new Date('2025-10-12T13:00:00').getTime() / 1000),
     location: "Red Hook Plaza Conference Room, St. Thomas",
-    description:
-      "Learn essential financial planning strategies, budgeting, and investment options specifically for Caribbean small businesses.",
+    description: "Learn essential financial planning strategies, budgeting, and investment options specifically for Caribbean small businesses.",
     price: 65,
     imageUrl: "https://picsum.photos/seed/finance/400/250",
     status: "scheduled",
@@ -626,15 +572,28 @@ export const calendarEvents: Event[] = [
     time: "10:00 AM",
     timezone: "America/St_Thomas",
     place: "Red Hook Plaza Conference Room, St. Thomas",
-    instructors: [
-      {
-        name: "CPA Jennifer Lee",
-        title: "Financial Planning Specialist",
-      },
-    ],
+    instructors: [{
+      name: "CPA Jennifer Lee",
+      title: "Financial Planning Specialist"
+    }],
     maxAttendees: 20,
     currentAttendees: 14,
     registrationRequired: true,
-    registrationDeadline: "2025-10-10",
-  },
+    registrationDeadline: "2025-10-10"
+  }
 ];
+
+export const mockResources: Resource[] =[
+  {
+    id: "1",
+    name: "nadine", 
+    type: "trainer",
+  },
+]
+
+export const calendars: Calendar[] =[
+  {
+    id: "1",
+    name: "nadine's calendar", 
+  },
+]
