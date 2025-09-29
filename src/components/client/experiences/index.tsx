@@ -2,22 +2,35 @@
 import { useState } from "react";
 import Grid from "@/components/ui/grid";
 import Calendar from "@/components/ui/calendar";
-import { Experience, Event } from "@/types";
+import { Event, Experience } from "@/types";
 
 interface ExperiencesClientProps {
-  experiences: Experience[];
+  events: Event[];
 }
 
 export default function ExperiencesClient({
-  experiences,
+  events,
 }: ExperiencesClientProps) {
+  // Convert events to experiences format
+  const convertEventsToExperiences = (events: Event[]): Experience[] => {
+    return events.map(event => ({
+      id: event.slug || event.id,
+      type: "event" as const,
+      name: event.title,
+      event: event
+    }));
+  };
+
+  const experiences = convertEventsToExperiences(events);
+  
   const [filteredExperiences, setFilteredExperiences] =
     useState<Experience[]>(experiences);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
-  const handleDateClick = (date: Date, dayEvents: Experience[]) => {
+  const handleDateClick = (date: Date, dayEvents: Event[]) => {
     setSelectedDate(date);
-    setFilteredExperiences(dayEvents.length > 0 ? dayEvents : experiences);
+    const convertedDayEvents = convertEventsToExperiences(dayEvents);
+    setFilteredExperiences(convertedDayEvents.length > 0 ? convertedDayEvents : experiences);
   };
 
   const clearFilter = () => {
@@ -109,16 +122,16 @@ export default function ExperiencesClient({
                 } scheduled for this date.`
               : "Join us for workshops, training sessions, and consulting opportunities designed to help you grow your skills and connect with the community."
           }
-          showModal={true}
+          showModal={false}
           selectedDate={selectedDate}
           onClearFilter={clearFilter}
         />
 
-        {/* <Calendar
+        <Calendar
           events={events}
           onDateClick={handleDateClick}
           selectedDate={selectedDate}
-        /> */}
+        />
       </div>
     </main>
   );

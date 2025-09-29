@@ -45,6 +45,9 @@ export default function Grid({
   const handleExperienceClick = (experienceId: string) => {
     if (showModal) {
       setSelectedExperience(experienceId);
+    } else {
+      // Navigate to event detail page using slug
+      window.location.href = `/experiences/${experienceId}`;
     }
   };
 

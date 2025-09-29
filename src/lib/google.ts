@@ -1,6 +1,6 @@
 
 
-import {Event } from "@/types"
+import {Event, EventStatus } from "@/types"
 import path from 'node:path';
 import process from 'node:process';
 import {authenticate} from '@google-cloud/local-auth';
@@ -62,7 +62,8 @@ export function convertGoogleEventToEvent(googleEvent: calendar_v3.Schema$Event)
     dateEnd: Math.floor(new Date(endTime).getTime() / 1000),
     location: googleEvent.location || '',
     place: googleEvent.location || '',
-    status: 'scheduled',
+    when: new Date(startTime).toISOString(),
+    status: 'scheduled' as EventStatus,
     type: 'training',
     date: new Date(startTime).toISOString().split('T')[0],
     time: new Date(startTime).toLocaleTimeString('en-US', { 

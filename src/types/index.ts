@@ -61,6 +61,7 @@ export interface Service {
 }
 export interface Event {
   id: string;
+  slug?: string;
   title: string;
   host?: string;
   dateStart: number; // Epoch time
@@ -69,6 +70,7 @@ export interface Event {
   description?: string;
   price?: number; // USD price, undefined = free
   imageUrl?: string;
+  when: string;
   status: EventStatus;
   type: "training" | "consultation" | "facility_booking";
   
@@ -236,3 +238,5 @@ export interface Registration {
   name: string;
   email: string;
 }
+
+
