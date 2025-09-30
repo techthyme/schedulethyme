@@ -1,237 +1,289 @@
+import { useState } from 'react'
 import {
-  CalendarIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
-  EllipsisHorizontalIcon,
-  MapPinIcon,
+  PlusIcon,
 } from '@heroicons/react/20/solid'
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
+import AddEventModal from '@/components/ui/AddEventModal'
+import { EventDraft } from '@/types'
 
-interface Meeting {
+interface CalendarEvent {
   id: number;
-  date: string;
-  time: string;
-  datetime: string;
-  name: string;
-  imageUrl: string;
-  location: string;
-}
-
-interface Day {
-  date: string;
-  isCurrentMonth?: boolean;
-  isToday?: boolean;
-  isSelected?: boolean;
+  title: string;
+  startTime: string;
+  endTime: string;
+  day: number; // 0-6 for week days
+  color: 'blue' | 'green' | 'pink' | 'orange' | 'purple';
+  attendees: string[];
+  timeSlot: number; // 0-23 for hours
+  duration: number; // in hours
 }
 
 interface MeetingsCalendarProps {
-  meetings?: Meeting[];
   title?: string;
   className?: string;
 }
 
-const defaultMeetings: Meeting[] = [
+const weekDays = [
+  { name: 'Wed', date: 10, isToday: false },
+  { name: 'Thu', date: 11, isToday: false },
+  { name: 'Fri', date: 12, isToday: true },
+  { name: 'Sat', date: 13, isToday: false },
+  { name: 'Sun', date: 14, isToday: false },
+  { name: 'Mon', date: 15, isToday: false },
+]
+
+const timeSlots = [
+  '08:00 AM',
+  '09:00 AM', 
+  '10:00 AM',
+  '11:00 AM',
+  '12:00 PM',
+  '01:00 PM',
+  '01:30 PM',
+  '02:00 PM',
+  '03:00 PM',
+  '04:00 PM'
+]
+
+const defaultEvents: CalendarEvent[] = [
   {
     id: 1,
-    date: 'January 10th, 2022',
-    time: '5:00 PM',
-    datetime: '2022-01-10T17:00',
-    name: 'Leslie Alexander',
-    imageUrl:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    location: 'Conference Room A',
+    title: 'Weekly Meeting',
+    startTime: '08:00AM',
+    endTime: '09:00AM',
+    day: 0,
+    color: 'pink',
+    attendees: ['user1', 'user2', 'user3'],
+    timeSlot: 8,
+    duration: 1
   },
   {
     id: 2,
-    date: 'January 12th, 2022',
-    time: '3:00 PM',
-    datetime: '2022-01-12T15:00',
-    name: 'Michael Foster',
-    imageUrl:
-      'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    location: 'Training Room B',
+    title: 'Sprint 1',
+    startTime: '10:00AM',
+    endTime: '01:00PM',
+    day: 0,
+    color: 'blue',
+    attendees: ['user1', 'user2'],
+    timeSlot: 10,
+    duration: 3
   },
   {
     id: 3,
-    date: 'January 12th, 2022',
-    time: '5:00 PM',
-    datetime: '2022-01-12T17:00',
-    name: 'Dries Vincent',
-    imageUrl:
-      'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    location: 'Virtual Meeting',
+    title: 'Daily Standup',
+    startTime: '09:00AM',
+    endTime: '12:00PM',
+    day: 1,
+    color: 'purple',
+    attendees: ['user1', 'user2', 'user3'],
+    timeSlot: 9,
+    duration: 3
   },
+  {
+    id: 4,
+    title: 'Feedback Design',
+    startTime: '07:00AM',
+    endTime: '08:00PM',
+    day: 2,
+    color: 'green',
+    attendees: ['user1', 'user2', 'user3'],
+    timeSlot: 7,
+    duration: 1
+  },
+  {
+    id: 5,
+    title: 'Sprint 2',
+    startTime: '08:00AM',
+    endTime: '09:00AM',
+    day: 2,
+    color: 'blue',
+    attendees: ['user1', 'user2'],
+    timeSlot: 8,
+    duration: 1
+  },
+  {
+    id: 6,
+    title: 'Prototyping',
+    startTime: '10:00AM',
+    endTime: '01:00PM',
+    day: 2,
+    color: 'green',
+    attendees: ['user1', 'user2', 'user3'],
+    timeSlot: 10,
+    duration: 3
+  },
+  {
+    id: 7,
+    title: 'Feedback Design',
+    startTime: '08:00AM',
+    endTime: '11:00AM',
+    day: 3,
+    color: 'pink',
+    attendees: ['user1', 'user2', 'user3'],
+    timeSlot: 8,
+    duration: 3
+  },
+  {
+    id: 8,
+    title: 'Wireframe',
+    startTime: '10:00AM',
+    endTime: '11:00AM',
+    day: 4,
+    color: 'purple',
+    attendees: ['user1', 'user2', 'user3'],
+    timeSlot: 10,
+    duration: 1
+  },
+  {
+    id: 9,
+    title: 'High Fidelity',
+    startTime: '11:00AM',
+    endTime: '02:00PM',
+    day: 4,
+    color: 'green',
+    attendees: ['user1', 'user2', 'user3'],
+    timeSlot: 11,
+    duration: 3
+  }
 ]
 
-const days: Day[] = [
-  { date: '2021-12-27' },
-  { date: '2021-12-28' },
-  { date: '2021-12-29' },
-  { date: '2021-12-30' },
-  { date: '2021-12-31' },
-  { date: '2022-01-01', isCurrentMonth: true },
-  { date: '2022-01-02', isCurrentMonth: true },
-  { date: '2022-01-03', isCurrentMonth: true },
-  { date: '2022-01-04', isCurrentMonth: true },
-  { date: '2022-01-05', isCurrentMonth: true },
-  { date: '2022-01-06', isCurrentMonth: true },
-  { date: '2022-01-07', isCurrentMonth: true },
-  { date: '2022-01-08', isCurrentMonth: true },
-  { date: '2022-01-09', isCurrentMonth: true },
-  { date: '2022-01-10', isCurrentMonth: true },
-  { date: '2022-01-11', isCurrentMonth: true },
-  { date: '2022-01-12', isCurrentMonth: true, isToday: true },
-  { date: '2022-01-13', isCurrentMonth: true },
-  { date: '2022-01-14', isCurrentMonth: true },
-  { date: '2022-01-15', isCurrentMonth: true },
-  { date: '2022-01-16', isCurrentMonth: true },
-  { date: '2022-01-17', isCurrentMonth: true },
-  { date: '2022-01-18', isCurrentMonth: true },
-  { date: '2022-01-19', isCurrentMonth: true },
-  { date: '2022-01-20', isCurrentMonth: true },
-  { date: '2022-01-21', isCurrentMonth: true },
-  { date: '2022-01-22', isCurrentMonth: true, isSelected: true },
-  { date: '2022-01-23', isCurrentMonth: true },
-  { date: '2022-01-24', isCurrentMonth: true },
-  { date: '2022-01-25', isCurrentMonth: true },
-  { date: '2022-01-26', isCurrentMonth: true },
-  { date: '2022-01-27', isCurrentMonth: true },
-  { date: '2022-01-28', isCurrentMonth: true },
-  { date: '2022-01-29', isCurrentMonth: true },
-  { date: '2022-01-30', isCurrentMonth: true },
-  { date: '2022-01-31', isCurrentMonth: true },
-  { date: '2022-02-01' },
-  { date: '2022-02-02' },
-  { date: '2022-02-03' },
-  { date: '2022-02-04' },
-  { date: '2022-02-05' },
-  { date: '2022-02-06' },
-]
+const getEventColor = (color: CalendarEvent['color']) => {
+  const colors = {
+    blue: 'bg-blue-100 border-blue-200',
+    green: 'bg-emerald-100 border-emerald-200', 
+    pink: 'bg-pink-100 border-pink-200',
+    orange: 'bg-orange-100 border-orange-200',
+    purple: 'bg-purple-100 border-purple-200'
+  }
+  return colors[color] || colors.blue
+}
 
 export default function MeetingsCalendar({ 
-  meetings = defaultMeetings, 
   title = "Upcoming meetings",
   className = ""
 }: MeetingsCalendarProps) {
+  const [isAddEventModalOpen, setIsAddEventModalOpen] = useState(false)
+
+  const handleAddEvent = (eventDraft: EventDraft) => {
+    console.log('New event booking:', eventDraft)
+    // TODO: Handle the event booking submission
+  }
   return (
-    <div className={className}>
-      <h2 className="text-base font-light text-gray-900">{title}</h2>
-      <div className="lg:grid lg:grid-cols-12 lg:gap-x-16">
-        <div className="mt-10 text-center lg:col-start-8 lg:col-end-13 lg:row-start-1 lg:mt-9 xl:col-start-9">
-          <div className="flex items-center text-gray-900">
-            <button
-              type="button"
-              className="-m-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500"
-            >
-              <span className="sr-only">Previous month</span>
-              <ChevronLeftIcon aria-hidden="true" className="size-5" />
+    <div className={`${className} bg-white rounded-lg`}>
+      {/* Header */}
+      <div className="flex items-center justify-between p-4 border-b border-gray-200">
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
+            <button className="p-1 hover:bg-gray-100 rounded">
+              <ChevronLeftIcon className="w-5 h-5 text-gray-600" />
             </button>
-            <div className="flex-auto text-sm font-light">January</div>
-            <button
-              type="button"
-              className="-m-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500"
-            >
-              <span className="sr-only">Next month</span>
-              <ChevronRightIcon aria-hidden="true" className="size-5" />
+            <h2 className="text-lg font-medium text-gray-900">January 2024</h2>
+            <button className="p-1 hover:bg-gray-100 rounded">
+              <ChevronRightIcon className="w-5 h-5 text-gray-600" />
             </button>
           </div>
-          <div className="mt-6 grid grid-cols-7 text-xs/6 text-gray-500">
-            <div>M</div>
-            <div>T</div>
-            <div>W</div>
-            <div>T</div>
-            <div>F</div>
-            <div>S</div>
-            <div>S</div>
-          </div>
-          <div className="isolate mt-2 grid grid-cols-7 gap-px rounded-lg bg-gray-200 text-sm shadow-sm ring-1 ring-gray-200">
-            {days.map((day) => (
-              <button
-                key={day.date}
-                type="button"
-                data-is-today={day.isToday ? '' : undefined}
-                data-is-selected={day.isSelected ? '' : undefined}
-                data-is-current-month={day.isCurrentMonth ? '' : undefined}
-                className="py-1.5 not-data-is-current-month:bg-gray-50 not-data-is-selected:not-data-is-current-month:not-data-is-today:text-gray-400 first:rounded-tl-lg last:rounded-br-lg hover:bg-gray-100 focus:z-10 data-is-current-month:bg-white not-data-is-selected:data-is-current-month:not-data-is-today:text-gray-900 data-is-current-month:hover:bg-gray-100 data-is-selected:font-semibold data-is-selected:text-white data-is-today:font-semibold data-is-today:not-data-is-selected:text-indigo-600 nth-36:rounded-bl-lg nth-7:rounded-tr-lg"
-              >
-                <time
-                  dateTime={day.date}
-                  className="mx-auto flex size-7 items-center justify-center rounded-full in-data-is-selected:not-in-data-is-today:bg-gray-900 in-data-is-selected:in-data-is-today:bg-indigo-600"
-                >
-                  {day.date.split('-').pop()?.replace(/^0/, '')}
-                </time>
-              </button>
-            ))}
-          </div>
-          <button
-            type="button"
-            className="mt-8 w-full rounded-md bg-indigo-600 px-3 py-2 text-sm font-light text-white shadow-sm hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
-            Add event
+        </div>
+        
+        {/* View Toggle */}
+        <div className="flex items-center gap-1 bg-gray-100 rounded-lg p-1">
+          <button className="px-3 py-1 text-sm text-gray-600 hover:bg-white hover:shadow-sm rounded-md transition">
+            Daily
+          </button>
+          <button className="px-3 py-1 text-sm bg-white text-blue-600 shadow-sm rounded-md">
+            Weekly
+          </button>
+          <button className="px-3 py-1 text-sm text-gray-600 hover:bg-white hover:shadow-sm rounded-md transition">
+            Monthly
           </button>
         </div>
-        <ol className="mt-4 divide-y divide-gray-100 text-sm/6 lg:col-span-7 xl:col-span-8">
-          {meetings.map((meeting) => (
-            <li key={meeting.id} className="relative flex gap-x-6 py-6 xl:static">
-              <img alt="" src={meeting.imageUrl} className="size-14 flex-none rounded-full" />
-              <div className="flex-auto">
-                <h3 className="pr-10 font-light text-gray-900 xl:pr-0">{meeting.name}</h3>
-                <dl className="mt-2 flex flex-col text-gray-500 xl:flex-row">
-                  <div className="flex items-start gap-x-3">
-                    <dt className="mt-0.5">
-                      <span className="sr-only">Date</span>
-                      <CalendarIcon aria-hidden="true" className="size-5 text-gray-400" />
-                    </dt>
-                    <dd className="font-light">
-                      <time dateTime={meeting.datetime}>
-                        {meeting.date} at {meeting.time}
-                      </time>
-                    </dd>
-                  </div>
-                  <div className="mt-2 flex items-start gap-x-3 xl:mt-0 xl:ml-3.5 xl:border-l xl:border-gray-400/50 xl:pl-3.5">
-                    <dt className="mt-0.5">
-                      <span className="sr-only">Location</span>
-                      <MapPinIcon aria-hidden="true" className="size-5 text-gray-400" />
-                    </dt>
-                    <dd className="font-light">{meeting.location}</dd>
-                  </div>
-                </dl>
-              </div>
-              <Menu as="div" className="absolute top-6 right-0 xl:relative xl:top-auto xl:right-auto xl:self-center">
-                <MenuButton className="relative flex items-center rounded-full text-gray-500 hover:text-gray-600">
-                  <span className="absolute -inset-2" />
-                  <span className="sr-only">Open options</span>
-                  <EllipsisHorizontalIcon aria-hidden="true" className="size-5" />
-                </MenuButton>
 
-                <MenuItems
-                  transition
-                  className="absolute right-0 z-10 mt-2 w-36 origin-top-right rounded-md bg-white shadow-lg outline-1 outline-black/5 transition data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
-                >
-                  <div className="py-1">
-                    <MenuItem>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm font-light text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
-                      >
-                        Edit
-                      </a>
-                    </MenuItem>
-                    <MenuItem>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm font-light text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
-                      >
-                        Cancel
-                      </a>
-                    </MenuItem>
-                  </div>
-                </MenuItems>
-              </Menu>
-            </li>
-          ))}
-        </ol>
+        <button 
+          onClick={() => setIsAddEventModalOpen(true)}
+          className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition"
+        >
+          <PlusIcon className="w-4 h-4" />
+          Add Event
+        </button>
       </div>
+
+      {/* Calendar Grid */}
+      <div className="flex">
+        {/* Time Column */}
+        <div className="w-20 border-r border-gray-200">
+          <div className="h-16 border-b border-gray-200 flex items-center justify-center text-xs text-gray-500 font-medium">
+            GMT+7
+          </div>
+          {timeSlots.map((time, index) => (
+            <div key={index} className="h-16 border-b border-gray-100 flex items-start justify-end pr-3 pt-2">
+              <span className="text-xs text-gray-500">{time}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Days Columns */}
+        <div className="flex-1 grid grid-cols-6">
+          {weekDays.map((day, dayIndex) => (
+            <div key={dayIndex} className="border-r border-gray-200 last:border-r-0">
+              {/* Day Header */}
+              <div className="h-16 border-b border-gray-200 flex flex-col items-center justify-center">
+                <div className="text-lg font-semibold text-gray-900">{day.date}</div>
+                <div className={`text-xs ${day.isToday ? 'text-blue-600 font-medium' : 'text-gray-500'}`}>
+                  {day.name}
+                </div>
+              </div>
+
+              {/* Time Slots */}
+              <div className="relative">
+                {timeSlots.map((_, timeIndex) => (
+                  <div key={timeIndex} className="h-16 border-b border-gray-100 relative">
+                    {/* Events for this day and time slot */}
+                    {defaultEvents
+                      .filter(event => event.day === dayIndex && event.timeSlot - 8 === timeIndex)
+                      .map((event) => (
+                        <div
+                          key={event.id}
+                          className={`absolute left-1 right-1 ${getEventColor(event.color)} border rounded-md p-2 m-1 shadow-sm hover:shadow-md transition cursor-pointer`}
+                          style={{
+                            height: `${event.duration * 64 - 8}px`, // 64px per hour minus margins
+                            zIndex: 10
+                          }}
+                        >
+                          <div className="text-xs font-medium text-gray-900 truncate mb-1">
+                            {event.title}
+                          </div>
+                          <div className="text-xs text-gray-600 mb-1">
+                            {event.startTime} - {event.endTime}
+                          </div>
+                          <div className="flex items-center gap-1">
+                            {event.attendees.slice(0, 3).map((_, idx) => (
+                              <div
+                                key={idx}
+                                className="w-4 h-4 bg-gray-300 rounded-full text-xs flex items-center justify-center text-gray-600"
+                              >
+                                {String.fromCharCode(65 + idx)}
+                              </div>
+                            ))}
+                            {event.attendees.length > 3 && (
+                              <span className="text-xs text-gray-500">+{event.attendees.length - 3}</span>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Add Event Modal */}
+      <AddEventModal
+        isOpen={isAddEventModalOpen}
+        onClose={() => setIsAddEventModalOpen(false)}
+        onSubmit={handleAddEvent}
+      />
     </div>
   )
 }

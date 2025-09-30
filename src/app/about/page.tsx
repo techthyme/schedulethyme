@@ -114,10 +114,102 @@ export default function Example() {
       <main className="isolate">
         {/* Hero section */}
         <div className="relative isolate -z-10 overflow-hidden bg-linear-to-b from-indigo-100/20 pt-14">
+          {/* About Page - Full-Height Organic Blob Blur Background */}
+          <div className="fixed inset-0 -z-30 overflow-hidden">
+            {/* Large organic purple blob top-left */}
+            <div 
+              className="absolute w-[700px] h-[700px] -top-32 -left-32 opacity-65"
+              style={{
+                background: 'radial-gradient(ellipse at 30% 40%, rgba(147, 51, 234, 0.7) 0%, rgba(168, 85, 247, 0.4) 45%, rgba(196, 181, 253, 0.2) 80%, transparent 100%)',
+                borderRadius: '47% 53% 68% 32% / 45% 35% 65% 55%',
+                filter: 'blur(140px)',
+                animation: 'float1 40s ease-in-out infinite'
+              }}
+            />
+            
+            {/* Medium blue organic shape bottom-right */}
+            <div 
+              className="absolute w-[600px] h-[500px] -bottom-20 -right-20 opacity-55"
+              style={{
+                background: 'radial-gradient(ellipse at 70% 60%, rgba(59, 130, 246, 0.6) 0%, rgba(99, 102, 241, 0.3) 60%, transparent 100%)',
+                borderRadius: '35% 65% 25% 75% / 60% 40% 60% 40%',
+                filter: 'blur(110px)',
+                animation: 'float2 32s ease-in-out infinite reverse'
+              }}
+            />
+            
+            {/* Middle section - subtle teal organic shape */}
+            <div 
+              className="absolute w-[600px] h-[300px] -left-32 top-1/2 -translate-y-1/2 opacity-35"
+              style={{
+                background: 'radial-gradient(ellipse at 20% 50%, rgba(20, 184, 166, 0.3) 0%, rgba(13, 148, 136, 0.2) 60%, rgba(45, 212, 191, 0.1) 90%, transparent 100%)',
+                borderRadius: '60% 40% 30% 70% / 40% 60% 40% 60%',
+                filter: 'blur(140px)',
+                animation: 'float3 35s ease-in-out infinite'
+              }}
+            />
+            
+            {/* Floating violet accent middle - more subtle */}
+            <div 
+              className="absolute w-[350px] h-[250px] left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-25"
+              style={{
+                background: 'radial-gradient(circle at 40% 50%, rgba(139, 92, 246, 0.3) 0%, rgba(168, 85, 247, 0.15) 70%, transparent 100%)',
+                borderRadius: '60% 40% 45% 55% / 50% 70% 30% 50%',
+                filter: 'blur(100px)',
+                animation: 'float3 25s ease-in-out infinite'
+              }}
+            />
+            
+            {/* Large indigo wave - much more subtle */}
+            <div 
+              className="absolute w-[700px] h-[400px] right-1/4 top-2/3 opacity-30"
+              style={{
+                background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.4) 0%, rgba(129, 140, 248, 0.25) 40%, rgba(165, 180, 252, 0.15) 80%, transparent 100%)',
+                borderRadius: '40% 60% 20% 80% / 30% 70% 70% 30%',
+                filter: 'blur(160px)',
+                animation: 'float1 45s ease-in-out infinite reverse'
+              }}
+            />
+            
+            {/* Bottom section - subtle pink accent */}
+            <div 
+              className="absolute w-[400px] h-[300px] left-1/4 bottom-20 opacity-25"
+              style={{
+                background: 'radial-gradient(ellipse at 60% 40%, rgba(236, 72, 153, 0.3) 0%, rgba(219, 39, 119, 0.2) 50%, rgba(168, 85, 247, 0.1) 80%, transparent 100%)',
+                borderRadius: '30% 70% 60% 40% / 50% 50% 70% 30%',
+                filter: 'blur(130px)',
+                animation: 'float4 38s ease-in-out infinite'
+              }}
+            />
+            
+            {/* Additional flowing accent - more subtle */}
+            <div 
+              className="absolute w-[250px] h-[600px] -right-16 top-1/3 opacity-30"
+              style={{
+                background: 'linear-gradient(180deg, rgba(139, 92, 246, 0.3) 0%, rgba(147, 51, 234, 0.2) 50%, rgba(168, 85, 247, 0.1) 100%)',
+                borderRadius: '70% 30% 30% 70% / 40% 60% 40% 60%',
+                filter: 'blur(120px)',
+                animation: 'float2 42s ease-in-out infinite'
+              }}
+            />
+            
+            {/* Bottom-left corner accent - subtle */}
+            <div 
+              className="absolute w-[350px] h-[250px] -left-16 bottom-32 opacity-35"
+              style={{
+                background: 'radial-gradient(circle at 80% 60%, rgba(59, 130, 246, 0.3) 0%, rgba(99, 102, 241, 0.2) 60%, rgba(139, 92, 246, 0.1) 90%, transparent 100%)',
+                borderRadius: '40% 60% 70% 30% / 60% 40% 30% 70%',
+                filter: 'blur(120px)',
+                animation: 'float1 36s ease-in-out infinite reverse'
+              }}
+            />
+          </div>
+          
           <div
             aria-hidden="true"
             className="absolute inset-y-0 right-1/2 -z-10 -mr-96 w-[200%] origin-top-right skew-x-[-30deg] bg-white shadow-xl ring-1 shadow-indigo-600/10 ring-indigo-50 sm:-mr-80 lg:-mr-96"
           />
+          
           <div className="mx-auto max-w-7xl px-6 py-32 sm:py-40 lg:px-8">
             <div className="mx-auto max-w-2xl lg:mx-0 lg:grid lg:max-w-none lg:grid-cols-2 lg:gap-x-16 lg:gap-y-8 xl:grid-cols-1 xl:grid-rows-1 xl:gap-x-8">
               <h1 className="max-w-2xl text-5xl font-extralight tracking-tight text-balance text-gray-900 sm:text-7xl lg:col-span-2 xl:col-auto">
@@ -142,7 +234,6 @@ export default function Example() {
               />
             </div>
           </div>
-          <div className="absolute inset-x-0 bottom-0 -z-10 h-24 bg-linear-to-t from-white sm:h-32" />
         </div>
         /
         <div className="mt-32 overflow-hidden sm:mt-40">

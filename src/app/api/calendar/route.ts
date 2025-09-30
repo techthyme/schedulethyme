@@ -4,7 +4,7 @@ import {
   GetCalendarRequest,
   GetCalendarResponse,
 } from "@/types/api";
-import { mockEvents } from "@/data";
+import { mockCollabs, mockEvents } from "@/data";
 
 export async function GET(request: NextRequest) {
   try {

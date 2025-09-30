@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/ui/Navbar";
-import Footer from "@/components/ui/Footer";
+import Navbar from "@/components/ui/nav";
+import Footer from "@/components/ui/footer";
+import { Noto_Sans } from "next/font/google";
+
+const notoSans = Noto_Sans({
+  variable: "--font-noto-sans",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "ScheduleThyme - Mobile-Friendly Scheduling",
@@ -16,7 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased bg-white text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100">
+      <body
+        className={`${notoSans.variable} antialiased bg-white text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100`}
+      >
         <Navbar />
         {children}
         <Footer />

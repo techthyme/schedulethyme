@@ -1,4 +1,29 @@
-import { Event, Profile, ProfileDashboardData} from "@/types";
+import { Event, Profile, Resource, Collab} from "@/types";
+
+
+export interface GetCollabsResponse {
+  collabs: Collab[];
+  page: number;
+  total: number;
+}
+
+export interface CreateResourceRequest {
+  resource: Resource;
+}
+
+export interface CreateResourceResponse {
+  id: string;
+}
+
+export interface GetResourcesRequest {
+  query: Query;
+}
+
+export interface GetResourcesResponse {
+  resources: Resource[];
+  page: number; 
+  total: number;
+}
 
 export interface CreateProfileRequest {
   profile: Profile;
@@ -28,6 +53,14 @@ export interface GetEventsRequest {
   query: Query;
 }
 
+export interface GetCollabsResponse {
+  collabs: Collab[];
+  page: number;
+  total: number;
+}
+
+
+// Deprecate
 export interface GetEventsResponse {
   events: Event[];
   page: number;
