@@ -1,4 +1,4 @@
-import  HeroSection  from "@/components/ui/HeroSection";
+import  HeroSection  from "@/components/ui/heros/main_v1";
 import { heroData } from "@/data";
 import {
   CalendarDaysIcon,

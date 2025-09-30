@@ -9,21 +9,20 @@ create a simple and modern logo for this company that can be used on their websi
 There is also the opportunity for trchies to meet up and collaborate with other techs to solve problems and respond to people who want to higher a tech. Finally the space that is available is kitchen spaces.
 There were three choices really. Dealing with food, tech professionals or business consultants. The idea of events is great but that’s only the training section of the consultancy side.
 
-
 call to actions pics
+
 - consultants
-- events 
+- events
 - training
-- kitchen space
+- spaces
 
 remember, there should only be 3 call to actions
-- consultants: techies, legal, - n 
-- events: meetups, training, 
-- food/space - admin to approve availability
-cheange experience link/page to collab
 
+- consultants: techies, legal, - n
+- events: meetups, training,
+- food/space - admin to approve availability
+  cheange experience link/page to collab
 
 remove scheduled tab
 
-
-for the voting afer the guest has voted ask them if they would like to leave a comment. coult be annonymous. 
+for the voting afer the guest has voted ask them if they would like to leave a comment. coult be annonymous.

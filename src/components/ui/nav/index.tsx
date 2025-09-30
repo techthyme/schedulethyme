@@ -2,26 +2,20 @@ import {
   Disclosure,
   DisclosureButton,
   DisclosurePanel,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
 } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
+import clsx from "clsx";
+import Image from "next/image";
 
 const navigation = [
-  { name: "Home", href: "/", current: true },
-  { name: "Experiences", href: "/experiences", current: false },
+  // { name: "Home", href: "/", current: true },
+  { name: "Collabs", href: "/collabs", current: false },
   { name: "About", href: "/about", current: false },
-  { name: "FAQ", href: "/faq", current: false },
   { name: "Dashboard", href: "profile", current: false },
 ];
 
-function classNames(...classes: (string | undefined | null | false)[]): string {
-  return classes.filter(Boolean).join(" ");
-}
-
-export default function Navbar() {
+export default function Example() {
   return (
     <Disclosure
       as="nav"
@@ -45,27 +39,32 @@ export default function Navbar() {
             </DisclosureButton>
           </div>
           <div className="flex flex-1 items-center justify-center sm:items-center sm:justify-between">
-            <div className="flex shrink-0 items-center">
-              <span className="text-xl sm:text-2xl font-light text-neutral-900 dark:text-white">
-                ST
-              </span>
-            </div>
+            <Link href="/">
+              <div className="flex shrink-0 items-center">
+                <Image
+                  src={"/logo_v1.png"}
+                  width={38}
+                  height={38}
+                  alt="Schedule thyme logo"
+                />
+              </div>
+            </Link>
             <div className="hidden sm:block">
               <div className="flex space-x-8">
-                {navigation.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    aria-current={item.current ? "page" : undefined}
-                    className={classNames(
-                      item.current
+                {navigation.map((link) => (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    aria-current={link.current ? "page" : undefined}
+                    className={clsx(
+                      link.current
                         ? "text-primary-600 dark:text-primary-400 font-light"
                         : "text-neutral-700 hover:text-primary-600 dark:text-neutral-300 dark:hover:text-primary-400",
                       "px-3 py-2 text-sm font-light transition-colors duration-200 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800"
                     )}
                   >
-                    {item.name}
-                  </a>
+                    {link.name}
+                  </Link>
                 ))}
               </div>
             </div>
@@ -84,7 +83,7 @@ export default function Navbar() {
               as="a"
               href={item.href}
               aria-current={item.current ? "page" : undefined}
-              className={classNames(
+              className={clsx(
                 item.current
                   ? "bg-primary-50 text-primary-700 border-primary-500 dark:bg-primary-900/20 dark:text-primary-400 dark:border-primary-600"
                   : "text-neutral-900 hover:bg-neutral-100 hover:text-primary-600 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-primary-400",

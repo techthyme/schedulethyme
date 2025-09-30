@@ -1,20 +1,20 @@
-// src/components/EventDetailsCard.tsx
+// src/components/CollabDetailsCard.tsx
 
-import { Experience } from "@/types";
+import { Collab } from "@/types";
 
-interface EventDetailsCardProps {
-  experience: Experience;
+interface CollabDetailsCardProps {
+  collab: Collab;
   onAttend?: () => void;
   onClose?: () => void;
 }
 
-export default function EventDetailsCard({
-  experience,
+export default function CollabDetailsCard({
+  collab,
   onAttend,
   onClose,
-}: EventDetailsCardProps) {
-  if (experience.event) {
-    const event = experience.event;
+}: CollabDetailsCardProps) {
+  if (collab.event) {
+    const event = collab.event;
     const isUpcoming =
       event.status === "upcoming" || event.status === "scheduled";
     const spotsLeft = event.maxAttendees

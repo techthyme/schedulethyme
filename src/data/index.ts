@@ -1,4 +1,4 @@
-import { Calendar, Event, Experience, HeroSection, Profile, Resource, User } from "@/types";
+import { Calendar, Event, Collab, HeroSection, Profile, Resource, User } from "@/types";
 import { AboutUsData } from "@/types";
 
 export const _mockEvents: Event[] = [
@@ -63,7 +63,7 @@ export const _mockEvents: Event[] = [
     type: "training",
     date: "",
     place: "",
-    description: "Experience smooth jazz performed by local musicians.",
+    description: "Collab smooth jazz performed by local musicians.",
     price: 15,
     imageUrl: "https://picsum.photos/seed/jazz/400/250",
     status: "cancelled",
@@ -430,7 +430,7 @@ export const aboutUsData: AboutUsData = {
   ]
 };
 
-export const mockExperiences: Experience[] = []
+export const mockCollabs: Collab[] = []
 
 // Google Calendar-style events for St. Thomas, USVI
 export const mockEvents: Event[] = [

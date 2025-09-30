@@ -1,4 +1,4 @@
-import { Event, Experience } from "@/types";
+import { Event, Collab } from "@/types";
 
 export const errorLogger = (msg: string, error: any) => {
   const err = error; // your error object
@@ -29,7 +29,7 @@ export const errorLogger = (msg: string, error: any) => {
 
 
 
-export function convertEventsToExperiences(events: Event[]): Experience[]{
+export function convertEventsToCollabs(events: Event[]): Collab[]{
   return events.map((event) => {
     return {
       id: event.id,

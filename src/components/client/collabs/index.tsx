@@ -1,28 +1,25 @@
 "use client";
 import { useState } from "react";
 import Grid from "@/components/ui/grid";
-import { Experience } from "@/types";
+import { Collab } from "@/types";
 // import Calendar from "@/components/ui/calendar";
 
-interface ExperiencesClientProps {
-  experiences: Experience[];
+interface CollabsClientProps {
+  collabs: Collab[];
 }
 
-export default function ExperiencesClient({
-  experiences,
-}: ExperiencesClientProps) {
-  const [filteredExperiences, setFilteredExperiences] =
-    useState<Experience[]>(experiences);
+export default function CollabsClient({ collabs }: CollabsClientProps) {
+  const [filteredCollabs, setFilteredCollabs] = useState<Collab[]>(collabs);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
-  const handleDateClick = (date: Date, dayEvents: Experience[]) => {
+  const handleDateClick = (date: Date, dayEvents: Collab[]) => {
     setSelectedDate(date);
-    setFilteredExperiences(dayEvents.length > 0 ? dayEvents : experiences);
+    setFilteredCollabs(dayEvents.length > 0 ? dayEvents : collabs);
   };
 
   const clearFilter = () => {
     setSelectedDate(null);
-    setFilteredExperiences(experiences);
+    setFilteredCollabs(collabs);
   };
 
   const formatSelectedDate = (date: Date) => {
@@ -96,16 +93,16 @@ export default function ExperiencesClient({
 
       <div className="container mx-auto px-4">
         <Grid
-          experiences={filteredExperiences}
+          collabs={filteredCollabs}
           title={
             selectedDate
               ? `Events for ${formatSelectedDate(selectedDate)}`
-              : "Upcoming Events"
+              : "Upcoming Collabs"
           }
           description={
             selectedDate
-              ? `Showing ${filteredExperiences.length} event${
-                  filteredExperiences.length !== 1 ? "s" : ""
+              ? `Showing ${filteredCollabs.length} event${
+                  filteredCollabs.length !== 1 ? "s" : ""
                 } scheduled for this date.`
               : "Join us for workshops, training sessions, and consulting opportunities designed to help you grow your skills and connect with the community."
           }

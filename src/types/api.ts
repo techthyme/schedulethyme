@@ -1,8 +1,8 @@
-import { Event, Profile, Resource, Experience} from "@/types";
+import { Event, Profile, Resource, Collab} from "@/types";
 
 
-export interface GetExperiencesResponse {
-  experiences: Experience[];
+export interface GetCollabsResponse {
+  experiences: Collab[];
   page: number;
   total: number;
 }

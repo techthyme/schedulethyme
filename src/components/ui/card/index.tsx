@@ -1,11 +1,11 @@
-import { Experience } from "@/types";
+import { Collab } from "@/types";
 
 interface CardProps {
-  experience: Experience;
+  collab: Collab;
   onClick: () => void;
 }
 
-export default function Card({ experience, onClick }: CardProps) {
+export default function Card({ collab, onClick }: CardProps) {
   const formatEventDate = (timestamp: number) => {
     const date = new Date(timestamp * 1000);
     const month = date.toLocaleDateString("en-US", { month: "short" });
@@ -13,8 +13,8 @@ export default function Card({ experience, onClick }: CardProps) {
     return `${month} ${day}`;
   };
 
-  if (experience.event) {
-    const event = experience.event;
+  if (collab.event) {
+    const event = collab.event;
     return (
       <div
         className="group cursor-pointer transition-all duration-300 hover:shadow-lg"
@@ -48,7 +48,7 @@ export default function Card({ experience, onClick }: CardProps) {
             )}
 
             {/* Status badge */}
-            <div className="absolute top-3 left-3">
+            <div className="hidden absolute top-3 left-3">
               <span
                 className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium ${
                   event.status === "upcoming" || event.status === "scheduled"
@@ -61,7 +61,7 @@ export default function Card({ experience, onClick }: CardProps) {
                 }`}
               >
                 {event.status === "upcoming" || event.status === "scheduled"
-                  ? "Scheduled"
+                  ? "Scheduledsss"
                   : event.status === "ongoing"
                   ? "Live"
                   : event.status === "completed"

@@ -46,7 +46,7 @@ export interface Profile {
 }
 
 
-export interface Experience {
+export interface Collab {
   id: string;
   type: "event" | "service";
   name: string;

@@ -3,10 +3,10 @@ import { useState } from "react";
 import Card from "@/components/ui/card";
 import EventDetailsCard from "@/components/eventdetails";
 import AttendanceModal from "@/components/AttendanceModal";
-import { AttendeeInfo, Experience } from "@/types";
+import { AttendeeInfo, Collab } from "@/types";
 
 interface GridProps {
-  experiences: Experience[];
+  collabs: Collab[];
   title?: string;
   description?: string;
   showModal?: boolean;
@@ -15,20 +15,18 @@ interface GridProps {
 }
 
 export default function Grid({
-  experiences,
+  collabs,
   title = "",
   description = "Join us for workshops, training sessions, and consulting opportunities designed to help you grow your skills and connect with the community.",
   showModal = true,
   selectedDate,
   onClearFilter,
 }: GridProps) {
-  const [selectedExperience, setSelectedExperience] = useState<string | null>(
-    null
-  );
+  const [selectedCollab, setSelectedCollab] = useState<string | null>(null);
   const [showAttendanceModal, setShowAttendanceModal] = useState(false);
 
-  const selectedExperienceData = selectedExperience
-    ? experiences.find((experience) => experience.id === selectedExperience)
+  const selectedCollabData = selectedCollab
+    ? collabs.find((collab) => collab.id === selectedCollab)
     : null;
 
   const handleAttendClick = () => {
@@ -42,9 +40,9 @@ export default function Grid({
     );
   };
 
-  const handleExperienceClick = (experienceId: string) => {
+  const handleCollabClick = (collabId: string) => {
     if (showModal) {
-      setSelectedExperience(experienceId);
+      setSelectedCollab(collabId);
     }
   };
 
@@ -56,7 +54,7 @@ export default function Grid({
             {/* Header */}
             <div className="mb-8">
               <h2 className="text-3xl font-light tracking-tight text-gray-900">
-                {title || "Upcoming Events"}
+                {title || "Upcoming Collabs"}
               </h2>
               {description && (
                 <p className="mt-4 text-lg text-gray-600 max-w-3xl">
@@ -92,11 +90,11 @@ export default function Grid({
 
           {/* Grid layout - Airbnb style */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {experiences.map((experience) => (
+            {collabs.map((collab) => (
               <Card
-                key={experience.id}
-                experience={experience}
-                onClick={() => handleExperienceClick(experience.id)}
+                key={collab.id}
+                collab={collab}
+                onClick={() => handleCollabClick(collab.id)}
               />
             ))}
           </div>
@@ -111,25 +109,25 @@ export default function Grid({
       </div>
 
       {/* Modal for Event Details */}
-      {showModal && selectedExperienceData && (
+      {showModal && selectedCollabData && (
         <div className="fixed inset-0 bg-transparent backdrop-blur-sm flex items-center justify-center z-50 p-4 pt-24">
           <div className="w-full max-w-lg">
             <EventDetailsCard
-              experience={selectedExperienceData}
+              collab={selectedCollabData}
               onAttend={handleAttendClick}
-              onClose={() => setSelectedExperience(null)}
+              onClose={() => setSelectedCollab(null)}
             />
           </div>
         </div>
       )}
 
       {/* Attendance Modal */}
-      {showModal && selectedExperienceData && (
+      {showModal && selectedCollabData && (
         <AttendanceModal
           isOpen={showAttendanceModal}
           onClose={() => setShowAttendanceModal(false)}
           onSubmit={handleAttendanceSubmit}
-          eventTitle={selectedExperienceData.name}
+          eventTitle={selectedCollabData.name}
         />
       )}
     </>
