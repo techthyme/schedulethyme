@@ -2,7 +2,7 @@ import { Event, Profile, Resource, Collab} from "@/types";
 
 
 export interface GetCollabsResponse {
-  experiences: Collab[];
+  collabs: Collab[];
   page: number;
   total: number;
 }
@@ -53,6 +53,14 @@ export interface GetEventsRequest {
   query: Query;
 }
 
+export interface GetCollabsResponse {
+  collabs: Collab[];
+  page: number;
+  total: number;
+}
+
+
+// Deprecate
 export interface GetEventsResponse {
   events: Event[];
   page: number;

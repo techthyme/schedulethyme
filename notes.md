@@ -23,6 +23,5 @@ remember, there should only be 3 call to actions
 - food/space - admin to approve availability
   cheange experience link/page to collab
 
-remove scheduled tab
-
 for the voting afer the guest has voted ask them if they would like to leave a comment. coult be annonymous.
+

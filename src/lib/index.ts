@@ -30,11 +30,20 @@ export const errorLogger = (msg: string, error: any) => {
 
 
 export function convertEventsToCollabs(events: Event[]): Collab[]{
+  if (!events || events.length == 0 ) return []
   return events.map((event) => {
     return {
       id: event.id,
       name: event.title,
+      description: event.description,
+      imageSrc: event.imageUrl,
+      imageAlt: "event image",
+      highlights: [],
       type: "event",
+      dateStart: event.dateStart,
+      location: event.location,
+      place: event.place,
+      status: "upcoming",
       event,
     };
   })

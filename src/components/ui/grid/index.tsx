@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useState } from "react";
 import Card from "@/components/ui/card";
 import EventDetailsCard from "@/components/eventdetails";
@@ -38,12 +39,6 @@ export default function Grid({
     alert(
       `Thank you ${attendeeInfo.name}! Your registration has been submitted.`
     );
-  };
-
-  const handleCollabClick = (collabId: string) => {
-    if (showModal) {
-      setSelectedCollab(collabId);
-    }
   };
 
   return (
@@ -89,13 +84,11 @@ export default function Grid({
           </div>
 
           {/* Grid layout - Airbnb style */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {collabs.map((collab) => (
-              <Card
-                key={collab.id}
-                collab={collab}
-                onClick={() => handleCollabClick(collab.id)}
-              />
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {collabs.map((collab, idx) => (
+              <Link key={idx} href={`/collabs/${collab.id}`}>
+                <Card key={collab.id} collab={collab} />
+              </Link>
             ))}
           </div>
 

@@ -1,61 +1,67 @@
 import { NextRequest, NextResponse } from "next/server";
 import {
   CreateEventRequest,
-  GetEventsResponse,
+  GetCollabsResponse,
 } from "@/types/api";
-import { fetchGoogleCalendarEvents} from "@/lib/google"
-import { mockEvents } from "@/data";
-import { Event } from "@/types";
+import { fetchGoogleCalendarEvents } from "@/lib/google";
+import { convertEventsToCollabs } from "@/lib";
+import { mockEvents, mockCollabs } from "@/data";
+import { Collab } from "@/types";
+
 
 export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
-    const eventId = searchParams.get('id');
-    
-    let events: Event[] = [];
-    
+    const collabId = searchParams.get("id");
+
+    let collabs: Collab[] = [];
+
     // Try to fetch from Google Calendar first
     try {
-      // TODO: Replace with getting the events from the db after we implement
-      // suncing the calendar with the db
-        console.log('Fetching events from Google Calendar...');
-        const googleEvents = await fetchGoogleCalendarEvents();
-        events = [...mockEvents, ...googleEvents]; // Merge with static events
-        console.log(`Successfully fetched ${googleEvents.length} Google Calendar events`);
+      console.log("Fetching collabs from Google Calendar...");
+      const googleEvents = await fetchGoogleCalendarEvents();
+      const events = [...mockEvents, ...googleEvents]; // Merge with static collabs
+      console.log(
+        `Successfully fetched ${googleEvents.length} Google Calendar collabs`
+      );
+
     } catch (googleError) {
-      console.error('Failed to fetch Google Calendar events, falling back to static events:', googleError);
-      events = mockEvents; // Fallback to static events
-    }
-    
-    // If a specific event ID is requested, return just that event
-    if (eventId) {
-      const selectedEvent = events.find((event) => event.id === eventId);
-      if (selectedEvent) {
-        return NextResponse.json({ event: selectedEvent });
-      } else {
-        return NextResponse.json(
-          { error: "Event not found" },
-          { status: 404 }
-        );
-      }
+      console.error(
+        "Failed to fetch Google Calendar collabs, falling back to static collabs:",
+        googleError
+      );
+      collabs = mockCollabs; // Fallback to static collabs
+      // collabs = convertEventsToCollabs(mockEvents); // Fallback to static collabs
     }
 
-    // Return all events (Google + static)
-    const res: GetEventsResponse = {
-      events: events,
+    // If a specific event ID is requested, return just that event
+    const res: GetCollabsResponse = {
+      collabs: [],
       page: 1,
-      total: events.length,
+      total: 1,
     };
-    
+    if (collabId) {
+      const collab = collabs.find((event) => event.id === collabId);
+      if (collab) res.collabs.push(collab)
+      return NextResponse.json(res);
+    }
+
+    const filter = searchParams.get("filter");
+    if (filter) {
+      collabs = collabs.filter((event) => event.type === filter)
+    }
+
+    res.collabs.push(...collabs)
     return NextResponse.json(res);
   } catch (error) {
-    console.error("Error fetching events:", error);
+    console.error("Error fetching collabs:", error);
     return NextResponse.json(
-      { error: "Failed to fetch events" },
-      { status: 500 },
+      { error: "Failed to fetch collabs" },
+      { status: 500 }
     );
   }
 }
+
 
 export async function POST(request: NextRequest) {
   try {

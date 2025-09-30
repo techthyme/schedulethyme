@@ -1,7 +1,8 @@
 "use client";
-import { useState } from "react";
 import Grid from "@/components/ui/grid";
+import { useState } from "react";
 import { Collab } from "@/types";
+import CollabClientSingle from "./single";
 // import Calendar from "@/components/ui/calendar";
 
 interface CollabsClientProps {
@@ -9,17 +10,18 @@ interface CollabsClientProps {
 }
 
 export default function CollabsClient({ collabs }: CollabsClientProps) {
-  const [filteredCollabs, setFilteredCollabs] = useState<Collab[]>(collabs);
+  const [selectedCollabs, setSelectedCollabs] = useState<Collab[]>(collabs);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
+  if (collabs.length == 1) return <CollabClientSingle collab={collabs[0]} />;
   const handleDateClick = (date: Date, dayEvents: Collab[]) => {
     setSelectedDate(date);
-    setFilteredCollabs(dayEvents.length > 0 ? dayEvents : collabs);
+    setSelectedCollabs(dayEvents.length > 0 ? dayEvents : collabs);
   };
 
   const clearFilter = () => {
     setSelectedDate(null);
-    setFilteredCollabs(collabs);
+    setSelectedCollabs(collabs);
   };
 
   const formatSelectedDate = (date: Date) => {
@@ -30,7 +32,7 @@ export default function CollabsClient({ collabs }: CollabsClientProps) {
       day: "numeric",
     });
   };
-
+  console.log("filtered events: ", selectedCollabs);
   return (
     <main className="relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-indigo-50/20 isolate">
       {/* Background streak */}
@@ -91,32 +93,30 @@ export default function CollabsClient({ collabs }: CollabsClientProps) {
         />
       </div>
 
-      <div className="container mx-auto px-4">
-        <Grid
-          collabs={filteredCollabs}
-          title={
-            selectedDate
-              ? `Events for ${formatSelectedDate(selectedDate)}`
-              : "Upcoming Collabs"
-          }
-          description={
-            selectedDate
-              ? `Showing ${filteredCollabs.length} event${
-                  filteredCollabs.length !== 1 ? "s" : ""
-                } scheduled for this date.`
-              : "Join us for workshops, training sessions, and consulting opportunities designed to help you grow your skills and connect with the community."
-          }
-          showModal={true}
-          selectedDate={selectedDate}
-          onClearFilter={clearFilter}
-        />
+      <Grid
+        collabs={selectedCollabs}
+        title={
+          selectedDate
+            ? `Events for ${formatSelectedDate(selectedDate)}`
+            : "Upcoming Collabs"
+        }
+        description={
+          selectedDate
+            ? `Showing ${selectedCollabs.length} event${
+                selectedCollabs.length !== 1 ? "s" : ""
+              } scheduled for this date.`
+            : "Join us for workshops, training sessions, and consulting opportunities designed to help you grow your skills and connect with the community."
+        }
+        showModal={true}
+        selectedDate={selectedDate}
+        onClearFilter={clearFilter}
+      />
 
-        {/* <Calendar
+      {/* <Calendar
           events={events}
           onDateClick={handleDateClick}
           selectedDate={selectedDate}
         /> */}
-      </div>
     </main>
   );
 }

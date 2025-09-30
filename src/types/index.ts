@@ -48,10 +48,39 @@ export interface Profile {
 
 export interface Collab {
   id: string;
-  type: "event" | "service";
+  type: "service" | "event" | "space" | "training";
   name: string;
-  event?: Event; 
+  host?: string;
+  price?: number;
+  description?: string;
+  highlights?: string[];
+  imageUrl?: string;
+  imageAlt?: string;
   service?: Service;
+  dateStart: number; // Epoch time
+  dateEnd?: number; // Epoch time
+  location: string;
+  
+  status: string;
+  
+  // Deprecate
+  canAttend?: string;
+  date?: string; // e.g., "2025-10-05"
+  time?: string; // e.g., "6:00 PM"
+  timezone?: string; // e.g., "America/St_Thomas"
+  
+  place: string; // e.g., "UVI Innovation Lab, St. Thomas"
+  
+  instructors?: Instructor[]; // minimal list of presenters
+  
+  // Event status and attendance
+  maxAttendees?: number;
+  currentAttendees?: number;
+  registrationRequired?: boolean;
+  registrationDeadline?: string; // e.g., "2025-10-03"
+  resources?: Resource[]; 
+  
+  event?: Event; 
 }
 export interface Service {
   id: string; 
@@ -70,7 +99,7 @@ export interface Event {
   price?: number; // USD price, undefined = free
   imageUrl?: string;
   status: EventStatus;
-  type: "training" | "consultation" | "facility_booking";
+  type: "training" | "consultation" | "event" | "facility_booking";
   
   // Deprecate
   canAttend?: string;

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import {mockEvents, mockProfiles} from "@/data"
+import {mockCollabs, mockEvents, mockProfiles} from "@/data"
 import { GetProfileResponse } from "@/types/api";
 
 

@@ -1,9 +1,9 @@
 export const dynamic = "force-dynamic";
 
-import { GetEventsResponse } from "@/types/api";
+import { GetCollabsResponse } from "@/types/api";
 import { serverApiClient } from "@/lib/server";
 import CollabsClient from "@/components/client/collabs";
-import { mockCollabs } from "@/data";
+import { mockEvents } from "@/data";
 import { convertEventsToCollabs } from "@/lib";
 
 export default async function CollabsPage({
@@ -24,18 +24,18 @@ export default async function CollabsPage({
 
     if (status >= 400) {
       console.error("API returned error status:", status);
-      return <CollabsClient collabs={mockCollabs} />;
+      return <CollabsClient collabs={convertEventsToCollabs(mockEvents)} />;
     }
 
-    const res: GetEventsResponse = data;
+  const res: GetCollabsResponse = data;
 
-    return <CollabsClient collabs={convertEventsToCollabs(res.events)} />;
+    return <CollabsClient collabs={res.collabs} />;
   } catch (error: any) {
     console.error(
       "Failed to fetch collabs from API, using static collabs:",
       error
     ); // Fallback to static collabs if API fails
 
-    return <CollabsClient collabs={mockCollabs} />;
+    return <CollabsClient collabs={convertEventsToCollabs(mockEvents)} />;
   }
 }

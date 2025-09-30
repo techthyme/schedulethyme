@@ -1,4 +1,4 @@
-import { Calendar, Event, Collab, HeroSection, Profile, Resource, User } from "@/types";
+import { Calendar, Event, Collab, HeroSection, Profile, Resource, User, EventStatus } from "@/types";
 import { AboutUsData } from "@/types";
 
 export const _mockEvents: Event[] = [
@@ -430,13 +430,340 @@ export const aboutUsData: AboutUsData = {
   ]
 };
 
-export const mockCollabs: Collab[] = []
+
+
+export const mockCollabs: Collab[] = [
+  // Services (20)
+  {
+    id: "clb-1",
+    name: "Starting Your Island Business",
+    dateStart: Math.floor(new Date('2025-10-01T09:00:00').getTime() / 1000),
+    dateEnd: Math.floor(new Date('2025-10-01T12:00:00').getTime() / 1000),
+    location: "UVI Innovation Lab, St. Thomas",
+    description: "Learn the essentials of starting a business in the US Virgin Islands. Topics include permits, taxes, and local regulations.",
+    price: 75,
+    imageUrl: "https://picsum.photos/seed/workshop1/400/250",
+    status: "scheduled",
+    type: "service",
+    date: "2025-10-01",
+    time: "9:00 AM",
+    timezone: "America/St_Thomas",
+    place: "UVI Innovation Lab, St. Thomas",
+    instructors: [{
+      name: "Maria Rodriguez",
+      title: "Business Development Specialist"
+    }],
+    maxAttendees: 25,
+    currentAttendees: 18,
+    registrationRequired: true,
+    registrationDeadline: "2025-09-29"
+  },
+  {
+    id: "clb-33",
+    name: "Another type of event",
+    dateStart: Math.floor(new Date('2025-10-01T09:00:00').getTime() / 1000),
+    dateEnd: Math.floor(new Date('2025-10-01T12:00:00').getTime() / 1000),
+    location: "UVI Innovation Lab, St. Thomas",
+    description: "Learn the essentials of starting a business in the US Virgin Islands. Topics include permits, taxes, and local regulations.",
+    price: 75,
+    imageUrl: "https://picsum.photos/seed/workshop1/400/250",
+    status: "scheduled",
+    type: "event",
+    date: "2025-10-01",
+    time: "9:00 AM",
+    timezone: "America/St_Thomas",
+    place: "UVI Innovation Lab, St. Thomas",
+    instructors: [{
+      name: "Maria Rodriguez",
+      title: "Business Development Specialist"
+    }],
+    maxAttendees: 25,
+    currentAttendees: 18,
+    registrationRequired: true,
+    registrationDeadline: "2025-09-29"
+  },
+  {
+    id: "clb-2",
+    name: "Tech Training: Digital Marketing for Caribbean Businesses",
+    dateStart: Math.floor(new Date('2025-10-03T14:00:00').getTime() / 1000),
+    dateEnd: Math.floor(new Date('2025-10-03T17:00:00').getTime() / 1000),
+    location: "Charlotte Amalie Community Center, St. Thomas",
+    description: "Master social media marketing, Google Ads, and email campaigns specifically for Caribbean tourism and retail businesses.",
+    price: 95,
+    imageUrl: "https://picsum.photos/seed/digital/400/250",
+    status: "scheduled",
+    type: "service",
+    date: "2025-10-03",
+    time: "2:00 PM",
+    timezone: "America/St_Thomas",
+    place: "Charlotte Amalie Community Center, St. Thomas",
+    instructors: [{
+      name: "James Thompson",
+      title: "Digital Marketing Expert"
+    }],
+    maxAttendees: 30,
+    currentAttendees: 22,
+    registrationRequired: true,
+    registrationDeadline: "2025-10-01"
+  },
+  {
+    id: "clb-3",
+    name: "Tourism Industry Consultation Session",
+    dateStart: Math.floor(new Date('2025-10-05T10:00:00').getTime() / 1000),
+    dateEnd: Math.floor(new Date('2025-10-05T11:30:00').getTime() / 1000),
+    location: "Paradise Point Resort, St. Thomas",
+    description: "One-on-one consultations for tourism businesses looking to expand or improve their services.",
+    price: 150,
+    imageUrl: "https://picsum.photos/seed/tourism/400/250",
+    status: "scheduled",
+    type: "service",
+    date: "2025-10-05",
+    time: "10:00 AM",
+    timezone: "America/St_Thomas",
+    place: "Paradise Point Resort, St. Thomas",
+    instructors: [{
+      name: "Dr. Angela Davis",
+      title: "Tourism Development Consultant"
+    }],
+    maxAttendees: 5,
+    currentAttendees: 3,
+    registrationRequired: true,
+    registrationDeadline: "2025-10-03"
+  },
+  {
+    id: "clb-4",
+    name: "Coral World Marine Science Workshop",
+    dateStart: Math.floor(new Date('2025-10-07T08:30:00').getTime() / 1000),
+    dateEnd: Math.floor(new Date('2025-10-07T16:00:00').getTime() / 1000),
+    location: "Coral World Ocean Park, St. Thomas",
+    description: "Hands-on marine biology workshop including snorkeling, species identification, and conservation techniques.",
+    price: 125,
+    imageUrl: "https://picsum.photos/seed/marine/400/250",
+    status: "scheduled",
+    type: "service",
+    date: "2025-10-07",
+    time: "8:30 AM",
+    timezone: "America/St_Thomas",
+    place: "Coral World Ocean Park, St. Thomas",
+    instructors: [{
+      name: "Dr. Robert Martinez",
+      title: "Marine Biologist"
+    }, {
+      name: "Sarah Johnson",
+      title: "Conservation Specialist"
+    }],
+    maxAttendees: 15,
+    currentAttendees: 12,
+    registrationRequired: true,
+    registrationDeadline: "2025-10-05"
+  },
+  {
+    id: "clb-5",
+    name: "Culinary Arts: Caribbean Fusion Cooking",
+    dateStart: Math.floor(new Date('2025-10-09T16:00:00').getTime() / 1000),
+    dateEnd: Math.floor(new Date('2025-10-09T19:00:00').getTime() / 1000),
+    location: "Frenchtown Community Kitchen, St. Thomas",
+    description: "Learn to create modern Caribbean fusion dishes using local ingredients and traditional techniques.",
+    price: 85,
+    imageUrl: "https://picsum.photos/seed/cooking/400/250",
+    status: "scheduled",
+    type: "service",
+    date: "2025-10-09",
+    time: "4:00 PM",
+    timezone: "America/St_Thomas",
+    place: "Frenchtown Community Kitchen, St. Thomas",
+    instructors: [{
+      name: "Chef Marcus Williams",
+      title: "Executive Chef"
+    }],
+    maxAttendees: 12,
+    currentAttendees: 8,
+    registrationRequired: true,
+    registrationDeadline: "2025-10-07"
+  },
+  {
+    id: "clb-6",
+    name: "Financial Planning Workshop for Small Business",
+    dateStart: Math.floor(new Date('2025-10-12T10:00:00').getTime() / 1000),
+    dateEnd: Math.floor(new Date('2025-10-12T13:00:00').getTime() / 1000),
+    location: "Red Hook Plaza Conference Room, St. Thomas",
+    description: "Learn essential financial planning strategies, budgeting, and investment options specifically for Caribbean small businesses.",
+    price: 65,
+    imageUrl: "https://picsum.photos/seed/finance/400/250",
+    status: "scheduled",
+    type: "service",
+    date: "2025-10-12",
+    time: "10:00 AM",
+    timezone: "America/St_Thomas",
+    place: "Red Hook Plaza Conference Room, St. Thomas",
+    instructors: [{
+      name: "CPA Jennifer Lee",
+      title: "Financial Planning Specialist"
+    }],
+    maxAttendees: 20,
+    currentAttendees: 14,
+    registrationRequired: true,
+    registrationDeadline: "2025-10-10"
+  },
+
+  ...Array.from({ length: 15 }, (_, i) => ({
+    id: `evt-${i + 6}`,
+    type: "service" as const,
+    name: `Specialized Consultant #${i + 6}`,
+    description: "Tailored consulting service.",
+    host: `Consultant ${i + 6}`,
+    price: 200 + i * 10,
+    location: i % 2 === 0 ? "Virtual" : "St. Croix",
+    dateStart: 1767657600000 + i * 86400000,
+    place: i % 2 === 0 ? "Online" : "Business Hub",
+    status: "upcoming",
+    dateEnd: Math.floor(new Date('2025-10-12T13:00:00').getTime() / 1000),
+    imageUrl: "https://picsum.photos/seed/finance/400/250",
+    date: "2025-10-12",
+    time: "10:00 AM",
+    timezone: "America/St_Thomas",
+    instructors: [{
+      name: "CPA Jennifer Lee",
+      title: "Financial Planning Specialist"
+    }],
+    maxAttendees: 20,
+    currentAttendees: 14,
+    registrationRequired: true,
+    registrationDeadline: "2025-10-10"
+  })),
+  ...Array.from({ length: 15 }, (_, i) => ({
+    id: `svc-${i + 6}`,
+    type: "event" as const,
+    name: `Farming Consultant #${i + 6}`,
+    description: "Tailored consulting service.",
+    host: `Consultant ${i + 6}`,
+    price: 200 + i * 10,
+    location: i % 2 === 0 ? "Virtual" : "St. Croix",
+    dateStart: 1767657600000 + i * 86400000,
+    place: i % 2 === 0 ? "Online" : "Business Hub",
+    status: "upcoming",
+    dateEnd: Math.floor(new Date('2025-10-12T13:00:00').getTime() / 1000),
+    imageUrl: "https://picsum.photos/seed/finance/400/250",
+    date: "2025-10-12",
+    time: "10:00 AM",
+    timezone: "America/St_Thomas",
+    instructors: [{
+      name: "CPA Jennifer Lee",
+      title: "Financial Planning Specialist"
+    }],
+    maxAttendees: 20,
+    currentAttendees: 14,
+    registrationRequired: true,
+    registrationDeadline: "2025-10-10"
+  })),  
+  // 18009403446
+  ...Array.from({ length: 15 }, (_, i) => ({
+    id: `svc-${i + 6}`,
+    type: "service" as const,
+    name: `Specialized Consultant #${i + 6}`,
+    description: "Tailored consulting service.",
+    host: `Consultant ${i + 6}`,
+    price: 200 + i * 10,
+    location: i % 2 === 0 ? "Virtual" : "St. Croix",
+    dateStart: 1767657600000 + i * 86400000,
+    place: i % 2 === 0 ? "Online" : "Business Hub",
+    status: "upcoming",
+    imageUrl: "https://picsum.photos/seed/finance/400/250",
+    date: "2025-10-12",
+    time: "10:00 AM",
+    timezone: "America/St_Thomas",
+    instructors: [{
+      name: "CPA Jennifer Lee",
+      title: "Financial Planning Specialist"
+    }],
+    maxAttendees: 20,
+    currentAttendees: 14,
+    registrationRequired: true,
+    registrationDeadline: "2025-10-10"
+  })),
+  ...Array.from({ length: 15 }, (_, i) => ({
+    id: `trn-${i + 6}`,
+    type: "training" as const,
+    name: `Training #${i + 6}`,
+    description: `Tailored training service for Career ${i}`,
+    host: `Consultant ${i + 6}`,
+    price: 200 + i * 10,
+    location: i % 2 === 0 ? "Virtual" : "St. Croix",
+    dateStart: 1767657600000 + i * 86400000,
+    place: i % 2 === 0 ? "Online" : "Business Hub",
+    status: "upcoming",
+    imageUrl: "https://picsum.photos/seed/finance/400/250",
+    date: "2025-10-12",
+    time: "10:00 AM",
+    timezone: "America/St_Thomas",
+    instructors: [{
+      name: "CPA Jennifer Lee",
+      title: "Financial Planning Specialist"
+    }],
+    maxAttendees: 20,
+    currentAttendees: 14,
+    registrationRequired: true,
+    registrationDeadline: "2025-10-10"
+  })),
+  ...Array.from({ length: 15 }, (_, i) => ({
+      id: `trn-${i + 6}`,
+    type: "event" as const,
+    name: `Training Workshop #${i + 6}`,
+    description: "Interactive session to build skills.",
+    host: `Trainer ${i + 6}`,
+    price: 30 + i * 5,
+    location: i % 2 === 0 ? "St. Thomas" : "Virtual",
+    dateStart: 1768176000000 + i * 86400000,
+    dateEnd: 1768183200000 + i * 86400000,
+    place: i % 2 === 0 ? "UVI Innovation Lab" : "Online",
+    status: "upcoming" as const,
+    registrationRequired: true,
+    maxAttendees: 40,
+    currentAttendees: 5 + i,
+    imageUrl: "https://picsum.photos/seed/finance/400/250",
+    date: "2025-10-12",
+    time: "10:00 AM",
+    timezone: "America/St_Thomas",
+    instructors: [{
+      name: "CPA Jennifer Lee",
+      title: "Financial Planning Specialist"
+    }],
+    registrationDeadline: "2025-10-10"
+  })),
+
+  
+  // replicate to make 20
+  ...Array.from({ length: 15 }, (_, i) => ({
+  id: `spc-${i + 6}`,
+  type: "space" as const,
+  name: `Collaboration Space #${i + 6}`,
+  description: "Shared workspace with resources.",
+  location: i % 2 === 0 ? "St. Thomas" : "St. Croix",
+  dateStart: 1768694400000 + i * 86400000,
+  dateEnd: undefined,
+  date: new Date(1768694400000 + i * 86400000).toISOString().split("T")[0], // e.g., "2025-12-18"
+  time: undefined,
+  timezone: "America/St_Thomas",
+  place: i % 2 === 0 ? "Tech Hub" : "Business Resource Center",
+  status: "scheduled" as EventStatus,
+  registrationRequired: true,
+  maxAttendees: 40,
+  currentAttendees: 5 + i,
+  imageUrl: "https://picsum.photos/seed/finance/400/250",
+  instructors: [{
+    name: "CPA Jennifer Lee",
+    title: "Financial Planning Specialist"
+  }],
+  registrationDeadline: "2025-10-10"
+})),
+];
+
 
 // Google Calendar-style events for St. Thomas, USVI
 export const mockEvents: Event[] = [
   {
-    id: "calendar-1",
-    title: "Business Workshop: Starting Your Island Business",
+    id: "clb-1",
+    title: "Starting Your Island Business",
     dateStart: Math.floor(new Date('2025-10-01T09:00:00').getTime() / 1000),
     dateEnd: Math.floor(new Date('2025-10-01T12:00:00').getTime() / 1000),
     location: "UVI Innovation Lab, St. Thomas",
@@ -459,7 +786,31 @@ export const mockEvents: Event[] = [
     registrationDeadline: "2025-09-29"
   },
   {
-    id: "calendar-2",
+    id: "clb-33",
+    title: "Another type of event",
+    dateStart: Math.floor(new Date('2025-10-01T09:00:00').getTime() / 1000),
+    dateEnd: Math.floor(new Date('2025-10-01T12:00:00').getTime() / 1000),
+    location: "UVI Innovation Lab, St. Thomas",
+    description: "Learn the essentials of starting a business in the US Virgin Islands. Topics include permits, taxes, and local regulations.",
+    price: 75,
+    imageUrl: "https://picsum.photos/seed/workshop1/400/250",
+    status: "scheduled",
+    type: "event",
+    date: "2025-10-01",
+    time: "9:00 AM",
+    timezone: "America/St_Thomas",
+    place: "UVI Innovation Lab, St. Thomas",
+    instructors: [{
+      name: "Maria Rodriguez",
+      title: "Business Development Specialist"
+    }],
+    maxAttendees: 25,
+    currentAttendees: 18,
+    registrationRequired: true,
+    registrationDeadline: "2025-09-29"
+  },
+  {
+    id: "clb-2",
     title: "Tech Training: Digital Marketing for Caribbean Businesses",
     dateStart: Math.floor(new Date('2025-10-03T14:00:00').getTime() / 1000),
     dateEnd: Math.floor(new Date('2025-10-03T17:00:00').getTime() / 1000),
@@ -483,7 +834,7 @@ export const mockEvents: Event[] = [
     registrationDeadline: "2025-10-01"
   },
   {
-    id: "calendar-3",
+    id: "clb-3",
     title: "Tourism Industry Consultation Session",
     dateStart: Math.floor(new Date('2025-10-05T10:00:00').getTime() / 1000),
     dateEnd: Math.floor(new Date('2025-10-05T11:30:00').getTime() / 1000),
@@ -507,7 +858,7 @@ export const mockEvents: Event[] = [
     registrationDeadline: "2025-10-03"
   },
   {
-    id: "calendar-4",
+    id: "clb-4",
     title: "Coral World Marine Science Workshop",
     dateStart: Math.floor(new Date('2025-10-07T08:30:00').getTime() / 1000),
     dateEnd: Math.floor(new Date('2025-10-07T16:00:00').getTime() / 1000),
@@ -534,7 +885,7 @@ export const mockEvents: Event[] = [
     registrationDeadline: "2025-10-05"
   },
   {
-    id: "calendar-5",
+    id: "clb-5",
     title: "Culinary Arts: Caribbean Fusion Cooking",
     dateStart: Math.floor(new Date('2025-10-09T16:00:00').getTime() / 1000),
     dateEnd: Math.floor(new Date('2025-10-09T19:00:00').getTime() / 1000),
@@ -558,7 +909,7 @@ export const mockEvents: Event[] = [
     registrationDeadline: "2025-10-07"
   },
   {
-    id: "calendar-6",
+    id: "clb-6",
     title: "Financial Planning Workshop for Small Business",
     dateStart: Math.floor(new Date('2025-10-12T10:00:00').getTime() / 1000),
     dateEnd: Math.floor(new Date('2025-10-12T13:00:00').getTime() / 1000),
@@ -597,3 +948,92 @@ export const calendars: Calendar[] =[
     name: "nadine's calendar", 
   },
 ]
+
+
+export const mockReviews = {
+  average: 4,
+  featured: [
+    {
+      id: 1,
+      rating: 5,
+      content: `
+        <p>This icon pack is just what I need for my latest project. There's an icon for just about anything I could ever need. Love the playful look!</p>
+      `,
+      date: "July 16, 2021",
+      datetime: "2021-07-16",
+      author: "Emily Selman",
+      avatarSrc:
+        "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80",
+    },
+    {
+      id: 2,
+      rating: 5,
+      content: `
+        <p>Blown away by how polished this icon pack is. Everything looks so consistent and each SVG is optimized out of the box so I can use it directly with confidence. It would take me several hours to create a single icon this good, so it's a steal at this price.</p>
+      `,
+      date: "July 12, 2021",
+      datetime: "2021-07-12",
+      author: "Hector Gibbons",
+      avatarSrc:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80",
+    },
+    {
+      id: 3,
+      rating: 4,
+      content: `
+        <p>Really happy with look and options of these icons. I've found uses for them everywhere in my recent projects. I hope there will be 20px versions in the future!</p>
+      `,
+      date: "July 6, 2021",
+      datetime: "2021-07-06",
+      author: "Mark Edwards",
+      avatarSrc:
+        "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixqx=oilqXxSqey&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    },
+  ],
+};
+export const mockFaqs = [
+  {
+    question: "What format are these icons?",
+    answer:
+      "The icons are in SVG (Scalable Vector Graphic) format. They can be imported into your design tool of choice and used directly in code.",
+  },
+  {
+    question: "Can I use the icons at different sizes?",
+    answer:
+      "Yes. The icons are drawn on a 24 x 24 pixel grid, but the icons can be scaled to different sizes as needed. We don't recommend going smaller than 20 x 20 or larger than 64 x 64 to retain legibility and visual balance.",
+  },
+  {
+    question: "Do I have to add attribution to my projects?",
+    answer:
+      "No. You are allowed to use these icons freely in your personal and professional work. If you enjoy the icon pack, feel free to tell others!",
+  },
+];
+export const mockLicense = {
+  href: "#",
+  summary:
+    "For personal and professional use. You cannot resell or redistribute these icons in their original or modified state.",
+  content: `
+    <h4>Overview</h4>
+    
+    <p>For personal and professional use. You cannot resell or redistribute these icons in their original or modified state.</p>
+    
+    <ul role="list">
+    <li>You\'re allowed to use the icons in unlimited projects.</li>
+    <li>Attribution is not required to use the icons.</li>
+    </ul>
+    
+    <h4>What you can do with it</h4>
+    
+    <ul role="list">
+    <li>Use them freely in your personal and professional work.</li>
+    <li>Make them your own. Change the colors to suit your project or brand.</li>
+    </ul>
+    
+    <h4>What you can\'t do with it</h4>
+    
+    <ul role="list">
+    <li>Don\'t be greedy. Selling or distributing these icons in their original or modified state is prohibited.</li>
+    <li>Don\'t be evil. These icons cannot be used on websites or applications that promote illegal or immoral beliefs or activities.</li>
+    </ul>
+  `,
+};
