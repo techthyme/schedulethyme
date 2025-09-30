@@ -13,33 +13,38 @@ const companies = [
   {
     name: "Vercel",
     logo: "/logos/vercel.svg",
-    image: "/portrait-of-a-businessman-holding-glasses-looking-2024-10-19-04-33-11-utc.jpg"
+    image:
+      "/portrait-of-a-businessman-holding-glasses-looking-2024-10-19-04-33-11-utc.jpg",
   },
   {
     name: "Vercel",
-    logo: "/logos/vercel.svg", 
-    image: "/group-of-engineers-analyzing-the-results-of-techno-2025-01-09-06-23-16-utc.jpg"
+    logo: "/logos/vercel.svg",
+    image:
+      "/group-of-engineers-analyzing-the-results-of-techno-2025-01-09-06-23-16-utc.jpg",
   },
   {
     name: "ARC",
     logo: "/logos/arc.svg",
-    image: "/a-young-business-woman-sitting-in-the-office-looki-2025-03-13-01-23-25-utc.jpg"
+    image:
+      "/a-young-business-woman-sitting-in-the-office-looki-2025-03-13-01-23-25-utc.jpg",
   },
   {
     name: "Raycast",
     logo: "/logos/raycast.svg",
-    image: "/unrecognizable-woman-raising-hand-during-conferenc-2025-02-10-09-49-36-utc.jpg"
+    image:
+      "/unrecognizable-woman-raising-hand-during-conferenc-2025-02-10-09-49-36-utc.jpg",
   },
   {
     name: "Runway",
     logo: "/logos/runway.svg",
-    image: "/young-speaker-talking-to-audience-at-conference-2025-03-09-23-13-04-utc.jpg"
+    image:
+      "/young-speaker-talking-to-audience-at-conference-2025-03-09-23-13-04-utc.jpg",
   },
   {
     name: "Ramp",
     logo: "/logos/ramp.svg",
-    image: "/images/ramp-finance.jpg"
-  }
+    image: "/images/ramp-finance.jpg",
+  },
 ];
 
 export default function HeroClient({ hero }: HeroClientProps) {
@@ -47,67 +52,102 @@ export default function HeroClient({ hero }: HeroClientProps) {
 
   return (
     <>
-      <div className="relative min-h-screen flex items-center py-32 bg-gradient-to-br from-indigo-100/20 overflow-hidden isolate">
+      <div className="relative  flex items-center py-32 bg-gradient-to-br from-indigo-100/20 overflow-hidden isolate">
         {/* Background streak */}
         <div
           aria-hidden="true"
           className="absolute inset-y-0 right-1/2 -z-10 -mr-96 w-[200%] origin-top-right skew-x-[-30deg] bg-white shadow-xl ring-1 shadow-indigo-600/10 ring-indigo-50 sm:-mr-80 lg:-mr-96"
         />
-        
-        {/* Wavy Gradient Background */}
-        <div className="absolute inset-0 w-full h-full overflow-hidden" style={{zIndex: -20}}>
-          <div 
-            className="absolute inset-0 w-[120%] h-[120%] -left-[10%] -top-[10%] opacity-30"
+
+        {/* Blue-Purple Abstract Blur Background */}
+        <div
+          className="absolute inset-0 w-full h-full overflow-hidden"
+          style={{ zIndex: -20 }}
+        >
+          {/* Large purple blur on the left */}
+          <div
+            className="absolute w-96 h-96 -left-20 top-1/4 opacity-60"
             style={{
-              background: 'linear-gradient(135deg, rgba(165, 180, 252, 0.3) 0%, rgba(196, 181, 253, 0.2) 50%, rgba(165, 180, 252, 0.1) 100%)',
-              borderRadius: '50% 40% 60% 30%',
-              transform: 'rotate(-5deg)',
-              animation: 'wave1 20s ease-in-out infinite'
+              background:
+                "radial-gradient(circle, rgba(147, 51, 234, 0.4) 0%, rgba(168, 85, 247, 0.3) 35%, rgba(196, 181, 253, 0.2) 70%, transparent 100%)",
+              borderRadius: "50%",
+              filter: "blur(80px)",
+              animation: "float1 30s ease-in-out infinite",
             }}
           />
-          <div 
-            className="absolute inset-0 w-[130%] h-[130%] -right-[15%] -bottom-[15%] opacity-20"
+
+          {/* Medium blue blur on the right */}
+          <div
+            className="absolute w-80 h-80 -right-16 top-1/3 opacity-50"
             style={{
-              background: 'linear-gradient(45deg, rgba(196, 181, 253, 0.25) 0%, rgba(139, 92, 246, 0.15) 50%, rgba(165, 180, 252, 0.1) 100%)',
-              borderRadius: '40% 60% 30% 50%',
-              transform: 'rotate(5deg)',
-              animation: 'wave2 25s ease-in-out infinite reverse'
+              background:
+                "radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, rgba(99, 102, 241, 0.3) 40%, rgba(165, 180, 252, 0.2) 75%, transparent 100%)",
+              borderRadius: "50%",
+              filter: "blur(70px)",
+              animation: "float2 25s ease-in-out infinite reverse",
+            }}
+          />
+
+          {/* Small violet blur in center */}
+          <div
+            className="absolute w-64 h-64 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-40"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, rgba(168, 85, 247, 0.2) 50%, transparent 100%)",
+              borderRadius: "50%",
+              filter: "blur(60px)",
+              animation: "float3 20s ease-in-out infinite",
+            }}
+          />
+
+          {/* Additional subtle pink accent */}
+          <div
+            className="absolute w-72 h-72 right-1/4 bottom-1/4 opacity-30"
+            style={{
+              background:
+                "radial-gradient(circle, rgba(236, 72, 153, 0.3) 0%, rgba(219, 39, 119, 0.2) 40%, transparent 100%)",
+              borderRadius: "50%",
+              filter: "blur(90px)",
+              animation: "float4 35s ease-in-out infinite",
             }}
           />
         </div>
-        
+
         {/* Hero Content - Sumip Style */}
         <div className="relative w-full z-10">
           <div className="mx-auto max-w-7xl text-center px-6 lg:px-8">
-            
             {/* Announcement Banner */}
             {hero.announcement && (
               <div className="mb-8 inline-flex items-center gap-2 rounded-full bg-indigo-50 px-4 py-2 text-sm text-indigo-700 border border-indigo-200">
                 <span className="text-base">✨</span>
                 <span>{hero.announcement.text}</span>
-                <a 
-                  href={hero.announcement.linkUrl} 
+                <a
+                  href={hero.announcement.linkUrl}
                   className="font-medium text-indigo-600 hover:text-indigo-700 transition-colors"
                 >
                   {hero.announcement.linkText} →
                 </a>
               </div>
             )}
-            
+
             {/* Main Headline - Sumip Style */}
             <div className="mb-8">
               <h1 className="text-5xl lg:text-6xl xl:text-7xl font-light tracking-tight text-gray-900 leading-tight max-w-6xl mx-auto">
-Empowering Virgin Islanders with Reliable Scheduling, Built on Trust and Designed for Growth.               <br />
+                Empowering Virgin Islands
+                <br />
+                Growing Businesses
                 <span className="block"></span>
               </h1>
             </div>
-            
+
             {/* Description */}
             <p className="text-lg font-light text-gray-600 leading-relaxed max-w-4xl mx-auto mb-10">
-Where productivity meets simplicity — so you can focus on what matters most.            </p>
+              Where productivity meets simplicity — so you can focus on what
+              matters most.{" "}
+            </p>
 
             {/* CTA Buttons - Sumip Style */}
-            <div className="mb-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="hidden mb-4 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link href="/events" passHref>
                 <Button
                   variant="primary"
@@ -117,7 +157,7 @@ Where productivity meets simplicity — so you can focus on what matters most.  
                   {hero.primaryCTA.text} →
                 </Button>
               </Link>
-              
+
               <Link href="/about" passHref>
                 <Button
                   variant="outline"
@@ -128,7 +168,6 @@ Where productivity meets simplicity — so you can focus on what matters most.  
                 </Button>
               </Link>
             </div>
-
           </div>
         </div>
       </div>
@@ -149,7 +188,7 @@ Where productivity meets simplicity — so you can focus on what matters most.  
                 />
               </div>
             </div>
-            
+
             <div className="md:col-span-1 md:mt-8">
               <div className="relative group overflow-hidden rounded-3xl aspect-[3/4] bg-gray-100 shadow-2xl hover:shadow-3xl transition-all duration-500">
                 <Image
@@ -160,7 +199,7 @@ Where productivity meets simplicity — so you can focus on what matters most.  
                 />
               </div>
             </div>
-            
+
             <div className="md:col-span-1 md:mt-4">
               <div className="relative group overflow-hidden rounded-3xl aspect-[3/4] bg-gray-100 shadow-2xl hover:shadow-3xl transition-all duration-500">
                 <Image
@@ -171,7 +210,7 @@ Where productivity meets simplicity — so you can focus on what matters most.  
                 />
               </div>
             </div>
-            
+
             <div className="md:col-span-1 md:mt-12">
               <div className="relative group overflow-hidden rounded-3xl aspect-[3/4] bg-gray-100 shadow-2xl hover:shadow-3xl transition-all duration-500">
                 <Image

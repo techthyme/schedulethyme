@@ -37,13 +37,32 @@ export interface User {
 export interface Profile {
   id: string;
   name: string;
+  bio?: string;
+  organization?: string;
+  profession?: string;
   avatarUrl?: string;
   user?: User;
+  events?: Event[];
 }
 
+
+export interface Experience {
+  id: string;
+  type: "event" | "service";
+  name: string;
+  event?: Event; 
+  service?: Service;
+}
+export interface Service {
+  id: string; 
+  type: string; 
+  name: string; 
+  resource: Resource;
+}
 export interface Event {
   id: string;
   title: string;
+  host?: string;
   dateStart: number; // Epoch time
   dateEnd?: number; // Epoch time
   location: string;
@@ -52,8 +71,9 @@ export interface Event {
   imageUrl?: string;
   status: EventStatus;
   type: "training" | "consultation" | "facility_booking";
-
+  
   // Deprecate
+  canAttend?: string;
   date: string; // e.g., "2025-10-05"
   time?: string; // e.g., "6:00 PM"
   timezone?: string; // e.g., "America/St_Thomas"
@@ -67,6 +87,21 @@ export interface Event {
   currentAttendees?: number;
   registrationRequired?: boolean;
   registrationDeadline?: string; // e.g., "2025-10-03"
+  resources?: Resource[]; 
+}
+
+export interface Resource {
+  id: string
+  name: string; 
+  type: string; // person, space, equipment
+  calendar?: Calendar;
+  profile?: Profile;
+}
+
+export interface Calendar {
+  id: string; 
+  name: string; 
+  // Get the rest from the google calendar api
 }
 
 // Event status for future scheduling features
@@ -112,14 +147,6 @@ export interface TodayEvent {
   canAttend: boolean;
 }
 
-
-export interface ProfileDashboardData {
-  user: User;
-  bio: string;
-  todaysEvents: TodayEvent[];
-}
-
-
 export interface CalendarDay {
   date: string; // "2025-01-15"
   hasEvents: boolean;
@@ -154,8 +181,6 @@ export interface CTA {
 }
 
 
-
-
 //about
 export interface Stat {
   label: string;
@@ -170,4 +195,44 @@ export interface Value {
 export interface AboutUsData {
   stats: Stat[];
   values: Value[];
+}
+
+
+// Add Event Modal Types
+export interface Facility {
+  id: string;
+  name: string; // e.g. "Commercial Kitchen(s)"
+}
+
+// What the modal collects before you hit "Book"
+export interface EventDraft {
+  facilityId?: string;    // chosen Facility.id
+  date?: string;          // "YYYY-MM-DD"
+  time?: string;          // "HH:mm"
+  durationMin?: number;   // e.g. 60
+  note?: string;
+}
+
+// Training Types
+// filter chips
+export type TrainingCategory = "food" | "business" | "tech" | "hybrid";
+
+// a row/card in the list
+export interface Training {
+  id: string;
+  title: string;
+  category: TrainingCategory;
+  when: string;        // ISO datetime, e.g. "2025-10-12T14:00:00"
+}
+
+// current filter
+export interface TrainingFilters {
+  category?: TrainingCategory;
+}
+
+// registration payload
+export interface Registration {
+  trainingId: string;
+  name: string;
+  email: string;
 }

@@ -187,3 +187,55 @@
     border-radius: 70% 40% 30% 60%;
   }
 }
+
+/* Floating animations for blur backgrounds */
+@keyframes float1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(-20px, -30px) scale(1.05);
+  }
+  50% {
+    transform: translate(30px, -20px) scale(0.95);
+  }
+  75% {
+    transform: translate(-10px, 40px) scale(1.02);
+  }
+}
+
+@keyframes float2 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(25px, -40px) scale(1.03);
+  }
+  66% {
+    transform: translate(-30px, 30px) scale(0.97);
+  }
+}
+
+@keyframes float3 {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  30% {
+    transform: translate(-50%, -50%) translate(15px, -25px) scale(1.04);
+  }
+  60% {
+    transform: translate(-50%, -50%) translate(-20px, 20px) scale(0.96);
+  }
+}
+
+@keyframes float4 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  40% {
+    transform: translate(-35px, -15px) scale(1.02);
+  }
+  80% {
+    transform: translate(20px, -30px) scale(0.98);
+  }
+}
