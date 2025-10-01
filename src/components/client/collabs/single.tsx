@@ -3,8 +3,8 @@ import { Fragment, useState } from "react";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import clsx from "clsx";
-import Modal from "@/components/ui/modal";
-import { Collab } from "@/types";
+import AttendanceModal from "@/components/AttendanceModal";
+import { Collab, AttendeeInfo } from "@/types";
 import { mockReviews, mockFaqs, mockLicense } from "@/data";
 // import Calendar from "@/components/ui/calendar";
 
@@ -18,6 +18,13 @@ export default function CollabsClient({ collab }: CollabsClientProps) {
   function toggleAttendModal() {
     setAttendModalOpen(!attendModalOpen);
   }
+
+  const handleAttendanceSubmit = (attendeeInfo: AttendeeInfo) => {
+    console.log("Attendance submitted:", attendeeInfo);
+    alert(
+      `Thank you ${attendeeInfo.name}! Your registration for "${collab.name}" has been submitted.`
+    );
+  };
 
   return (
     <div className="bg-white">
@@ -283,9 +290,12 @@ export default function CollabsClient({ collab }: CollabsClientProps) {
           </div>
         </div>
       </div>
-      <Modal open={attendModalOpen} toggleFn={toggleAttendModal}>
-        Hello, let&apos;s collab
-      </Modal>
+      <AttendanceModal
+        isOpen={attendModalOpen}
+        onClose={() => setAttendModalOpen(false)}
+        onSubmit={handleAttendanceSubmit}
+        eventTitle={collab.name}
+      />
     </div>
   );
 }
