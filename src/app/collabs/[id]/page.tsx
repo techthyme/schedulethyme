@@ -21,9 +21,10 @@ export default async function CollabPage({
   const collab = {
     ...res.collabs[0],
     highlights: [
-      "200+ SVG icons in 3 unique styles",
-      "Compatible with Figma, Sketch, and Adobe XD",
-      "Drawn on 24 x 24 pixel grid",
+      "Expert instructors with Caribbean business experience",
+      "USVI-specific strategies and regulatory guidance", 
+      "Networking opportunities with local entrepreneurs",
+      "Practical tools for island business success",
     ],
   };
 

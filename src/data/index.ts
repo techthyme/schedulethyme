@@ -40,7 +40,7 @@ export const _mockEvents: Event[] = [
     date: "",
     place: "",
     description: "Watch startups pitch their ideas to a panel of investors.",
-    imageUrl: "https://picsum.photos/seed/pitch/400/250",
+    imageUrl: "https://pub-23a61d2910624d5082df829f68577f33.r2.dev/multiracial-group-of-office-workers-2025-03-05-05-25-38-utc.jpg",
     status: "cancelled",
   },
   {
@@ -91,7 +91,7 @@ export const _mockEvents: Event[] = [
     date: "",
     place: "",
     description: "Meet graduates showcasing their final tech projects.",
-    imageUrl: "https://picsum.photos/seed/bootcamp/400/250",
+    imageUrl: "https://pub-23a61d2910624d5082df829f68577f33.r2.dev/togetherness-modern-light-office-sitting-on-the-2024-10-14-22-23-58-utc.jpg",
     status: "cancelled",
   },
   {
@@ -128,7 +128,7 @@ export const _mockEvents: Event[] = [
     date: "",
     place: "",
     description: "Meet fellow entrepreneurs, investors, and professionals.",
-    imageUrl: "https://picsum.photos/seed/mixer/400/250",
+    imageUrl: "https://pub-23a61d2910624d5082df829f68577f33.r2.dev/two-businesswomen-recording-a-podcast-in-modern-of-2025-08-26-11-54-58-utc.jpg",
     status: "cancelled",
   },
   {
@@ -436,13 +436,13 @@ export const mockCollabs: Collab[] = [
   // Services (20)
   {
     id: "clb-1",
-    name: "Starting Your Island Business",
+    name: "USVI Small Business Startup Workshop",
     dateStart: Math.floor(new Date('2025-10-01T09:00:00').getTime() / 1000),
     dateEnd: Math.floor(new Date('2025-10-01T12:00:00').getTime() / 1000),
-    location: "UVI Innovation Lab, St. Thomas",
-    description: "Learn the essentials of starting a business in the US Virgin Islands. Topics include permits, taxes, and local regulations.",
-    price: 75,
-    imageUrl: "https://picsum.photos/seed/workshop1/400/250",
+    location: "University of the Virgin Islands Innovation Hub, St. Thomas",
+    description: "Master the fundamentals of launching your business in the USVI. Learn about EDC benefits, local licensing, Caribbean market opportunities, and tax incentives unique to the territory.",
+    price: 85,
+    imageUrl: "https://pub-23a61d2910624d5082df829f68577f33.r2.dev/business-team-meeting-in-modern-office-discussing-2025-04-29-18-00-07-utc.jpg",
     status: "scheduled",
     type: "service",
     date: "2025-10-01",
@@ -450,8 +450,8 @@ export const mockCollabs: Collab[] = [
     timezone: "America/St_Thomas",
     place: "UVI Innovation Lab, St. Thomas",
     instructors: [{
-      name: "Maria Rodriguez",
-      title: "Business Development Specialist"
+      name: "Carlos Bermudez",
+      title: "USVI Economic Development Authority Senior Advisor"
     }],
     maxAttendees: 25,
     currentAttendees: 18,
@@ -460,13 +460,13 @@ export const mockCollabs: Collab[] = [
   },
   {
     id: "clb-33",
-    name: "Another type of event",
+    name: "Caribbean Tourism Excellence Certification",
     dateStart: Math.floor(new Date('2025-10-01T09:00:00').getTime() / 1000),
     dateEnd: Math.floor(new Date('2025-10-01T12:00:00').getTime() / 1000),
-    location: "UVI Innovation Lab, St. Thomas",
-    description: "Learn the essentials of starting a business in the US Virgin Islands. Topics include permits, taxes, and local regulations.",
-    price: 75,
-    imageUrl: "https://picsum.photos/seed/workshop1/400/250",
+    location: "Bluebeard's Castle Resort, St. Thomas",
+    description: "Elevate your tourism service standards with this comprehensive certification program. Learn hospitality best practices, cultural tourism, and sustainable island business operations.",
+    price: 125,
+    imageUrl: "https://pub-23a61d2910624d5082df829f68577f33.r2.dev/smiling-african-american-female-executive-leading-2025-02-25-00-27-09-utc.jpg",
     status: "scheduled",
     type: "event",
     date: "2025-10-01",
@@ -474,8 +474,8 @@ export const mockCollabs: Collab[] = [
     timezone: "America/St_Thomas",
     place: "UVI Innovation Lab, St. Thomas",
     instructors: [{
-      name: "Maria Rodriguez",
-      title: "Business Development Specialist"
+      name: "Carlos Bermudez",
+      title: "USVI Economic Development Authority Senior Advisor"
     }],
     maxAttendees: 25,
     currentAttendees: 18,
@@ -484,13 +484,13 @@ export const mockCollabs: Collab[] = [
   },
   {
     id: "clb-2",
-    name: "Tech Training: Digital Marketing for Caribbean Businesses",
+    name: "Caribbean Digital Marketing Mastery",
     dateStart: Math.floor(new Date('2025-10-03T14:00:00').getTime() / 1000),
     dateEnd: Math.floor(new Date('2025-10-03T17:00:00').getTime() / 1000),
-    location: "Charlotte Amalie Community Center, St. Thomas",
-    description: "Master social media marketing, Google Ads, and email campaigns specifically for Caribbean tourism and retail businesses.",
-    price: 95,
-    imageUrl: "https://picsum.photos/seed/digital/400/250",
+    location: "Yacht Haven Grande Business Center, St. Thomas",
+    description: "Dominate Caribbean tourism markets with targeted digital strategies. Master Instagram for destination marketing, Google Ads for cruise passengers, and email campaigns that convert island visitors into loyal customers.",
+    price: 110,
+    imageUrl: "https://pub-23a61d2910624d5082df829f68577f33.r2.dev/business-people-working-in-office-2025-02-21-13-22-15-utc.jpg",
     status: "scheduled",
     type: "service",
     date: "2025-10-03",
@@ -498,8 +498,8 @@ export const mockCollabs: Collab[] = [
     timezone: "America/St_Thomas",
     place: "Charlotte Amalie Community Center, St. Thomas",
     instructors: [{
-      name: "James Thompson",
-      title: "Digital Marketing Expert"
+      name: "Isabella Santos",
+      title: "Caribbean Tourism Digital Strategy Consultant"
     }],
     maxAttendees: 30,
     currentAttendees: 22,
@@ -508,13 +508,13 @@ export const mockCollabs: Collab[] = [
   },
   {
     id: "clb-3",
-    name: "Tourism Industry Consultation Session",
+    name: "Luxury Caribbean Hospitality Strategy Session",
     dateStart: Math.floor(new Date('2025-10-05T10:00:00').getTime() / 1000),
     dateEnd: Math.floor(new Date('2025-10-05T11:30:00').getTime() / 1000),
-    location: "Paradise Point Resort, St. Thomas",
-    description: "One-on-one consultations for tourism businesses looking to expand or improve their services.",
-    price: 150,
-    imageUrl: "https://picsum.photos/seed/tourism/400/250",
+    location: "The Ritz-Carlton St. Thomas, Estate Great Bay",
+    description: "Exclusive one-on-one strategy sessions for premium tourism operators. Optimize your luxury service offerings, develop high-value guest experiences, and capture the growing ultra-high-net-worth Caribbean travel market.",
+    price: 295,
+    imageUrl: "https://pub-23a61d2910624d5082df829f68577f33.r2.dev/businessman-and-businesswoman-having-discussion-ar-2024-10-19-05-32-47-utc.jpg",
     status: "scheduled",
     type: "service",
     date: "2025-10-05",
@@ -522,8 +522,8 @@ export const mockCollabs: Collab[] = [
     timezone: "America/St_Thomas",
     place: "Paradise Point Resort, St. Thomas",
     instructors: [{
-      name: "Dr. Angela Davis",
-      title: "Tourism Development Consultant"
+      name: "Victoria Blackwood",
+      title: "Luxury Hospitality Operations Director"
     }],
     maxAttendees: 5,
     currentAttendees: 3,
@@ -532,13 +532,13 @@ export const mockCollabs: Collab[] = [
   },
   {
     id: "clb-4",
-    name: "Coral World Marine Science Workshop",
+    name: "Marine Ecotourism Business Development",
     dateStart: Math.floor(new Date('2025-10-07T08:30:00').getTime() / 1000),
     dateEnd: Math.floor(new Date('2025-10-07T16:00:00').getTime() / 1000),
     location: "Coral World Ocean Park, St. Thomas",
-    description: "Hands-on marine biology workshop including snorkeling, species identification, and conservation techniques.",
-    price: 125,
-    imageUrl: "https://picsum.photos/seed/marine/400/250",
+    description: "Turn your passion for marine conservation into a thriving ecotourism business. Learn sustainable diving operations, marine education programming, and how to partner with conservation organizations for authentic Caribbean experiences.",
+    price: 165,
+    imageUrl: "https://pub-23a61d2910624d5082df829f68577f33.r2.dev/group-of-people-sitting-around-table-with-laptops-2025-09-25-14-07-57-utc.jpg",
     status: "scheduled",
     type: "service",
     date: "2025-10-07",
@@ -546,11 +546,11 @@ export const mockCollabs: Collab[] = [
     timezone: "America/St_Thomas",
     place: "Coral World Ocean Park, St. Thomas",
     instructors: [{
-      name: "Dr. Robert Martinez",
-      title: "Marine Biologist"
+      name: "Captain Miguel Fuentes",
+      title: "Marine Tourism Operations Expert"
     }, {
-      name: "Sarah Johnson",
-      title: "Conservation Specialist"
+      name: "Dr. Amelia Richardson",
+      title: "Caribbean Marine Conservation Director"
     }],
     maxAttendees: 15,
     currentAttendees: 12,
@@ -559,13 +559,13 @@ export const mockCollabs: Collab[] = [
   },
   {
     id: "clb-5",
-    name: "Culinary Arts: Caribbean Fusion Cooking",
+    name: "USVI Culinary Business Accelerator",
     dateStart: Math.floor(new Date('2025-10-09T16:00:00').getTime() / 1000),
     dateEnd: Math.floor(new Date('2025-10-09T19:00:00').getTime() / 1000),
-    location: "Frenchtown Community Kitchen, St. Thomas",
-    description: "Learn to create modern Caribbean fusion dishes using local ingredients and traditional techniques.",
-    price: 85,
-    imageUrl: "https://picsum.photos/seed/cooking/400/250",
+    location: "Frenchtown Culinary Arts Center, St. Thomas",
+    description: "Launch your Caribbean culinary enterprise with authentic island flavors. Master traditional Virgin Islands cuisine, food truck regulations, catering for resorts, and building relationships with local fishermen and farmers.",
+    price: 95,
+    imageUrl: "https://pub-23a61d2910624d5082df829f68577f33.r2.dev/business-people-working-in-office-2025-02-21-13-22-15-utc.jpg",
     status: "scheduled",
     type: "service",
     date: "2025-10-09",
@@ -573,8 +573,8 @@ export const mockCollabs: Collab[] = [
     timezone: "America/St_Thomas",
     place: "Frenchtown Community Kitchen, St. Thomas",
     instructors: [{
-      name: "Chef Marcus Williams",
-      title: "Executive Chef"
+      name: "Chef Lucia St. Clair",
+      title: "Virgin Islands Culinary Heritage Specialist"
     }],
     maxAttendees: 12,
     currentAttendees: 8,
@@ -583,13 +583,13 @@ export const mockCollabs: Collab[] = [
   },
   {
     id: "clb-6",
-    name: "Financial Planning Workshop for Small Business",
+    name: "USVI Tax Strategy & Island Business Finance",
     dateStart: Math.floor(new Date('2025-10-12T10:00:00').getTime() / 1000),
     dateEnd: Math.floor(new Date('2025-10-12T13:00:00').getTime() / 1000),
-    location: "Red Hook Plaza Conference Room, St. Thomas",
-    description: "Learn essential financial planning strategies, budgeting, and investment options specifically for Caribbean small businesses.",
-    price: 65,
-    imageUrl: "https://picsum.photos/seed/finance/400/250",
+    location: "FirstBank Virgin Islands Business Center, Red Hook",
+    description: "Master the unique financial landscape of USVI business operations. Learn about territorial tax benefits, hurricane preparedness funding, seasonal cash flow management, and offshore banking advantages.",
+    price: 75,
+    imageUrl: "https://pub-23a61d2910624d5082df829f68577f33.r2.dev/female-boss-shows-presentation-on-screen-at-busine-2024-10-19-03-25-07-utc.jpg",
     status: "scheduled",
     type: "service",
     date: "2025-10-12",
@@ -597,8 +597,8 @@ export const mockCollabs: Collab[] = [
     timezone: "America/St_Thomas",
     place: "Red Hook Plaza Conference Room, St. Thomas",
     instructors: [{
-      name: "CPA Jennifer Lee",
-      title: "Financial Planning Specialist"
+      name: "Marcus Petersen CPA",
+      title: "USVI Tax & Business Finance Advisor"
     }],
     maxAttendees: 20,
     currentAttendees: 14,
@@ -609,8 +609,8 @@ export const mockCollabs: Collab[] = [
   ...Array.from({ length: 15 }, (_, i) => ({
     id: `evt-${i + 6}`,
     type: "service" as const,
-    name: `Specialized Consultant #${i + 6}`,
-    description: "Tailored consulting service.",
+    name: `Caribbean Business Strategy Session #${i + 6}`,
+    description: "Personalized consulting for USVI entrepreneurs and island businesses.",
     host: `Consultant ${i + 6}`,
     price: 200 + i * 10,
     location: i % 2 === 0 ? "Virtual" : "St. Croix",
@@ -618,13 +618,13 @@ export const mockCollabs: Collab[] = [
     place: i % 2 === 0 ? "Online" : "Business Hub",
     status: "upcoming",
     dateEnd: Math.floor(new Date('2025-10-12T13:00:00').getTime() / 1000),
-    imageUrl: "https://picsum.photos/seed/finance/400/250",
+    imageUrl: i % 3 === 0 ? "https://pub-23a61d2910624d5082df829f68577f33.r2.dev/business-people-talking-at-the-seminar-2025-02-11-15-39-05-utc.jpg" : i % 3 === 1 ? "https://pub-23a61d2910624d5082df829f68577f33.r2.dev/multiracial-group-of-office-workers-2025-03-05-05-25-38-utc.jpg" : "https://pub-23a61d2910624d5082df829f68577f33.r2.dev/happy-young-adults-sitting-at-table-while-drinking-2025-02-18-08-48-25-utc.jpg",
     date: "2025-10-12",
     time: "10:00 AM",
     timezone: "America/St_Thomas",
     instructors: [{
-      name: "CPA Jennifer Lee",
-      title: "Financial Planning Specialist"
+      name: "Marcus Petersen CPA",
+      title: "USVI Tax & Business Finance Advisor"
     }],
     maxAttendees: 20,
     currentAttendees: 14,
@@ -634,8 +634,8 @@ export const mockCollabs: Collab[] = [
   ...Array.from({ length: 15 }, (_, i) => ({
     id: `svc-${i + 6}`,
     type: "event" as const,
-    name: `Farming Consultant #${i + 6}`,
-    description: "Tailored consulting service.",
+    name: `Sustainable Island Agriculture Workshop #${i + 6}`,
+    description: "Personalized consulting for USVI entrepreneurs and island businesses.",
     host: `Consultant ${i + 6}`,
     price: 200 + i * 10,
     location: i % 2 === 0 ? "Virtual" : "St. Croix",
@@ -643,13 +643,13 @@ export const mockCollabs: Collab[] = [
     place: i % 2 === 0 ? "Online" : "Business Hub",
     status: "upcoming",
     dateEnd: Math.floor(new Date('2025-10-12T13:00:00').getTime() / 1000),
-    imageUrl: "https://picsum.photos/seed/finance/400/250",
+    imageUrl: i % 3 === 0 ? "https://pub-23a61d2910624d5082df829f68577f33.r2.dev/portrait-of-a-businessman-holding-glasses-looking-2024-10-19-04-33-11-utc.jpg" : i % 3 === 1 ? "https://pub-23a61d2910624d5082df829f68577f33.r2.dev/a-young-business-woman-sitting-in-the-office-looki-2025-03-13-01-23-25-utc.jpg" : "https://pub-23a61d2910624d5082df829f68577f33.r2.dev/unrecognizable-woman-raising-hand-during-conferenc-2025-02-10-09-49-36-utc.jpg",
     date: "2025-10-12",
     time: "10:00 AM",
     timezone: "America/St_Thomas",
     instructors: [{
-      name: "CPA Jennifer Lee",
-      title: "Financial Planning Specialist"
+      name: "Marcus Petersen CPA",
+      title: "USVI Tax & Business Finance Advisor"
     }],
     maxAttendees: 20,
     currentAttendees: 14,
@@ -660,21 +660,21 @@ export const mockCollabs: Collab[] = [
   ...Array.from({ length: 15 }, (_, i) => ({
     id: `svc-${i + 6}`,
     type: "service" as const,
-    name: `Specialized Consultant #${i + 6}`,
-    description: "Tailored consulting service.",
+    name: `Caribbean Business Strategy Session #${i + 6}`,
+    description: "Personalized consulting for USVI entrepreneurs and island businesses.",
     host: `Consultant ${i + 6}`,
     price: 200 + i * 10,
     location: i % 2 === 0 ? "Virtual" : "St. Croix",
     dateStart: 1767657600000 + i * 86400000,
     place: i % 2 === 0 ? "Online" : "Business Hub",
     status: "upcoming",
-    imageUrl: "https://picsum.photos/seed/finance/400/250",
+    imageUrl: "https://pub-23a61d2910624d5082df829f68577f33.r2.dev/business-people-talking-at-the-seminar-2025-02-11-15-39-05-utc.jpg",
     date: "2025-10-12",
     time: "10:00 AM",
     timezone: "America/St_Thomas",
     instructors: [{
-      name: "CPA Jennifer Lee",
-      title: "Financial Planning Specialist"
+      name: "Marcus Petersen CPA",
+      title: "USVI Tax & Business Finance Advisor"
     }],
     maxAttendees: 20,
     currentAttendees: 14,
@@ -684,21 +684,21 @@ export const mockCollabs: Collab[] = [
   ...Array.from({ length: 15 }, (_, i) => ({
     id: `trn-${i + 6}`,
     type: "training" as const,
-    name: `Training #${i + 6}`,
-    description: `Tailored training service for Career ${i}`,
+    name: `USVI Professional Development Series #${i + 6}`,
+    description: `Career advancement training for Virgin Islands professionals.`,
     host: `Consultant ${i + 6}`,
     price: 200 + i * 10,
     location: i % 2 === 0 ? "Virtual" : "St. Croix",
     dateStart: 1767657600000 + i * 86400000,
     place: i % 2 === 0 ? "Online" : "Business Hub",
     status: "upcoming",
-    imageUrl: "https://picsum.photos/seed/finance/400/250",
+    imageUrl: i % 3 === 0 ? "https://pub-23a61d2910624d5082df829f68577f33.r2.dev/young-speaker-talking-to-audience-at-conference-2025-03-09-23-13-04-utc.jpg" : i % 3 === 1 ? "https://pub-23a61d2910624d5082df829f68577f33.r2.dev/group-of-engineers-analyzing-the-results-of-techno-2025-01-09-06-23-16-utc.jpg" : "https://pub-23a61d2910624d5082df829f68577f33.r2.dev/latin-woman-taking-selfie-at-a-carnival-party-in-t-2025-08-11-05-36-12-utc.jpg",
     date: "2025-10-12",
     time: "10:00 AM",
     timezone: "America/St_Thomas",
     instructors: [{
-      name: "CPA Jennifer Lee",
-      title: "Financial Planning Specialist"
+      name: "Marcus Petersen CPA",
+      title: "USVI Tax & Business Finance Advisor"
     }],
     maxAttendees: 20,
     currentAttendees: 14,
@@ -706,10 +706,10 @@ export const mockCollabs: Collab[] = [
     registrationDeadline: "2025-10-10"
   })),
   ...Array.from({ length: 15 }, (_, i) => ({
-      id: `trn-${i + 6}`,
+      id: `wks-${i + 6}`,
     type: "event" as const,
-    name: `Training Workshop #${i + 6}`,
-    description: "Interactive session to build skills.",
+    name: `Caribbean Skills Development Workshop #${i + 6}`,
+    description: "Hands-on skill building for the modern Caribbean workforce.",
     host: `Trainer ${i + 6}`,
     price: 30 + i * 5,
     location: i % 2 === 0 ? "St. Thomas" : "Virtual",
@@ -720,13 +720,13 @@ export const mockCollabs: Collab[] = [
     registrationRequired: true,
     maxAttendees: 40,
     currentAttendees: 5 + i,
-    imageUrl: "https://picsum.photos/seed/finance/400/250",
+    imageUrl: i % 3 === 0 ? "https://pub-23a61d2910624d5082df829f68577f33.r2.dev/business-people-sitting-at-meeting-2025-02-25-02-26-51-utc.jpg" : i % 3 === 1 ? "https://pub-23a61d2910624d5082df829f68577f33.r2.dev/a-group-of-people-in-a-pub-drinking-and-talking-2024-10-22-03-35-41-utc.jpg" : "https://pub-23a61d2910624d5082df829f68577f33.r2.dev/eden-island-seychelles-2024-12-16-04-53-59-utc.jpg",
     date: "2025-10-12",
     time: "10:00 AM",
     timezone: "America/St_Thomas",
     instructors: [{
-      name: "CPA Jennifer Lee",
-      title: "Financial Planning Specialist"
+      name: "Marcus Petersen CPA",
+      title: "USVI Tax & Business Finance Advisor"
     }],
     registrationDeadline: "2025-10-10"
   })),
@@ -736,8 +736,8 @@ export const mockCollabs: Collab[] = [
   ...Array.from({ length: 15 }, (_, i) => ({
   id: `spc-${i + 6}`,
   type: "space" as const,
-  name: `Collaboration Space #${i + 6}`,
-  description: "Shared workspace with resources.",
+  name: `St. Thomas Co-Working Hub #${i + 6}`,
+  description: "Modern workspace designed for island entrepreneurs and remote professionals.",
   location: i % 2 === 0 ? "St. Thomas" : "St. Croix",
   dateStart: 1768694400000 + i * 86400000,
   dateEnd: undefined,
@@ -749,7 +749,7 @@ export const mockCollabs: Collab[] = [
   registrationRequired: true,
   maxAttendees: 40,
   currentAttendees: 5 + i,
-  imageUrl: "https://picsum.photos/seed/finance/400/250",
+  imageUrl: "https://pub-23a61d2910624d5082df829f68577f33.r2.dev/contemporary-young-people-in-business-meeting-2025-03-07-09-29-24-utc.jpg",
   instructors: [{
     name: "CPA Jennifer Lee",
     title: "Financial Planning Specialist"
@@ -769,7 +769,7 @@ export const mockEvents: Event[] = [
     location: "UVI Innovation Lab, St. Thomas",
     description: "Learn the essentials of starting a business in the US Virgin Islands. Topics include permits, taxes, and local regulations.",
     price: 75,
-    imageUrl: "https://picsum.photos/seed/workshop1/400/250",
+    imageUrl: "https://pub-23a61d2910624d5082df829f68577f33.r2.dev/business-team-meeting-in-modern-office-discussing-2025-04-29-18-00-07-utc.jpg",
     status: "scheduled",
     type: "training",
     date: "2025-10-01",
@@ -777,8 +777,8 @@ export const mockEvents: Event[] = [
     timezone: "America/St_Thomas",
     place: "UVI Innovation Lab, St. Thomas",
     instructors: [{
-      name: "Maria Rodriguez",
-      title: "Business Development Specialist"
+      name: "Carlos Bermudez",
+      title: "USVI Economic Development Authority Senior Advisor"
     }],
     maxAttendees: 25,
     currentAttendees: 18,
@@ -793,7 +793,7 @@ export const mockEvents: Event[] = [
     location: "UVI Innovation Lab, St. Thomas",
     description: "Learn the essentials of starting a business in the US Virgin Islands. Topics include permits, taxes, and local regulations.",
     price: 75,
-    imageUrl: "https://picsum.photos/seed/workshop1/400/250",
+    imageUrl: "https://pub-23a61d2910624d5082df829f68577f33.r2.dev/smiling-african-american-female-executive-leading-2025-02-25-00-27-09-utc.jpg",
     status: "scheduled",
     type: "event",
     date: "2025-10-01",
@@ -801,8 +801,8 @@ export const mockEvents: Event[] = [
     timezone: "America/St_Thomas",
     place: "UVI Innovation Lab, St. Thomas",
     instructors: [{
-      name: "Maria Rodriguez",
-      title: "Business Development Specialist"
+      name: "Carlos Bermudez",
+      title: "USVI Economic Development Authority Senior Advisor"
     }],
     maxAttendees: 25,
     currentAttendees: 18,
@@ -817,7 +817,7 @@ export const mockEvents: Event[] = [
     location: "Charlotte Amalie Community Center, St. Thomas",
     description: "Master social media marketing, Google Ads, and email campaigns specifically for Caribbean tourism and retail businesses.",
     price: 95,
-    imageUrl: "https://picsum.photos/seed/digital/400/250",
+    imageUrl: "https://pub-23a61d2910624d5082df829f68577f33.r2.dev/business-people-working-in-office-2025-02-21-13-22-15-utc.jpg",
     status: "scheduled",
     type: "training",
     date: "2025-10-03",
@@ -825,8 +825,8 @@ export const mockEvents: Event[] = [
     timezone: "America/St_Thomas",
     place: "Charlotte Amalie Community Center, St. Thomas",
     instructors: [{
-      name: "James Thompson",
-      title: "Digital Marketing Expert"
+      name: "Isabella Santos",
+      title: "Caribbean Tourism Digital Strategy Consultant"
     }],
     maxAttendees: 30,
     currentAttendees: 22,
@@ -841,7 +841,7 @@ export const mockEvents: Event[] = [
     location: "Paradise Point Resort, St. Thomas",
     description: "One-on-one consultations for tourism businesses looking to expand or improve their services.",
     price: 150,
-    imageUrl: "https://picsum.photos/seed/tourism/400/250",
+    imageUrl: "https://pub-23a61d2910624d5082df829f68577f33.r2.dev/businessman-and-businesswoman-having-discussion-ar-2024-10-19-05-32-47-utc.jpg",
     status: "scheduled",
     type: "consultation",
     date: "2025-10-05",
@@ -849,8 +849,8 @@ export const mockEvents: Event[] = [
     timezone: "America/St_Thomas",
     place: "Paradise Point Resort, St. Thomas",
     instructors: [{
-      name: "Dr. Angela Davis",
-      title: "Tourism Development Consultant"
+      name: "Victoria Blackwood",
+      title: "Luxury Hospitality Operations Director"
     }],
     maxAttendees: 5,
     currentAttendees: 3,
@@ -865,7 +865,7 @@ export const mockEvents: Event[] = [
     location: "Coral World Ocean Park, St. Thomas",
     description: "Hands-on marine biology workshop including snorkeling, species identification, and conservation techniques.",
     price: 125,
-    imageUrl: "https://picsum.photos/seed/marine/400/250",
+    imageUrl: "https://pub-23a61d2910624d5082df829f68577f33.r2.dev/group-of-people-sitting-around-table-with-laptops-2025-09-25-14-07-57-utc.jpg",
     status: "scheduled",
     type: "training",
     date: "2025-10-07",
@@ -873,11 +873,11 @@ export const mockEvents: Event[] = [
     timezone: "America/St_Thomas",
     place: "Coral World Ocean Park, St. Thomas",
     instructors: [{
-      name: "Dr. Robert Martinez",
-      title: "Marine Biologist"
+      name: "Captain Miguel Fuentes",
+      title: "Marine Tourism Operations Expert"
     }, {
-      name: "Sarah Johnson",
-      title: "Conservation Specialist"
+      name: "Dr. Amelia Richardson",
+      title: "Caribbean Marine Conservation Director"
     }],
     maxAttendees: 15,
     currentAttendees: 12,
@@ -892,7 +892,7 @@ export const mockEvents: Event[] = [
     location: "Frenchtown Community Kitchen, St. Thomas",
     description: "Learn to create modern Caribbean fusion dishes using local ingredients and traditional techniques.",
     price: 85,
-    imageUrl: "https://picsum.photos/seed/cooking/400/250",
+    imageUrl: "https://pub-23a61d2910624d5082df829f68577f33.r2.dev/business-people-working-in-office-2025-02-21-13-22-15-utc.jpg",
     status: "scheduled",
     type: "training",
     date: "2025-10-09",
@@ -900,8 +900,8 @@ export const mockEvents: Event[] = [
     timezone: "America/St_Thomas",
     place: "Frenchtown Community Kitchen, St. Thomas",
     instructors: [{
-      name: "Chef Marcus Williams",
-      title: "Executive Chef"
+      name: "Chef Lucia St. Clair",
+      title: "Virgin Islands Culinary Heritage Specialist"
     }],
     maxAttendees: 12,
     currentAttendees: 8,
@@ -916,7 +916,7 @@ export const mockEvents: Event[] = [
     location: "Red Hook Plaza Conference Room, St. Thomas",
     description: "Learn essential financial planning strategies, budgeting, and investment options specifically for Caribbean small businesses.",
     price: 65,
-    imageUrl: "https://picsum.photos/seed/finance/400/250",
+    imageUrl: "https://pub-23a61d2910624d5082df829f68577f33.r2.dev/business-people-talking-at-the-seminar-2025-02-11-15-39-05-utc.jpg",
     status: "scheduled",
     type: "training",
     date: "2025-10-12",
@@ -924,8 +924,8 @@ export const mockEvents: Event[] = [
     timezone: "America/St_Thomas",
     place: "Red Hook Plaza Conference Room, St. Thomas",
     instructors: [{
-      name: "CPA Jennifer Lee",
-      title: "Financial Planning Specialist"
+      name: "Marcus Petersen CPA",
+      title: "USVI Tax & Business Finance Advisor"
     }],
     maxAttendees: 20,
     currentAttendees: 14,
@@ -951,17 +951,17 @@ export const calendars: Calendar[] =[
 
 
 export const mockReviews = {
-  average: 4,
+  average: 4.8,
   featured: [
     {
       id: 1,
       rating: 5,
       content: `
-        <p>This icon pack is just what I need for my latest project. There's an icon for just about anything I could ever need. Love the playful look!</p>
+        <p>The USVI Small Business Startup Workshop gave me exactly what I needed to launch my tourism business. Carlos explained the EDC benefits so clearly - I saved thousands on taxes in my first year!</p>
       `,
-      date: "July 16, 2021",
-      datetime: "2021-07-16",
-      author: "Emily Selman",
+      date: "September 15, 2024",
+      datetime: "2024-09-15",
+      author: "Maria Gonzalez",
       avatarSrc:
         "https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80",
     },
@@ -969,23 +969,23 @@ export const mockReviews = {
       id: 2,
       rating: 5,
       content: `
-        <p>Blown away by how polished this icon pack is. Everything looks so consistent and each SVG is optimized out of the box so I can use it directly with confidence. It would take me several hours to create a single icon this good, so it's a steal at this price.</p>
+        <p>Isabella's Caribbean Digital Marketing workshop transformed my charter boat business. My Instagram engagement increased 300% and I'm booked solid through cruise season. Worth every penny!</p>
       `,
-      date: "July 12, 2021",
-      datetime: "2021-07-12",
-      author: "Hector Gibbons",
+      date: "August 22, 2024",
+      datetime: "2024-08-22",
+      author: "Captain James Baptiste",
       avatarSrc:
         "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80",
     },
     {
       id: 3,
-      rating: 4,
+      rating: 5,
       content: `
-        <p>Really happy with look and options of these icons. I've found uses for them everywhere in my recent projects. I hope there will be 20px versions in the future!</p>
+        <p>Chef Lucia's culinary workshop helped me turn my food truck dream into reality. Learning about local sourcing and resort partnerships was game-changing for my Caribbean fusion menu.</p>
       `,
-      date: "July 6, 2021",
-      datetime: "2021-07-06",
-      author: "Mark Edwards",
+      date: "July 18, 2024",
+      datetime: "2024-07-18",
+      author: "Keisha Williams",
       avatarSrc:
         "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixqx=oilqXxSqey&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
     },
@@ -993,19 +993,24 @@ export const mockReviews = {
 };
 export const mockFaqs = [
   {
-    question: "What format are these icons?",
+    question: "What business topics do your workshops cover?",
     answer:
-      "The icons are in SVG (Scalable Vector Graphic) format. They can be imported into your design tool of choice and used directly in code.",
+      "Our workshops focus on USVI-specific business opportunities including tourism, culinary ventures, marine ecotourism, digital marketing for Caribbean markets, and leveraging territorial tax benefits like the EDC program.",
   },
   {
-    question: "Can I use the icons at different sizes?",
+    question: "Are the workshops suitable for both beginners and experienced entrepreneurs?",
     answer:
-      "Yes. The icons are drawn on a 24 x 24 pixel grid, but the icons can be scaled to different sizes as needed. We don't recommend going smaller than 20 x 20 or larger than 64 x 64 to retain legibility and visual balance.",
+      "Yes. Our instructors tailor content to all experience levels. Beginners learn fundamentals while experienced business owners discover advanced strategies specific to the Caribbean market and USVI regulations.",
   },
   {
-    question: "Do I have to add attribution to my projects?",
+    question: "Do I get certificates or credentials after completing workshops?",
     answer:
-      "No. You are allowed to use these icons freely in your personal and professional work. If you enjoy the icon pack, feel free to tell others!",
+      "Yes. Most workshops provide completion certificates, and our Tourism Excellence program offers official Caribbean hospitality certification recognized throughout the region.",
+  },
+  {
+    question: "Can I get one-on-one business consulting?",
+    answer:
+      "Absolutely. We offer personalized consultation sessions, including our premium Luxury Caribbean Hospitality Strategy Sessions for high-end tourism operators.",
   },
 ];
 export const mockLicense = {

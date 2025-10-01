@@ -25,6 +25,7 @@ export default function Grid({
 }: GridProps) {
   const [selectedCollab, setSelectedCollab] = useState<string | null>(null);
   const [showAttendanceModal, setShowAttendanceModal] = useState(false);
+  const [showAllCollabs, setShowAllCollabs] = useState(false);
 
   const selectedCollabData = selectedCollab
     ? collabs.find((collab) => collab.id === selectedCollab)
@@ -40,6 +41,10 @@ export default function Grid({
       `Thank you ${attendeeInfo.name}! Your registration has been submitted.`
     );
   };
+
+  // Limit collabs display to 8 initially
+  const displayedCollabs = showAllCollabs ? collabs : collabs.slice(0, 8);
+  const hasMoreCollabs = collabs.length > 8;
 
   return (
     <>
@@ -85,7 +90,7 @@ export default function Grid({
 
           {/* Grid layout - Airbnb style */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {collabs.map((collab, idx) => (
+            {displayedCollabs.map((collab, idx) => (
               <Link key={idx} href={`/collabs/${collab.id}`}>
                 <Card key={collab.id} collab={collab} />
               </Link>
@@ -93,11 +98,16 @@ export default function Grid({
           </div>
 
           {/* View More Button */}
-          <div className="mt-12 text-center">
-            <button className="bg-gray-900 hover:bg-gray-800 text-white rounded-full px-8 py-3 font-light shadow-lg transition-all duration-200 hover:shadow-xl">
-              View More
-            </button>
-          </div>
+          {hasMoreCollabs && (
+            <div className="mt-12 text-center">
+              <button 
+                onClick={() => setShowAllCollabs(!showAllCollabs)}
+                className="bg-gray-900 hover:bg-gray-800 text-white rounded-full px-8 py-3 font-light shadow-lg transition-all duration-200 hover:shadow-xl"
+              >
+                {showAllCollabs ? "Show Less" : "View More"}
+              </button>
+            </div>
+          )}
         </div>
       </div>
 

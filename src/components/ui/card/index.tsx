@@ -13,8 +13,8 @@ export default function Card({ collab }: CardProps) {
   };
 
   return (
-    <div className="group cursor-pointer transition-all duration-300 hover:shadow-lg">
-      <div className="bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-gray-300 transition-all">
+    <div className="group cursor-pointer transition-all duration-300 hover:shadow-lg h-full">
+      <div className="bg-white rounded-xl overflow-hidden border border-gray-200 hover:border-gray-300 transition-all h-full flex flex-col">
         {/* Image */}
         <div className="relative aspect-[4/3] overflow-hidden">
           {collab.imageUrl ? (
@@ -85,14 +85,14 @@ export default function Card({ collab }: CardProps) {
         </div>
 
         {/* Content */}
-        <div className="p-4">
+        <div className="p-4 flex-grow flex flex-col">
           {/* Location */}
           <div className="text-sm text-gray-600 mb-1 truncate">
             {collab.location || collab.place}
           </div>
 
           {/* Title */}
-          <h3 className="font-medium text-gray-900 mb-1 line-clamp-2 leading-tight">
+          <h3 className="font-medium text-gray-900 mb-1 line-clamp-2 leading-tight min-h-[2.5rem]">
             {collab.name}
           </h3>
 
@@ -103,7 +103,7 @@ export default function Card({ collab }: CardProps) {
           </div>
 
           {/* Price */}
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between mt-auto">
             <div>
               {collab.price ? (
                 <div className="text-base font-semibold text-gray-900">
